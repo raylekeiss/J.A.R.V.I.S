@@ -46,7 +46,7 @@ def promote(root, temp, files):
 
 def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
     root = Path(root)
-    lr = lr if lr is not None else (1e-4 if mode == 'incremental' else 3e-3)
+    lr = lr if lr is not None else (3e-5 if mode == 'incremental' else 3e-3)
     if not 1 <= steps <= 16000 or not 1 <= batch <= 24 or not 1e-6 <= lr <= 3e-3:
         raise ValueError('invalid training steps, batch or learning rate')
     report_dir = root / 'reports'
