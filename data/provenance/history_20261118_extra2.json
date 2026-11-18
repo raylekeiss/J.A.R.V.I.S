@@ -1,0 +1,212 @@
+{
+  "source_name": "質問返答生成用テキストデータ.txt",
+  "source_sha256": "502f0699124f40e7c5e73275dd017968d4299fae7469bc410d28f660edef8fd3",
+  "facts": [
+    {
+      "topic": "ロイヒリン",
+      "answer": "ヘブライ語や原典による聖書研究を進めた人物です。",
+      "source_excerpt": "〇ドイツ\n⋆「ロイヒリン」：ヘブライ語や原典による聖書研究",
+      "source_line": 3826,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "官戸形勢戸",
+      "answer": "新興地主の形勢戸から役人となった家です。",
+      "source_excerpt": "①「武断統治」\n　貴族は没落し、軍人が新興地主として武力により荘園を獲得した。\n\n\n新興地主を「形勢戸」、そこから役人となった家を「官戸形勢戸」と呼ぶ。\n②「佃戸制」\n　小作人（佃戸）を雇い、農地で耕作させる。収穫の半分以上は徴収された。",
+      "source_line": 3858,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "キルギス",
+      "answer": "9世紀半ばにウイグル帝国を倒した遊牧民族です。",
+      "source_excerpt": "　ウイグルは遊牧民族の中でも、特に文化的に進んでいた民族です。マニ教を国教として採用し、「ウイグル文字」を使用していました。定住化も進めて、都市も建設しました。\nしかし、9世紀半ば、「キルギス」という別の遊牧民族に攻められ、ウイグル帝国は崩壊します。",
+      "source_line": 3959,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "桃鳩図",
+      "answer": "宋の徽宗の代表作として知られる絵画です。",
+      "source_excerpt": "\n▽「徽宗」\n政治よりも芸術を好み、金軍の勝利が濃厚になると退位して上皇となった。\n代表作は「桃鳩図」（右図）。",
+      "source_line": 4027,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "南宋の高宗",
+      "answer": "靖康の変の後に江南で宋を再興した皇帝です。",
+      "source_excerpt": "靖康の変の際、欽宗の弟「高宗」は江南に逃げ出し、宋を再興しました。\n\n\n「高宗」は「臨安（杭州）」を都と定め、「宋（南宋）」を建国した。",
+      "source_line": 4033,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "唐宋八大家",
+      "answer": "韓愈や欧陽脩など唐宋期の八人の文章家です。",
+      "source_excerpt": "▽「唐宋八大家」\n「韓愈（唐）」、「柳宗元（唐）」、「欧陽脩（宋）」「蘇洵（宋）」「蘇轍（宋）」「曾鞏（宋）」「王安石（宋）」「蘇軾（宋）」",
+      "source_line": 4105,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "画院",
+      "answer": "中国の院体画の画家たちが所属した機関です。",
+      "source_excerpt": "〇「院体画」・・・「画院」所属の画家による、雅で伝統的な画風（左）",
+      "source_line": 4109,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "弥勒菩薩",
+      "answer": "未来に衆生を救済するとされる菩薩です。",
+      "source_excerpt": "▽白蓮教\n５６億７千万年後に衆生を救済するために現れる「弥勒菩薩」を信仰する宗教。東晋の僧「慧遠」が結成した白蓮社に起源をもつ。",
+      "source_line": 4183,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "陶磁の道",
+      "answer": "中国の陶磁器などを運んだインド洋方面への海上交易路です。",
+      "source_excerpt": "②海運の発展･･･「陶磁の道」\nジャンク船に乗った中国商人の活動領域がインド洋周辺にまで広がった。中国産の絹のほか、青磁や白磁が主な交易品として取り引きされたため、別名「陶磁の道」ともよばれた。さらに16世紀大航海時代後には、ヨーロッパの商船が出没し、マカオに居住権を獲得したポルトガルや、ジャワ島にバタヴィアを建設したオランダが、海上交易の利権をねらって進出した。",
+      "source_line": 4242,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "六部",
+      "answer": "明で洪武帝が皇帝直属とした六つの行政部局です。",
+      "source_excerpt": "洪武帝（１３６８~１３９８）\n①「中書省」の廃止・「六部」を皇帝直属に\n洪武帝は官僚の権力を奪い、独裁体制の強化につとめました。",
+      "source_line": 4264,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "民戸",
+      "answer": "明で軍戸と区別された一般民の戸籍区分です。",
+      "source_excerpt": "②「衛所制」\n民間人の戸籍を「民戸」と「軍戸」に分け、軍戸から徴兵をする代わりに免税とした。",
+      "source_line": 4268,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "軍戸",
+      "answer": "明の衛所制で兵士を供給した戸籍区分です。",
+      "source_excerpt": "②「衛所制」\n民間人の戸籍を「民戸」と「軍戸」に分け、軍戸から徴兵をする代わりに免税とした。",
+      "source_line": 4268,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "里長戸",
+      "answer": "明の里甲制で里の運営を担った家です。",
+      "source_excerpt": "❶「里甲制」\n「１０甲（１００戸）」に「里長戸」を足した「１１０戸」を一里とし、それぞれに持ち回りで徴税や治安維持を行わせた。",
+      "source_line": 4271,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "里老人",
+      "answer": "明で里長戸の代表から任命され六諭を徹底させた人です。",
+      "source_excerpt": "⑤「六諭」\n洪武帝が発布した六箇条の教訓。里長戸の代表を「里老人」に任命し、里内で徹底させました。❶親孝行、❷年長者を尊敬、❸里の中は平和に、❹子孫を教育しなさい、❺一生懸命働き、❻悪いことをしない",
+      "source_line": 4279,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "前期倭寇",
+      "answer": "日本人を中心に活動した倭寇です。",
+      "source_excerpt": "❷「南倭」：「倭寇」\n足利義満以降の勘合貿易の影響で、日本人中心の倭寇（前期倭寇）は衰退し、中国人中心の後期倭寇が出現しました。",
+      "source_line": 4327,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "後期倭寇",
+      "answer": "中国人を中心に活動した倭寇です。",
+      "source_excerpt": "❷「南倭」：「倭寇」\n足利義満以降の勘合貿易の影響で、日本人中心の倭寇（前期倭寇）は衰退し、中国人中心の後期倭寇が出現しました。",
+      "source_line": 4327,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "王直",
+      "answer": "五島列島などを拠点とした後期倭寇の指導者です。",
+      "source_excerpt": "「後期倭寇」のリーダー「王直」は五島列島などを中心に活動した。",
+      "source_line": 4331,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "赤絵",
+      "answer": "明代の陶磁器の一種です。",
+      "source_excerpt": "◆商工業・経済◆\n①商人用の施設「会館・公所」\n②陶磁器「染付」「赤絵」",
+      "source_line": 4362,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "湖広熟すれば天下足る",
+      "answer": "長江中流域が重要な穀倉地帯だったことを示す言葉です。",
+      "source_excerpt": "①「湖広熟すれば天下足る」\n　宋の時代までは長江下流域が中国最大の穀物産地であり、「江浙（蘇湖）熟すれば天下足る」という言葉が流行していました。下流域では絹や絹織物の家内制手工業が盛んになり、綿花や桑（養蚕での餌に必要）の栽培が普及しました。その影響もあり、明代は長江中流域が中国最大の穀物地となりました。",
+      "source_line": 4532,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "メキシコ銀",
+      "answer": "明代にスペイン商人などを通じ中国へ流入した銀です。",
+      "source_excerpt": "①商人用の施設「会館・公所」\n②陶磁器「染付」「赤絵」\n③ポルトガル・スペイン商人による「メキシコ銀」、\n　勘合貿易による「日本銀」の流入\n→影響：一条鞭法の施行",
+      "source_line": 4363,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "アルグン川",
+      "answer": "ネルチンスク条約で清とロシアの国境とされた川です。",
+      "source_excerpt": "④「ネルチンスク条約（１６８９）」\nロシア「ピョートル1世」と康熙帝の間に締結された国境協定。中国が結んだ初の対等的な近代条約。「アルグン川」と「スタノヴォイ山脈」を国境とした。",
+      "source_line": 4445,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "スタノヴォイ山脈",
+      "answer": "ネルチンスク条約で清とロシアの国境とされた山脈です。",
+      "source_excerpt": "④「ネルチンスク条約（１６８９）」\nロシア「ピョートル1世」と康熙帝の間に締結された国境協定。中国が結んだ初の対等的な近代条約。「アルグン川」と「スタノヴォイ山脈」を国境とした。",
+      "source_line": 4445,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "禁書",
+      "answer": "支配者が刊行などを禁止した書物です。",
+      "source_excerpt": "②「禁書」・「文字の獄」\n清の支配層である女真族や、他異民族を敵視する文脈の書物を没収、その刊行を禁止しました。",
+      "source_line": 4509,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "サファヴィー教団",
+      "answer": "サファヴィー朝の建国母体となった神秘主義教団です。",
+      "source_excerpt": "「サファヴィー朝（１５０１～１７３６）」\n　イランでは、神秘主義教団「サファヴィー教団」の指導者が新王朝を建国しました。",
+      "source_line": 4679,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "隠れイマーム",
+      "answer": "十二イマーム派で再臨が信じられる最後のイマームです。",
+      "source_excerpt": "▽「１２イマーム派」\n預言者ムハンマドの従弟で娘婿のアリーとその子孫である１１人の「イマーム（指導者）」を正統な後継者と認め、１２代目の「隠れイマーム」がいつか再臨してこの世に正義をもたらすとする宗派。現イランの国教。",
+      "source_line": 4689,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "グル＝グラント＝サーヒブ",
+      "answer": "シク教で導師として尊ばれる経典です。",
+      "source_excerpt": "◎「シク教」：創始者「ナーナク」\n経典「グル＝グラント＝サーヒブ」\nイスラーム教の唯一神信仰とヒンドゥー教の輪廻転生の考えを融合させた宗教。ヒンドゥー教のカースト制度を否定し、偶像崇拝を行いません。現在でもインドのパンジャーブ地方を中心に、２０００万人以上に信仰されています。\n弟子を「シク」、導師を「グル」と呼び、１０代目のグルが１１代目に「経典そのもの」を指定したため、現在は経典がグルとして尊ばれています。",
+      "source_line": 4737,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "グル",
+      "answer": "シク教で導師を意味する呼び名です。",
+      "source_excerpt": "弟子を「シク」、導師を「グル」と呼び、１０代目のグルが１１代目に「経典そのもの」を指定したため、現在は経典がグルとして尊ばれています。",
+      "source_line": 4740,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ムムターズ＝マハル",
+      "answer": "タージ＝マハルが捧げられたシャー＝ジャハーンの王妃です。",
+      "source_excerpt": "◎タージ＝マハル（下左）\nアウラングゼーブの父、「シャー＝ジャハーン」が亡き王妃「ムムターズ＝マハル」のために建設した白大理石の霊廟。インド＝イスラーム建築の最高傑作として、世界遺産に登録されています。",
+      "source_line": 4755,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ボルドー",
+      "answer": "モンテーニュが市長を務めた都市です。",
+      "source_excerpt": "⋆「モンテーニュ」（1533～１５92）：『随想録（エセー）』※ユグノー戦争期\n代表的なヒューマニスト。深く人間性を洞察し、「随想録」を記した。出版後には、赤ワインの産地として知られる「ボルドー」の市長として活躍。",
+      "source_line": 3808,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    }
+  ],
+  "files": [
+    "inbox/history_20261118_extra2_01_290.jsonl"
+  ]
+}
