@@ -148,4 +148,9 @@ if __name__ == '__main__':
     a = p.parse_args()
     if not 1 <= a.steps <= 16000 or not 1 <= a.batch <= 24:
         p.error('steps must be 1..16000, batch 1..24')
-    run(a.root, a.steps, a.mode, a.batch, lr=a.lr)
+    try:
+        run(a.root, a.steps, a.mode, a.batch, lr=a.lr)
+    except Exception as exc:
+        write_json(a.root / 'reports/latest.json', {'status': 'error', 'accepted': False, 'error': str(exc)})
+        (a.root / 'reports/latest.md').write_text('学習は失敗しました。現モデルは採用していません。\n' + str(exc) + '\n')
+        raise

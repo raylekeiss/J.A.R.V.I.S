@@ -25,7 +25,7 @@ def main():
         import numpy  # noqa: F401
     except ImportError:
         print("NumPyが入っていないので、インストールします…")
-        subprocess.call([sys.executable, "-m", "pip", "install", "numpy"])
+        subprocess.call([sys.executable, "-m", "pip", "install", "-r", os.path.join(HERE, "requirements.txt")])
 
     print("==== ちいさな世界史AI ====")
     print("  1: そのまま起動")
@@ -35,20 +35,10 @@ def main():
 
     cmd = [sys.executable, os.path.join(HERE, "chat_server.py")]
     if choice == "2":
-        inbox = os.path.join(HERE, "inbox")
-        has_inbox = os.path.isdir(inbox) and any(f.endswith(".jsonl") for f in os.listdir(inbox))
-        has_add = os.path.exists(os.path.join(HERE, "add.jsonl"))
-        if not (has_inbox or has_add):
-            print("inbox フォルダに .jsonl ファイルがありません（add.jsonl もありません）。")
+        # Merge add.jsonl, inbox and corrections in one candidate, not separate runs.
+        code = subprocess.call([sys.executable, '-m', 'scripts.train_candidate'], cwd=HERE)
+        if code != 0:
             return pause()
-        if has_add:
-            code = subprocess.call(cmd + ["--add", "add.jsonl", "--train-only"])
-            if code != 0:
-                return pause()
-        if has_inbox:
-            code = subprocess.call(cmd + ["--add", "inbox", "--train-only"])
-            if code != 0:
-                return pause()
     elif choice == "3":
         cmd += ["--retrain"]
     elif choice != "1":
