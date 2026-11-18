@@ -5,14 +5,17 @@
   "mode": "incremental",
   "steps": 1500,
   "learning_rate": 0.0003,
-  "elapsed_seconds": 280.01,
+  "elapsed_seconds": 307.13,
   "retention_distillation": true,
+  "retention_weight": 3.0,
+  "rehearsal_pairs": 5171,
+  "conversation_replay_pairs": 864,
   "new_pairs": 290,
-  "merged_pairs": 10349,
-  "baseline_sha256": "140f28261f86937b8448d3f8d24d6e12f09f39e51c15f485e01c5166e936166a",
-  "evaluation_sha256": "e5d1e87a2d59ff761d3c53db4b3cf3d3047efcc6de83f1f4a43404ec396c7c72",
+  "merged_pairs": 15810,
+  "baseline_sha256": "f56280a903eaefebf3b67257138ca0cfd8875ea1e2b694ff502b1a7edd9e435c",
+  "evaluation_sha256": "78e2a8f5335506b6a0c29c10bd4d0ecae22fe3c9f81413897b9cfa0faf7e7499",
   "inputs": {
-    "inbox/history_20261118_extra1_01_290.jsonl": "d526baa0ba605ebf0040f61d8f38a1b8d914cc1da754d0ff539b8a788cbd7c4d"
+    "inbox/history_20261118_extra2_01_290.jsonl": "f1a707fe9d70c14fd15a50727849780e8f5510392204512be0b093cbb0be3dc5"
   },
   "before": {
     "groups": {
@@ -42,775 +45,21 @@
         "exact": 0.0,
         "digits_correct": 0.8,
         "format_ok": 0.75,
-        "similarity": 0.15566426126149485
+        "similarity": 0.18895342402359852
       },
-      "unseen_wording": {
-        "count": 12,
-        "exact": 0.8333333333333334,
-        "digits_correct": 1.0,
-        "format_ok": 1.0,
-        "similarity": 0.8888888888888888
-      }
-    },
-    "details": [
-      {
-        "user": "灌漑農業とは",
-        "assistant": "水路などを設けて耕地に水を引く農業です。",
-        "group": "history_retention",
-        "actual": "水路などを設けて耕地に水を引く農業です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "イスファハーンとは",
-        "assistant": "アッバース1世がサファヴィー朝の都とした都市です。",
-        "group": "history_retention",
-        "actual": "アッバース1世がサファヴィー朝の都とした都市です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "軍人皇帝時代とは",
-        "assistant": "各属州の軍がリーダーを擁立し皇帝が乱立した時代です。",
-        "group": "history_retention",
-        "actual": "各属州の軍がリーダーを擁立し皇帝が乱立した時代です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ダンテとは",
-        "assistant": "神曲を著したイタリアの文学者です。",
-        "group": "history_retention",
-        "actual": "神曲を著したイタリアの文学者です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "マンジケルトの戦いとは",
-        "assistant": "セルジューク朝がビザンツ帝国を破った戦いです。",
-        "group": "history_retention",
-        "actual": "セルジューク朝がビザンツ帝国を破った戦いです。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "殷墟とは",
-        "assistant": "甲骨文字を刻んだ骨などが発見された殷の都の遺跡です。",
-        "group": "history_retention",
-        "actual": "甲骨文字を刻んだ骨などが発見された殷の都の遺跡です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "1815年の神聖同盟とは",
-        "assistant": "ロシアのアレクサンドル1世の提唱で成立した同盟です。",
-        "group": "history_retention",
-        "actual": "ロシアのアレクサンドル1世の提唱で成立した同盟です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "球戯場の誓いとは",
-        "assistant": "フランスの国民議会の議員が憲法制定まで解散しないと誓った出来事です。",
-        "group": "history_retention",
-        "actual": "フランスの国民議会の議員が憲法制定まで解散しないと誓った出来事です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ラムセス2世とは",
-        "assistant": "ヒッタイトと戦いアブシンベル神殿を建てたエジプトの王です。",
-        "group": "history_retention",
-        "actual": "ヒッタイトと戦いアブシンベル神殿を建てたエジプトの王です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "訓詁学とは",
-        "assistant": "古典の文字や語句の意味を解釈する学問です。",
-        "group": "history_retention",
-        "actual": "古典の文字や語句の意味を解釈する学問です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "クローヴィスとは",
-        "assistant": "フランク王国のメロヴィング朝を開いた王です。",
-        "group": "history_retention",
-        "actual": "フランク王国のメロヴィング朝を開いた王です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "猛安謀克とは",
-        "assistant": "金が軍事と社会を組織するために用いた制度です。",
-        "group": "history_retention",
-        "actual": "金が軍事と社会を組織するために用いた制度です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ミレーとは",
-        "assistant": "落穂ひろいで知られるフランスの画家です。",
-        "group": "history_retention",
-        "actual": "落穂ひろいで知られるフランスの画家です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "不殺生主義とは",
-        "assistant": "生き物を殺さないことを重視する考え方です。",
-        "group": "history_retention",
-        "actual": "生き物を殺さないことを重視する考え方です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "西域都護とは",
-        "assistant": "中国王朝の西域経営を担当した官職です。",
-        "group": "history_retention",
-        "actual": "中国王朝の西域経営を担当した官職です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "アンティゴノス朝とは",
-        "assistant": "大王の死後にマケドニアを支配した王朝です。",
-        "group": "history_retention",
-        "actual": "大王の死後にマケドニアを支配した王朝です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "東廠とは",
-        "assistant": "明で宦官が率いた特務機関です。",
-        "group": "history_retention",
-        "actual": "明で宦官が率いた特務機関です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "第一身分とは",
-        "assistant": "革命前のフランスの聖職者の身分です。",
-        "group": "history_retention",
-        "actual": "革命前のフランスの聖職者の身分です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ウルバヌス2世とは",
-        "assistant": "クレルモン公会議で十字軍を呼びかけた教皇です。",
-        "group": "history_retention",
-        "actual": "クレルモン公会議で十字軍を呼びかけた教皇です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ファンアイク兄弟とは",
-        "assistant": "フランドルで活躍した画家たちです。",
-        "group": "history_retention",
-        "actual": "フランドルで活躍した画家たちです。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ヴァスコダガマは何年にどこに着いたの",
-        "assistant": "1498年にインド西岸のカリカットに到達した航海者です。",
-        "group": "dates_retention",
-        "actual": "1498年にインド西岸のカリカットに到達した航海者です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "唐の両税法の開始は何年のこと",
-        "assistant": "780年です。夏と秋の徴税を基本としました。",
-        "group": "dates_retention",
-        "actual": "780年です。夏と秋の徴税を基本としました。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ヴェルダン条約の締結は何年のこと",
-        "assistant": "843年です。フランク王国の領土が分割されました。",
-        "group": "dates_retention",
-        "actual": "843年です。フランク王国の領土が分割されました。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "澶淵の盟の締結は何年のこと",
-        "assistant": "1004年です。北宋と遼が和約を結びました。",
-        "group": "dates_retention",
-        "actual": "1004年です。北宋と遼が和約を結びました。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ルターの宗教改革の開始は何年のこと",
-        "assistant": "1517年です。95か条の論題の発表が目印です。",
-        "group": "dates_retention",
-        "actual": "1517年です。95か条の論題の発表が目印です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "スペイン継承戦争の開始は何年のこと",
-        "assistant": "1701年です。スペイン王位の継承をめぐる戦争ですね。",
-        "group": "dates_retention",
-        "actual": "1701年です。スペイン王位の継承をめぐる戦争ですね。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "フランス七月革命は何年のこと",
-        "assistant": "1830年です。ブルボン朝の復古王政が倒れました。",
-        "group": "dates_retention",
-        "actual": "1830年です。ブルボン朝の復古王政が倒れました。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ノルウェーの独立は何年のこと",
-        "assistant": "1905年です。スウェーデンとの同君連合から独立しました。",
-        "group": "dates_retention",
-        "actual": "1905年です。スウェーデンとの同君連合から独立しました。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "おはようございます",
-        "assistant": "おはようございます。今日も無理のないペースでいきましょう。",
-        "group": "daily_retention",
-        "actual": "おはようございます。今日も無理のないペースでいきましょう。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "一日が長かった",
-        "assistant": "長い一日でしたね。ここからは穏やかに過ごせますように。",
-        "group": "daily_retention",
-        "actual": "長い一日でしたね。ここからは穏やかに過ごせますように。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "明日の準備が終わった",
-        "assistant": "これでひと安心ですね。あとはゆっくり過ごしてください。",
-        "group": "daily_retention",
-        "actual": "これでひと安心ですね。あとはゆっくり過ごしてください。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "お茶をこぼしちゃった",
-        "assistant": "慌てなくて大丈夫。熱ければ触れず、まず周りを片づけましょう。",
-        "group": "daily_retention",
-        "actual": "慌てなくて大丈夫。熱ければ触れず、まず周りを片づけましょう。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "買い物リストを作った",
-        "assistant": "これで準備はできましたね。慌てず買い物に行けそうです。",
-        "group": "daily_retention",
-        "actual": "これで準備はできましたね。慌てず買い物に行けそうです。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "少し外に出たい",
-        "assistant": "近所をひと回りするだけでも、気分を切り替えられそうです。",
-        "group": "daily_retention",
-        "actual": "近所をひと回りするだけでも、気分を切り替えられそうです。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "今日は復習をした",
-        "assistant": "おつかれさまです。覚えたことを確かめる時間も、大事な勉強ですよ。",
-        "group": "daily_retention",
-        "actual": "おつかれさまです。覚えたことを確かめる時間も、大事な勉強ですよ。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "家族が忙しそうだった",
-        "assistant": "手伝えることを一つ申し出てみると、支えになるかもしれませんね。",
-        "group": "daily_retention",
-        "actual": "手伝えることを一つ申し出てみると、支えになるかもしれませんね。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ゲームをしている",
-        "assistant": "楽しい時間ですね。区切りを決めながら、ゆっくり楽しんでください。",
-        "group": "daily_retention",
-        "actual": "楽しい時間ですね。区切りを決めながら、ゆっくり楽しんでください。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "博物館に行った",
-        "assistant": "新しいものに触れる時間ですね。印象に残る展示との出会いはうれしいです。",
-        "group": "daily_retention",
-        "actual": "新しいものに触れる時間ですね。印象に残る展示との出会いはうれしいです。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "後回しにしてしまった",
-        "assistant": "今からできる小さな作業を一つ決めましょう。立て直すのはそこからです。",
-        "group": "daily_retention",
-        "actual": "今からできる小さな作業を一つ決めましょう。立て直すのはそこからです。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "少し気持ちが軽くなった",
-        "assistant": "それはよかったです。今日はそのまま、ご自分に優しくしてくださいね。",
-        "group": "daily_retention",
-        "actual": "それはよかったです。今日はそのまま、ご自分に優しくしてくださいね。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "灌漑農業を短く教えてください",
-        "assistant": "水路などを設けて耕地に水を引く農業です。",
-        "group": "unseen_wording",
-        "actual": "水路などを設けて耕地に水を引く農業です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "イスファハーンを短く教えてください",
-        "assistant": "アッバース1世がサファヴィー朝の都とした都市です。",
-        "group": "unseen_wording",
-        "actual": "アッバース1世がサファヴィー朝の都とした都市です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "軍人皇帝時代を短く教えてください",
-        "assistant": "各属州の軍がリーダーを擁立し皇帝が乱立した時代です。",
-        "group": "unseen_wording",
-        "actual": "各属州の軍がリーダーを擁立し皇帝が乱立した時代です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ダンテを短く教えてください",
-        "assistant": "神曲を著したイタリアの文学者です。",
-        "group": "unseen_wording",
-        "actual": "神の国を重視するとしいた古代の集主義者です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.3076923076923077
-      },
-      {
-        "user": "マンジケルトの戦いを短く教えてください",
-        "assistant": "セルジューク朝がビザンツ帝国を破った戦いです。",
-        "group": "unseen_wording",
-        "actual": "セルジューク朝がビザンツ帝国を破った戦いです。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "殷墟を短く教えてください",
-        "assistant": "甲骨文字を刻んだ骨などが発見された殷の都の遺跡です。",
-        "group": "unseen_wording",
-        "actual": "甲骨文字を刻んだ骨などが発見された殷の都の遺跡です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "1815年の神聖同盟を短く教えてください",
-        "assistant": "ロシアのアレクサンドル1世の提唱で成立した同盟です。",
-        "group": "unseen_wording",
-        "actual": "ロシアのアレクサンドル1世の提唱で成立した同盟です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "球戯場の誓いを短く教えてください",
-        "assistant": "フランスの国民議会の議員が憲法制定まで解散しないと誓った出来事です。",
-        "group": "unseen_wording",
-        "actual": "フランスの国民議会の議員が憲法制定まで解散しないと誓った出来事です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ラムセス2世を短く教えてください",
-        "assistant": "ヒッタイトと戦いアブシンベル神殿を建てたエジプトの王です。",
-        "group": "unseen_wording",
-        "actual": "ヒッタイトと戦いアブシンベル神殿を建てたエジプトの王です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "訓詁学を短く教えてください",
-        "assistant": "古典の文字や語句の意味を解釈する学問です。",
-        "group": "unseen_wording",
-        "actual": "古典の文字や語句の意味を解釈する学問です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "クローヴィスを短く教えてください",
-        "assistant": "フランク王国のメロヴィング朝を開いた王です。",
-        "group": "unseen_wording",
-        "actual": "フランドゥー教の穏健な共和派です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.358974358974359
-      },
-      {
-        "user": "猛安謀克を短く教えてください",
-        "assistant": "金が軍事と社会を組織するために用いた制度です。",
-        "group": "unseen_wording",
-        "actual": "金が軍事と社会を組織するために用いた制度です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "アナーニとは",
-        "assistant": "フィリップ4世がボニファティウス8世を捕らえた都市です。",
-        "group": "new_training_probe",
-        "actual": "農業を富の源泉として重視する経済思想です。",
-        "exact": false,
-        "digits_correct": false,
-        "format_ok": true,
-        "similarity": 0.16326530612244897
-      },
-      {
-        "user": "エルベ川とは",
-        "assistant": "ドイツ騎士団が東方植民を行った地域の西側にある川です。",
-        "group": "new_training_probe",
-        "actual": "イタリアの両シチリア王国を占領しサルデーニャ王に渡した人物です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.2033898305084746
-      },
-      {
-        "user": "カリカットとは",
-        "assistant": "ヴァスコ＝ダ＝ガマが到達したインド西岸の都市です。",
-        "group": "new_training_probe",
-        "actual": "南宋と金との間人で北宋を結ばれた人物です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.17391304347826086
-      },
-      {
-        "user": "シモン＝ド＝モンフォールの乱とは",
-        "assistant": "ヘンリ3世の重税などに反発した貴族の反乱です。",
-        "group": "new_training_probe",
-        "actual": "",
-        "exact": false,
-        "digits_correct": false,
-        "format_ok": false,
-        "similarity": 0.0
-      },
-      {
-        "user": "ジギスムントとは",
-        "assistant": "コンスタンツ公会議を開催した神聖ローマ皇帝です。",
-        "group": "new_training_probe",
-        "actual": "アメリカ大陸の先住起古代の船に関わるギリシアの劇作家です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.11320754716981132
-      },
-      {
-        "user": "ステンドグラスとは",
-        "assistant": "ゴシック様式の建築を特徴づける装飾です。",
-        "group": "new_training_probe",
-        "actual": "カエサルらと第1回三頭政治を行った奴隷です。",
-        "exact": false,
-        "digits_correct": false,
-        "format_ok": true,
-        "similarity": 0.19047619047619047
-      },
-      {
-        "user": "テューダーローズとは",
-        "assistant": "赤バラの上に白バラを重ねた両王家統合の紋章です。",
-        "group": "new_training_probe",
-        "actual": "クの解めらえたア奘の正統の基づく集める教です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.2553191489361702
-      },
-      {
-        "user": "ドイツ騎士団領とは",
-        "assistant": "ドイツ騎士団が東方植民によって形成した領地です。",
-        "group": "new_training_probe",
-        "actual": "960年に成立したフランスの王市ュエジからなどの分かれた出来事です。",
-        "exact": false,
-        "digits_correct": false,
-        "format_ok": true,
-        "similarity": 0.2413793103448276
-      },
-      {
-        "user": "ドームとは",
-        "assistant": "ビザンツ様式の建築に見られる特徴です。",
-        "group": "new_training_probe",
-        "actual": "イスラーム教徒などの一兄基治で神へ学に活に量などを向かかかった律です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.18518518518518517
-      },
-      {
-        "user": "ヒエラルキーとは",
-        "assistant": "中世の教会で教皇を頂点に形成された階層秩序です。",
-        "group": "new_training_probe",
-        "actual": "イタランダスの市民の代表を基づくとした文字です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.25
-      },
-      {
-        "user": "ベアトリーチェとは",
-        "assistant": "神曲でダンテを導く初恋の幼馴染です。",
-        "group": "new_training_probe",
-        "actual": "南北戦争に関わられた大的に関車の栄えたスカ帝です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.18604651162790697
-      },
-      {
-        "user": "ボスフォラス海峡とは",
-        "assistant": "ビザンティウムが沿岸に位置する海峡です。",
-        "group": "new_training_probe",
-        "actual": "",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": false,
-        "similarity": 0.0
-      },
-      {
-        "user": "マキャベリズムとは",
-        "assistant": "政治目的のためなら権謀術数も許されるとする思想です。",
-        "group": "new_training_probe",
-        "actual": "君主論を著したイタリアの思想家です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.2727272727272727
-      },
-      {
-        "user": "上院とは",
-        "assistant": "イギリス議会で高位聖職者や貴族からなる議院です。",
-        "group": "new_training_probe",
-        "actual": "隋の神とで周辺に川を鎬京から周の周の直した生き火を楽です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.22641509433962265
-      },
-      {
-        "user": "下院とは",
-        "assistant": "イギリス議会で騎士や市民からなる議院です。",
-        "group": "new_training_probe",
-        "actual": "古代エジプトロイセの南の南の南に基づくといた動きです。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.16666666666666666
-      },
-      {
-        "user": "五本山とは",
-        "assistant": "キリスト教会の主要な五つの教会です。",
-        "group": "new_training_probe",
-        "actual": "土地の支給を受ける指導制度です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.23529411764705882
-      },
-      {
-        "user": "死の舞踏とは",
-        "assistant": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
-        "group": "new_training_probe",
-        "actual": "",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": false,
-        "similarity": 0.0
-      },
-      {
-        "user": "特許状とは",
-        "assistant": "中世に皇帝や王が都市の自治権を認めて発行した文書です。",
-        "group": "new_training_probe",
-        "actual": "随五著した唐のの施設です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.25
-      },
-      {
-        "user": "重量有輪犂とは",
-        "assistant": "中世ヨーロッパの農業発展を支えた農具です。",
-        "group": "new_training_probe",
-        "actual": "",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": false,
-        "similarity": 0.0
-      },
-      {
-        "user": "養蚕とは",
-        "assistant": "ビザンツ帝国が中国から得た絹織物生産の技術です。",
-        "group": "new_training_probe",
-        "actual": "",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": false,
-        "similarity": 0.0
-      }
-    ]
-  },
-  "after": {
-    "groups": {
-      "daily_retention": {
-        "count": 12,
-        "exact": 1.0,
-        "digits_correct": 1.0,
-        "format_ok": 1.0,
-        "similarity": 1.0
-      },
-      "dates_retention": {
-        "count": 8,
-        "exact": 1.0,
-        "digits_correct": 1.0,
-        "format_ok": 1.0,
-        "similarity": 1.0
-      },
-      "history_retention": {
-        "count": 20,
-        "exact": 1.0,
-        "digits_correct": 1.0,
-        "format_ok": 1.0,
-        "similarity": 1.0
-      },
-      "new_training_probe": {
-        "count": 20,
+      "recent_history_retention": {
+        "count": 29,
         "exact": 1.0,
         "digits_correct": 1.0,
         "format_ok": 1.0,
         "similarity": 1.0
       },
       "unseen_wording": {
-        "count": 12,
-        "exact": 0.8333333333333334,
+        "count": 41,
+        "exact": 0.9512195121951219,
         "digits_correct": 1.0,
         "format_ok": 1.0,
-        "similarity": 0.8904761904761904
+        "similarity": 0.96794425087108
       }
     },
     "details": [
@@ -1335,110 +584,20 @@
         "similarity": 1.0
       },
       {
-        "user": "アナーニとは",
-        "assistant": "フィリップ4世がボニファティウス8世を捕らえた都市です。",
-        "group": "new_training_probe",
-        "actual": "フィリップ4世がボニファティウス8世を捕らえた都市です。",
+        "user": "シュパイエル大聖堂とは",
+        "assistant": "ロマネスク様式の代表的な建築です。",
+        "group": "recent_history_retention",
+        "actual": "ロマネスク様式の代表的な建築です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "エルベ川とは",
-        "assistant": "ドイツ騎士団が東方植民を行った地域の西側にある川です。",
-        "group": "new_training_probe",
-        "actual": "ドイツ騎士団が東方植民を行った地域の西側にある川です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "カリカットとは",
-        "assistant": "ヴァスコ＝ダ＝ガマが到達したインド西岸の都市です。",
-        "group": "new_training_probe",
-        "actual": "ヴァスコ＝ダ＝ガマが到達したインド西岸の都市です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "シモン＝ド＝モンフォールの乱とは",
-        "assistant": "ヘンリ3世の重税などに反発した貴族の反乱です。",
-        "group": "new_training_probe",
-        "actual": "ヘンリ3世の重税などに反発した貴族の反乱です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ジギスムントとは",
-        "assistant": "コンスタンツ公会議を開催した神聖ローマ皇帝です。",
-        "group": "new_training_probe",
-        "actual": "コンスタンツ公会議を開催した神聖ローマ皇帝です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ステンドグラスとは",
-        "assistant": "ゴシック様式の建築を特徴づける装飾です。",
-        "group": "new_training_probe",
-        "actual": "ゴシック様式の建築を特徴づける装飾です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "テューダーローズとは",
-        "assistant": "赤バラの上に白バラを重ねた両王家統合の紋章です。",
-        "group": "new_training_probe",
-        "actual": "赤バラの上に白バラを重ねた両王家統合の紋章です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ドイツ騎士団領とは",
-        "assistant": "ドイツ騎士団が東方植民によって形成した領地です。",
-        "group": "new_training_probe",
-        "actual": "ドイツ騎士団が東方植民によって形成した領地です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ドームとは",
-        "assistant": "ビザンツ様式の建築に見られる特徴です。",
-        "group": "new_training_probe",
-        "actual": "ビザンツ様式の建築に見られる特徴です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ヒエラルキーとは",
-        "assistant": "中世の教会で教皇を頂点に形成された階層秩序です。",
-        "group": "new_training_probe",
-        "actual": "中世の教会で教皇を頂点に形成された階層秩序です。",
-        "exact": true,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 1.0
-      },
-      {
-        "user": "ベアトリーチェとは",
-        "assistant": "神曲でダンテを導く初恋の幼馴染です。",
-        "group": "new_training_probe",
-        "actual": "神曲でダンテを導く初恋の幼馴染です。",
+        "user": "シュパイエル大聖堂を教えて",
+        "assistant": "ロマネスク様式の代表的な建築です。",
+        "group": "unseen_wording",
+        "actual": "ロマネスク様式の代表的な建築です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
@@ -1447,7 +606,7 @@
       {
         "user": "ボスフォラス海峡とは",
         "assistant": "ビザンティウムが沿岸に位置する海峡です。",
-        "group": "new_training_probe",
+        "group": "recent_history_retention",
         "actual": "ビザンティウムが沿岸に位置する海峡です。",
         "exact": true,
         "digits_correct": true,
@@ -1455,10 +614,270 @@
         "similarity": 1.0
       },
       {
-        "user": "マキャベリズムとは",
-        "assistant": "政治目的のためなら権謀術数も許されるとする思想です。",
-        "group": "new_training_probe",
-        "actual": "政治目的のためなら権謀術数も許されるとする思想です。",
+        "user": "ボスフォラス海峡を教えて",
+        "assistant": "ビザンティウムが沿岸に位置する海峡です。",
+        "group": "unseen_wording",
+        "actual": "ビザンティウムが沿岸に位置する海峡です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ドームとは",
+        "assistant": "ビザンツ様式の建築に見られる特徴です。",
+        "group": "recent_history_retention",
+        "actual": "ビザンツ様式の建築に見られる特徴です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ドームを教えて",
+        "assistant": "ビザンツ様式の建築に見られる特徴です。",
+        "group": "unseen_wording",
+        "actual": "ビザンツ様式の建築に見られる特徴です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "養蚕とは",
+        "assistant": "ビザンツ帝国が中国から得た絹織物生産の技術です。",
+        "group": "recent_history_retention",
+        "actual": "ビザンツ帝国が中国から得た絹織物生産の技術です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "養蚕を教えて",
+        "assistant": "ビザンツ帝国が中国から得た絹織物生産の技術です。",
+        "group": "unseen_wording",
+        "actual": "ビザンツ帝国が中国から得た絹織物生産の技術です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "五本山とは",
+        "assistant": "キリスト教会の主要な五つの教会です。",
+        "group": "recent_history_retention",
+        "actual": "キリスト教会の主要な五つの教会です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "五本山を教えて",
+        "assistant": "キリスト教会の主要な五つの教会です。",
+        "group": "unseen_wording",
+        "actual": "キリスト教会の主要な五つの教会です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "重量有輪犂とは",
+        "assistant": "中世ヨーロッパの農業発展を支えた農具です。",
+        "group": "recent_history_retention",
+        "actual": "中世ヨーロッパの農業発展を支えた農具です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "重量有輪犂を教えて",
+        "assistant": "中世ヨーロッパの農業発展を支えた農具です。",
+        "group": "unseen_wording",
+        "actual": "中世ヨーロッパの農業発展を支えた農具です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ヒエラルキーとは",
+        "assistant": "中世の教会で教皇を頂点に形成された階層秩序です。",
+        "group": "recent_history_retention",
+        "actual": "中世の教会で教皇を頂点に形成された階層秩序です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ヒエラルキーを教えて",
+        "assistant": "中世の教会で教皇を頂点に形成された階層秩序です。",
+        "group": "unseen_wording",
+        "actual": "中世の教会で教皇を頂点に形成された階層秩序です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "特許状とは",
+        "assistant": "中世に皇帝や王が都市の自治権を認めて発行した文書です。",
+        "group": "recent_history_retention",
+        "actual": "中世に皇帝や王が都市の自治権を認めて発行した文書です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "特許状を教えて",
+        "assistant": "中世に皇帝や王が都市の自治権を認めて発行した文書です。",
+        "group": "unseen_wording",
+        "actual": "中世に皇帝や王が都市の自治権を認めて発行した文書です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ユスティニアヌスのペストとは",
+        "assistant": "6世紀のビザンツ帝国で起きたペストの大流行です。",
+        "group": "recent_history_retention",
+        "actual": "6世紀のビザンツ帝国で起きたペストの大流行です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ユスティニアヌスのペストを教えて",
+        "assistant": "6世紀のビザンツ帝国で起きたペストの大流行です。",
+        "group": "unseen_wording",
+        "actual": "6世紀のビザンツ帝国で起きたペストの大流行です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "死の舞踏とは",
+        "assistant": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "group": "recent_history_retention",
+        "actual": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "死の舞踏を教えて",
+        "assistant": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "group": "unseen_wording",
+        "actual": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "死の勝利とは",
+        "assistant": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "group": "recent_history_retention",
+        "actual": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "死の勝利を教えて",
+        "assistant": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "group": "unseen_wording",
+        "actual": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "アナーニとは",
+        "assistant": "フィリップ4世がボニファティウス8世を捕らえた都市です。",
+        "group": "recent_history_retention",
+        "actual": "フィリップ4世がボニファティウス8世を捕らえた都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "アナーニを教えて",
+        "assistant": "フィリップ4世がボニファティウス8世を捕らえた都市です。",
+        "group": "unseen_wording",
+        "actual": "フィリップ4世がボニファティウス8世を捕らえた都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ジギスムントとは",
+        "assistant": "コンスタンツ公会議を開催した神聖ローマ皇帝です。",
+        "group": "recent_history_retention",
+        "actual": "コンスタンツ公会議を開催した神聖ローマ皇帝です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ジギスムントを教えて",
+        "assistant": "コンスタンツ公会議を開催した神聖ローマ皇帝です。",
+        "group": "unseen_wording",
+        "actual": "コンスタンツ公会議を開催した神聖ローマ皇帝です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "フス戦争とは",
+        "assistant": "フスの処刑をきっかけにベーメンで起きた戦争です。",
+        "group": "recent_history_retention",
+        "actual": "フスの処刑をきっかけにベーメンで起きた戦争です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "フス戦争を教えて",
+        "assistant": "フスの処刑をきっかけにベーメンで起きた戦争です。",
+        "group": "unseen_wording",
+        "actual": "フスの処刑をきっかけにベーメンで起きた戦争です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "シモン＝ド＝モンフォールの乱とは",
+        "assistant": "ヘンリ3世の重税などに反発した貴族の反乱です。",
+        "group": "recent_history_retention",
+        "actual": "ヘンリ3世の重税などに反発した貴族の反乱です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "シモン＝ド＝モンフォールの乱を教えて",
+        "assistant": "ヘンリ3世の重税などに反発した貴族の反乱です。",
+        "group": "unseen_wording",
+        "actual": "ヘンリ3世の重税などに反発した貴族の反乱です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
@@ -1467,7 +886,17 @@
       {
         "user": "上院とは",
         "assistant": "イギリス議会で高位聖職者や貴族からなる議院です。",
-        "group": "new_training_probe",
+        "group": "recent_history_retention",
+        "actual": "イギリス議会で高位聖職者や貴族からなる議院です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "上院を教えて",
+        "assistant": "イギリス議会で高位聖職者や貴族からなる議院です。",
+        "group": "unseen_wording",
         "actual": "イギリス議会で高位聖職者や貴族からなる議院です。",
         "exact": true,
         "digits_correct": true,
@@ -1477,7 +906,7 @@
       {
         "user": "下院とは",
         "assistant": "イギリス議会で騎士や市民からなる議院です。",
-        "group": "new_training_probe",
+        "group": "recent_history_retention",
         "actual": "イギリス議会で騎士や市民からなる議院です。",
         "exact": true,
         "digits_correct": true,
@@ -1485,40 +914,1078 @@
         "similarity": 1.0
       },
       {
-        "user": "五本山とは",
-        "assistant": "キリスト教会の主要な五つの教会です。",
-        "group": "new_training_probe",
-        "actual": "キリスト教会の主要な五つの教会です。",
+        "user": "下院を教えて",
+        "assistant": "イギリス議会で騎士や市民からなる議院です。",
+        "group": "unseen_wording",
+        "actual": "イギリス議会で騎士や市民からなる議院です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "死の舞踏とは",
-        "assistant": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
-        "group": "new_training_probe",
-        "actual": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "user": "長弓兵とは",
+        "assistant": "百年戦争でエドワード黒太子が用いた兵です。",
+        "group": "recent_history_retention",
+        "actual": "百年戦争でエドワード黒太子が用いた兵です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "特許状とは",
-        "assistant": "中世に皇帝や王が都市の自治権を認めて発行した文書です。",
-        "group": "new_training_probe",
-        "actual": "中世に皇帝や王が都市の自治権を認めて発行した文書です。",
+        "user": "長弓兵を教えて",
+        "assistant": "百年戦争でエドワード黒太子が用いた兵です。",
+        "group": "unseen_wording",
+        "actual": "百年戦争でエドワード黒太子が用いた兵です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "重量有輪犂とは",
-        "assistant": "中世ヨーロッパの農業発展を支えた農具です。",
+        "user": "テューダーローズとは",
+        "assistant": "赤バラの上に白バラを重ねた両王家統合の紋章です。",
+        "group": "recent_history_retention",
+        "actual": "赤バラの上に白バラを重ねた両王家統合の紋章です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "テューダーローズを教えて",
+        "assistant": "赤バラの上に白バラを重ねた両王家統合の紋章です。",
+        "group": "unseen_wording",
+        "actual": "赤バラの上に白バラを重ねた両王家統合の紋章です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "エルベ川とは",
+        "assistant": "ドイツ騎士団が東方植民を行った地域の西側にある川です。",
+        "group": "recent_history_retention",
+        "actual": "ドイツ騎士団が東方植民を行った地域の西側にある川です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "エルベ川を教えて",
+        "assistant": "ドイツ騎士団が東方植民を行った地域の西側にある川です。",
+        "group": "unseen_wording",
+        "actual": "ドイツ騎士団が東方植民を行った地域の西側にある川です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ドイツ騎士団領とは",
+        "assistant": "ドイツ騎士団が東方植民によって形成した領地です。",
+        "group": "recent_history_retention",
+        "actual": "ドイツ騎士団が東方植民によって形成した領地です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ドイツ騎士団領を教えて",
+        "assistant": "ドイツ騎士団が東方植民によって形成した領地です。",
+        "group": "unseen_wording",
+        "actual": "ドイツ騎士団が東方植民によって形成した領地です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "カリカットとは",
+        "assistant": "ヴァスコ＝ダ＝ガマが到達したインド西岸の都市です。",
+        "group": "recent_history_retention",
+        "actual": "ヴァスコ＝ダ＝ガマが到達したインド西岸の都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "カリカットを教えて",
+        "assistant": "ヴァスコ＝ダ＝ガマが到達したインド西岸の都市です。",
+        "group": "unseen_wording",
+        "actual": "ヴァスコ＝ダ＝ガマが到達したインド西岸の都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "トレドとは",
+        "assistant": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "group": "recent_history_retention",
+        "actual": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "トレドを教えて",
+        "assistant": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "group": "unseen_wording",
+        "actual": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "コルドバとは",
+        "assistant": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "group": "recent_history_retention",
+        "actual": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "コルドバを教えて",
+        "assistant": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "group": "unseen_wording",
+        "actual": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "概念論とは",
+        "assistant": "アベラールが唱えた実在論と唯名論の中間の立場です。",
+        "group": "recent_history_retention",
+        "actual": "アベラールが唱えた実在論と唯名論の中間の立場です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "概念論を教えて",
+        "assistant": "アベラールが唱えた実在論と唯名論の中間の立場です。",
+        "group": "unseen_wording",
+        "actual": "アベラールが唱えた実在論と唯名論の中間の立場です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ステンドグラスとは",
+        "assistant": "ゴシック様式の建築を特徴づける装飾です。",
+        "group": "recent_history_retention",
+        "actual": "ゴシック様式の建築を特徴づける装飾です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ステンドグラスを教えて",
+        "assistant": "ゴシック様式の建築を特徴づける装飾です。",
+        "group": "unseen_wording",
+        "actual": "ゴシック様式の建築を特徴づける装飾です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ベアトリーチェとは",
+        "assistant": "神曲でダンテを導く初恋の幼馴染です。",
+        "group": "recent_history_retention",
+        "actual": "神曲でダンテを導く初恋の幼馴染です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ベアトリーチェを教えて",
+        "assistant": "神曲でダンテを導く初恋の幼馴染です。",
+        "group": "unseen_wording",
+        "actual": "神曲でダンテを導く初恋の幼馴染です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "マキャベリズムとは",
+        "assistant": "政治目的のためなら権謀術数も許されるとする思想です。",
+        "group": "recent_history_retention",
+        "actual": "政治目的のためなら権謀術数も許されるとする思想です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "マキャベリズムを教えて",
+        "assistant": "政治目的のためなら権謀術数も許されるとする思想です。",
+        "group": "unseen_wording",
+        "actual": "政治目的のためなら権謀術数も許されるとする思想です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ピサ大聖堂とは",
+        "assistant": "ロマネスク様式の代表的な建築です。",
+        "group": "recent_history_retention",
+        "actual": "ロマネスク様式の代表的な建築です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ピサ大聖堂を教えて",
+        "assistant": "ロマネスク様式の代表的な建築です。",
+        "group": "unseen_wording",
+        "actual": "ロマネスク様式の代表的な建築です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "アルグン川とは",
+        "assistant": "ネルチンスク条約で清とロシアの国境とされた川です。",
         "group": "new_training_probe",
-        "actual": "中世ヨーロッパの農業発展を支えた農具です。",
+        "actual": "バグダードを建設したアッバース朝のカリフです。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.16666666666666666
+      },
+      {
+        "user": "キルギスとは",
+        "assistant": "9世紀半ばにウイグル帝国を倒した遊牧民族です。",
+        "group": "new_training_probe",
+        "actual": "厳しい軍事的な教育で知られるギリシアのポリスです。",
+        "exact": false,
+        "digits_correct": false,
+        "format_ok": true,
+        "similarity": 0.16666666666666666
+      },
+      {
+        "user": "グルとは",
+        "assistant": "シク教で導師を意味する呼び名です。",
+        "group": "new_training_probe",
+        "actual": "忙し三に基準とする時代のだけです。返事を住しなりましたね。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": false,
+        "similarity": 0.21739130434782608
+      },
+      {
+        "user": "サファヴィー教団とは",
+        "assistant": "サファヴィー朝の建国母体となった神秘主義教団です。",
+        "group": "new_training_probe",
+        "actual": "181年にイスの市士制政招集した人物です。",
+        "exact": false,
+        "digits_correct": false,
+        "format_ok": true,
+        "similarity": 0.21739130434782608
+      },
+      {
+        "user": "スタノヴォイ山脈とは",
+        "assistant": "ネルチンスク条約で清とロシアの国境とされた山脈です。",
+        "group": "new_training_probe",
+        "actual": "984年に成したフランスの聖を目指すインです。",
+        "exact": false,
+        "digits_correct": false,
+        "format_ok": true,
+        "similarity": 0.24489795918367346
+      },
+      {
+        "user": "ムムターズ＝マハルとは",
+        "assistant": "タージ＝マハルが捧げられたシャー＝ジャハーンの王妃です。",
+        "group": "new_training_probe",
+        "actual": "ルターを界に選成する制度の埋葬したメズです。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.24
+      },
+      {
+        "user": "メキシコ銀とは",
+        "assistant": "明代にスペイン商人などを通じ中国へ流入した銀です。",
+        "group": "new_training_probe",
+        "actual": "アジャコバンティン独裁の部を導してステン王権を導したフランスの領院です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.22950819672131148
+      },
+      {
+        "user": "六部とは",
+        "assistant": "明で洪武帝が皇帝直属とした六つの行政部局です。",
+        "group": "new_training_probe",
+        "actual": "五他国への都市を統治めるの皇帝です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.24390243902439024
+      },
+      {
+        "user": "前期倭寇とは",
+        "assistant": "日本人を中心に活動した倭寇です。",
+        "group": "new_training_probe",
+        "actual": "宋が片石がよったなり方の時期のも考えますね。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": false,
+        "similarity": 0.15789473684210525
+      },
+      {
+        "user": "唐宋八大家とは",
+        "assistant": "韓愈や欧陽脩など唐宋期の八人の文章家です。",
+        "group": "new_training_probe",
+        "actual": "胤が発行した日はうホのする人です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.2631578947368421
+      },
+      {
+        "user": "官戸形勢戸とは",
+        "assistant": "新興地主の形勢戸から役人となった家です。",
+        "group": "new_training_probe",
+        "actual": "8国で唐の六部のうち詔勅の康熙帝起草を担当した機関です。",
+        "exact": false,
+        "digits_correct": false,
+        "format_ok": true,
+        "similarity": 0.20833333333333334
+      },
+      {
+        "user": "後期倭寇とは",
+        "assistant": "中国人を中心に活動した倭寇です。",
+        "group": "new_training_probe",
+        "actual": "マッツて続いた神聖職です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.27586206896551724
+      },
+      {
+        "user": "桃鳩図とは",
+        "assistant": "宋の徽宗の代表作として知られる絵画です。",
+        "group": "new_training_probe",
+        "actual": "",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": false,
+        "similarity": 0.0
+      },
+      {
+        "user": "湖広熟すれば天下足るとは",
+        "assistant": "長江中流域が重要な穀倉地帯だったことを示す言葉です。",
+        "group": "new_training_probe",
+        "actual": "",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": false,
+        "similarity": 0.0
+      },
+      {
+        "user": "王直とは",
+        "assistant": "五島列島などを拠点とした後期倭寇の指導者です。",
+        "group": "new_training_probe",
+        "actual": "自然をめていたする代のは、静かを出しみる言葉です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.25
+      },
+      {
+        "user": "禁書とは",
+        "assistant": "支配者が刊行などを禁止した書物です。",
+        "group": "new_training_probe",
+        "actual": "宋で皇帝の三大陸周取り着とした国時代の一日です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.23809523809523808
+      },
+      {
+        "user": "赤絵とは",
+        "assistant": "明代の陶磁器の一種です。",
+        "group": "new_training_probe",
+        "actual": "戦争を挙げでき南指導した中国の方が起ころかけです。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.21621621621621623
+      },
+      {
+        "user": "里老人とは",
+        "assistant": "明で里長戸の代表から任命され六諭を徹底させた人です。",
+        "group": "new_training_probe",
+        "actual": "唐五啓倒して作ールらえた内容です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.23255813953488372
+      },
+      {
+        "user": "里長戸とは",
+        "assistant": "明の里甲制で里の運営を担った家です。",
+        "group": "new_training_probe",
+        "actual": "皇帝国時代に抵れたイルタリアの政府です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.21052631578947367
+      },
+      {
+        "user": "隠れイマームとは",
+        "assistant": "十二イマーム派で再臨が信じられる最後のイマームです。",
+        "group": "new_training_probe",
+        "actual": "",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": false,
+        "similarity": 0.0
+      }
+    ]
+  },
+  "after": {
+    "groups": {
+      "daily_retention": {
+        "count": 12,
+        "exact": 1.0,
+        "digits_correct": 1.0,
+        "format_ok": 1.0,
+        "similarity": 1.0
+      },
+      "dates_retention": {
+        "count": 8,
+        "exact": 1.0,
+        "digits_correct": 1.0,
+        "format_ok": 1.0,
+        "similarity": 1.0
+      },
+      "history_retention": {
+        "count": 20,
+        "exact": 1.0,
+        "digits_correct": 1.0,
+        "format_ok": 1.0,
+        "similarity": 1.0
+      },
+      "new_training_probe": {
+        "count": 20,
+        "exact": 1.0,
+        "digits_correct": 1.0,
+        "format_ok": 1.0,
+        "similarity": 1.0
+      },
+      "recent_history_retention": {
+        "count": 29,
+        "exact": 1.0,
+        "digits_correct": 1.0,
+        "format_ok": 1.0,
+        "similarity": 1.0
+      },
+      "unseen_wording": {
+        "count": 41,
+        "exact": 1.0,
+        "digits_correct": 1.0,
+        "format_ok": 1.0,
+        "similarity": 1.0
+      }
+    },
+    "details": [
+      {
+        "user": "灌漑農業とは",
+        "assistant": "水路などを設けて耕地に水を引く農業です。",
+        "group": "history_retention",
+        "actual": "水路などを設けて耕地に水を引く農業です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "イスファハーンとは",
+        "assistant": "アッバース1世がサファヴィー朝の都とした都市です。",
+        "group": "history_retention",
+        "actual": "アッバース1世がサファヴィー朝の都とした都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "軍人皇帝時代とは",
+        "assistant": "各属州の軍がリーダーを擁立し皇帝が乱立した時代です。",
+        "group": "history_retention",
+        "actual": "各属州の軍がリーダーを擁立し皇帝が乱立した時代です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ダンテとは",
+        "assistant": "神曲を著したイタリアの文学者です。",
+        "group": "history_retention",
+        "actual": "神曲を著したイタリアの文学者です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "マンジケルトの戦いとは",
+        "assistant": "セルジューク朝がビザンツ帝国を破った戦いです。",
+        "group": "history_retention",
+        "actual": "セルジューク朝がビザンツ帝国を破った戦いです。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "殷墟とは",
+        "assistant": "甲骨文字を刻んだ骨などが発見された殷の都の遺跡です。",
+        "group": "history_retention",
+        "actual": "甲骨文字を刻んだ骨などが発見された殷の都の遺跡です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "1815年の神聖同盟とは",
+        "assistant": "ロシアのアレクサンドル1世の提唱で成立した同盟です。",
+        "group": "history_retention",
+        "actual": "ロシアのアレクサンドル1世の提唱で成立した同盟です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "球戯場の誓いとは",
+        "assistant": "フランスの国民議会の議員が憲法制定まで解散しないと誓った出来事です。",
+        "group": "history_retention",
+        "actual": "フランスの国民議会の議員が憲法制定まで解散しないと誓った出来事です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ラムセス2世とは",
+        "assistant": "ヒッタイトと戦いアブシンベル神殿を建てたエジプトの王です。",
+        "group": "history_retention",
+        "actual": "ヒッタイトと戦いアブシンベル神殿を建てたエジプトの王です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "訓詁学とは",
+        "assistant": "古典の文字や語句の意味を解釈する学問です。",
+        "group": "history_retention",
+        "actual": "古典の文字や語句の意味を解釈する学問です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "クローヴィスとは",
+        "assistant": "フランク王国のメロヴィング朝を開いた王です。",
+        "group": "history_retention",
+        "actual": "フランク王国のメロヴィング朝を開いた王です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "猛安謀克とは",
+        "assistant": "金が軍事と社会を組織するために用いた制度です。",
+        "group": "history_retention",
+        "actual": "金が軍事と社会を組織するために用いた制度です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ミレーとは",
+        "assistant": "落穂ひろいで知られるフランスの画家です。",
+        "group": "history_retention",
+        "actual": "落穂ひろいで知られるフランスの画家です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "不殺生主義とは",
+        "assistant": "生き物を殺さないことを重視する考え方です。",
+        "group": "history_retention",
+        "actual": "生き物を殺さないことを重視する考え方です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "西域都護とは",
+        "assistant": "中国王朝の西域経営を担当した官職です。",
+        "group": "history_retention",
+        "actual": "中国王朝の西域経営を担当した官職です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "アンティゴノス朝とは",
+        "assistant": "大王の死後にマケドニアを支配した王朝です。",
+        "group": "history_retention",
+        "actual": "大王の死後にマケドニアを支配した王朝です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "東廠とは",
+        "assistant": "明で宦官が率いた特務機関です。",
+        "group": "history_retention",
+        "actual": "明で宦官が率いた特務機関です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "第一身分とは",
+        "assistant": "革命前のフランスの聖職者の身分です。",
+        "group": "history_retention",
+        "actual": "革命前のフランスの聖職者の身分です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ウルバヌス2世とは",
+        "assistant": "クレルモン公会議で十字軍を呼びかけた教皇です。",
+        "group": "history_retention",
+        "actual": "クレルモン公会議で十字軍を呼びかけた教皇です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ファンアイク兄弟とは",
+        "assistant": "フランドルで活躍した画家たちです。",
+        "group": "history_retention",
+        "actual": "フランドルで活躍した画家たちです。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ヴァスコダガマは何年にどこに着いたの",
+        "assistant": "1498年にインド西岸のカリカットに到達した航海者です。",
+        "group": "dates_retention",
+        "actual": "1498年にインド西岸のカリカットに到達した航海者です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "唐の両税法の開始は何年のこと",
+        "assistant": "780年です。夏と秋の徴税を基本としました。",
+        "group": "dates_retention",
+        "actual": "780年です。夏と秋の徴税を基本としました。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ヴェルダン条約の締結は何年のこと",
+        "assistant": "843年です。フランク王国の領土が分割されました。",
+        "group": "dates_retention",
+        "actual": "843年です。フランク王国の領土が分割されました。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "澶淵の盟の締結は何年のこと",
+        "assistant": "1004年です。北宋と遼が和約を結びました。",
+        "group": "dates_retention",
+        "actual": "1004年です。北宋と遼が和約を結びました。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ルターの宗教改革の開始は何年のこと",
+        "assistant": "1517年です。95か条の論題の発表が目印です。",
+        "group": "dates_retention",
+        "actual": "1517年です。95か条の論題の発表が目印です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "スペイン継承戦争の開始は何年のこと",
+        "assistant": "1701年です。スペイン王位の継承をめぐる戦争ですね。",
+        "group": "dates_retention",
+        "actual": "1701年です。スペイン王位の継承をめぐる戦争ですね。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "フランス七月革命は何年のこと",
+        "assistant": "1830年です。ブルボン朝の復古王政が倒れました。",
+        "group": "dates_retention",
+        "actual": "1830年です。ブルボン朝の復古王政が倒れました。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ノルウェーの独立は何年のこと",
+        "assistant": "1905年です。スウェーデンとの同君連合から独立しました。",
+        "group": "dates_retention",
+        "actual": "1905年です。スウェーデンとの同君連合から独立しました。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "おはようございます",
+        "assistant": "おはようございます。今日も無理のないペースでいきましょう。",
+        "group": "daily_retention",
+        "actual": "おはようございます。今日も無理のないペースでいきましょう。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "一日が長かった",
+        "assistant": "長い一日でしたね。ここからは穏やかに過ごせますように。",
+        "group": "daily_retention",
+        "actual": "長い一日でしたね。ここからは穏やかに過ごせますように。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "明日の準備が終わった",
+        "assistant": "これでひと安心ですね。あとはゆっくり過ごしてください。",
+        "group": "daily_retention",
+        "actual": "これでひと安心ですね。あとはゆっくり過ごしてください。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "お茶をこぼしちゃった",
+        "assistant": "慌てなくて大丈夫。熱ければ触れず、まず周りを片づけましょう。",
+        "group": "daily_retention",
+        "actual": "慌てなくて大丈夫。熱ければ触れず、まず周りを片づけましょう。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "買い物リストを作った",
+        "assistant": "これで準備はできましたね。慌てず買い物に行けそうです。",
+        "group": "daily_retention",
+        "actual": "これで準備はできましたね。慌てず買い物に行けそうです。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "少し外に出たい",
+        "assistant": "近所をひと回りするだけでも、気分を切り替えられそうです。",
+        "group": "daily_retention",
+        "actual": "近所をひと回りするだけでも、気分を切り替えられそうです。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "今日は復習をした",
+        "assistant": "おつかれさまです。覚えたことを確かめる時間も、大事な勉強ですよ。",
+        "group": "daily_retention",
+        "actual": "おつかれさまです。覚えたことを確かめる時間も、大事な勉強ですよ。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "家族が忙しそうだった",
+        "assistant": "手伝えることを一つ申し出てみると、支えになるかもしれませんね。",
+        "group": "daily_retention",
+        "actual": "手伝えることを一つ申し出てみると、支えになるかもしれませんね。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ゲームをしている",
+        "assistant": "楽しい時間ですね。区切りを決めながら、ゆっくり楽しんでください。",
+        "group": "daily_retention",
+        "actual": "楽しい時間ですね。区切りを決めながら、ゆっくり楽しんでください。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "博物館に行った",
+        "assistant": "新しいものに触れる時間ですね。印象に残る展示との出会いはうれしいです。",
+        "group": "daily_retention",
+        "actual": "新しいものに触れる時間ですね。印象に残る展示との出会いはうれしいです。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "後回しにしてしまった",
+        "assistant": "今からできる小さな作業を一つ決めましょう。立て直すのはそこからです。",
+        "group": "daily_retention",
+        "actual": "今からできる小さな作業を一つ決めましょう。立て直すのはそこからです。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "少し気持ちが軽くなった",
+        "assistant": "それはよかったです。今日はそのまま、ご自分に優しくしてくださいね。",
+        "group": "daily_retention",
+        "actual": "それはよかったです。今日はそのまま、ご自分に優しくしてくださいね。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "灌漑農業を短く教えてください",
+        "assistant": "水路などを設けて耕地に水を引く農業です。",
+        "group": "unseen_wording",
+        "actual": "水路などを設けて耕地に水を引く農業です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "イスファハーンを短く教えてください",
+        "assistant": "アッバース1世がサファヴィー朝の都とした都市です。",
+        "group": "unseen_wording",
+        "actual": "アッバース1世がサファヴィー朝の都とした都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "軍人皇帝時代を短く教えてください",
+        "assistant": "各属州の軍がリーダーを擁立し皇帝が乱立した時代です。",
+        "group": "unseen_wording",
+        "actual": "各属州の軍がリーダーを擁立し皇帝が乱立した時代です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ダンテを短く教えてください",
+        "assistant": "神曲を著したイタリアの文学者です。",
+        "group": "unseen_wording",
+        "actual": "神曲を著したイタリアの文学者です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "マンジケルトの戦いを短く教えてください",
+        "assistant": "セルジューク朝がビザンツ帝国を破った戦いです。",
+        "group": "unseen_wording",
+        "actual": "セルジューク朝がビザンツ帝国を破った戦いです。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "殷墟を短く教えてください",
+        "assistant": "甲骨文字を刻んだ骨などが発見された殷の都の遺跡です。",
+        "group": "unseen_wording",
+        "actual": "甲骨文字を刻んだ骨などが発見された殷の都の遺跡です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "1815年の神聖同盟を短く教えてください",
+        "assistant": "ロシアのアレクサンドル1世の提唱で成立した同盟です。",
+        "group": "unseen_wording",
+        "actual": "ロシアのアレクサンドル1世の提唱で成立した同盟です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "球戯場の誓いを短く教えてください",
+        "assistant": "フランスの国民議会の議員が憲法制定まで解散しないと誓った出来事です。",
+        "group": "unseen_wording",
+        "actual": "フランスの国民議会の議員が憲法制定まで解散しないと誓った出来事です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ラムセス2世を短く教えてください",
+        "assistant": "ヒッタイトと戦いアブシンベル神殿を建てたエジプトの王です。",
+        "group": "unseen_wording",
+        "actual": "ヒッタイトと戦いアブシンベル神殿を建てたエジプトの王です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "訓詁学を短く教えてください",
+        "assistant": "古典の文字や語句の意味を解釈する学問です。",
+        "group": "unseen_wording",
+        "actual": "古典の文字や語句の意味を解釈する学問です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "クローヴィスを短く教えてください",
+        "assistant": "フランク王国のメロヴィング朝を開いた王です。",
+        "group": "unseen_wording",
+        "actual": "フランク王国のメロヴィング朝を開いた王です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "猛安謀克を短く教えてください",
+        "assistant": "金が軍事と社会を組織するために用いた制度です。",
+        "group": "unseen_wording",
+        "actual": "金が軍事と社会を組織するために用いた制度です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "シュパイエル大聖堂とは",
+        "assistant": "ロマネスク様式の代表的な建築です。",
+        "group": "recent_history_retention",
+        "actual": "ロマネスク様式の代表的な建築です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "シュパイエル大聖堂を教えて",
+        "assistant": "ロマネスク様式の代表的な建築です。",
+        "group": "unseen_wording",
+        "actual": "ロマネスク様式の代表的な建築です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ボスフォラス海峡とは",
+        "assistant": "ビザンティウムが沿岸に位置する海峡です。",
+        "group": "recent_history_retention",
+        "actual": "ビザンティウムが沿岸に位置する海峡です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ボスフォラス海峡を教えて",
+        "assistant": "ビザンティウムが沿岸に位置する海峡です。",
+        "group": "unseen_wording",
+        "actual": "ビザンティウムが沿岸に位置する海峡です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ドームとは",
+        "assistant": "ビザンツ様式の建築に見られる特徴です。",
+        "group": "recent_history_retention",
+        "actual": "ビザンツ様式の建築に見られる特徴です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ドームを教えて",
+        "assistant": "ビザンツ様式の建築に見られる特徴です。",
+        "group": "unseen_wording",
+        "actual": "ビザンツ様式の建築に見られる特徴です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
@@ -1527,8 +1994,718 @@
       {
         "user": "養蚕とは",
         "assistant": "ビザンツ帝国が中国から得た絹織物生産の技術です。",
-        "group": "new_training_probe",
+        "group": "recent_history_retention",
         "actual": "ビザンツ帝国が中国から得た絹織物生産の技術です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "養蚕を教えて",
+        "assistant": "ビザンツ帝国が中国から得た絹織物生産の技術です。",
+        "group": "unseen_wording",
+        "actual": "ビザンツ帝国が中国から得た絹織物生産の技術です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "五本山とは",
+        "assistant": "キリスト教会の主要な五つの教会です。",
+        "group": "recent_history_retention",
+        "actual": "キリスト教会の主要な五つの教会です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "五本山を教えて",
+        "assistant": "キリスト教会の主要な五つの教会です。",
+        "group": "unseen_wording",
+        "actual": "キリスト教会の主要な五つの教会です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "重量有輪犂とは",
+        "assistant": "中世ヨーロッパの農業発展を支えた農具です。",
+        "group": "recent_history_retention",
+        "actual": "中世ヨーロッパの農業発展を支えた農具です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "重量有輪犂を教えて",
+        "assistant": "中世ヨーロッパの農業発展を支えた農具です。",
+        "group": "unseen_wording",
+        "actual": "中世ヨーロッパの農業発展を支えた農具です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ヒエラルキーとは",
+        "assistant": "中世の教会で教皇を頂点に形成された階層秩序です。",
+        "group": "recent_history_retention",
+        "actual": "中世の教会で教皇を頂点に形成された階層秩序です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ヒエラルキーを教えて",
+        "assistant": "中世の教会で教皇を頂点に形成された階層秩序です。",
+        "group": "unseen_wording",
+        "actual": "中世の教会で教皇を頂点に形成された階層秩序です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "特許状とは",
+        "assistant": "中世に皇帝や王が都市の自治権を認めて発行した文書です。",
+        "group": "recent_history_retention",
+        "actual": "中世に皇帝や王が都市の自治権を認めて発行した文書です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "特許状を教えて",
+        "assistant": "中世に皇帝や王が都市の自治権を認めて発行した文書です。",
+        "group": "unseen_wording",
+        "actual": "中世に皇帝や王が都市の自治権を認めて発行した文書です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ユスティニアヌスのペストとは",
+        "assistant": "6世紀のビザンツ帝国で起きたペストの大流行です。",
+        "group": "recent_history_retention",
+        "actual": "6世紀のビザンツ帝国で起きたペストの大流行です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ユスティニアヌスのペストを教えて",
+        "assistant": "6世紀のビザンツ帝国で起きたペストの大流行です。",
+        "group": "unseen_wording",
+        "actual": "6世紀のビザンツ帝国で起きたペストの大流行です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "死の舞踏とは",
+        "assistant": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "group": "recent_history_retention",
+        "actual": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "死の舞踏を教えて",
+        "assistant": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "group": "unseen_wording",
+        "actual": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "死の勝利とは",
+        "assistant": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "group": "recent_history_retention",
+        "actual": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "死の勝利を教えて",
+        "assistant": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "group": "unseen_wording",
+        "actual": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "アナーニとは",
+        "assistant": "フィリップ4世がボニファティウス8世を捕らえた都市です。",
+        "group": "recent_history_retention",
+        "actual": "フィリップ4世がボニファティウス8世を捕らえた都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "アナーニを教えて",
+        "assistant": "フィリップ4世がボニファティウス8世を捕らえた都市です。",
+        "group": "unseen_wording",
+        "actual": "フィリップ4世がボニファティウス8世を捕らえた都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ジギスムントとは",
+        "assistant": "コンスタンツ公会議を開催した神聖ローマ皇帝です。",
+        "group": "recent_history_retention",
+        "actual": "コンスタンツ公会議を開催した神聖ローマ皇帝です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ジギスムントを教えて",
+        "assistant": "コンスタンツ公会議を開催した神聖ローマ皇帝です。",
+        "group": "unseen_wording",
+        "actual": "コンスタンツ公会議を開催した神聖ローマ皇帝です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "フス戦争とは",
+        "assistant": "フスの処刑をきっかけにベーメンで起きた戦争です。",
+        "group": "recent_history_retention",
+        "actual": "フスの処刑をきっかけにベーメンで起きた戦争です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "フス戦争を教えて",
+        "assistant": "フスの処刑をきっかけにベーメンで起きた戦争です。",
+        "group": "unseen_wording",
+        "actual": "フスの処刑をきっかけにベーメンで起きた戦争です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "シモン＝ド＝モンフォールの乱とは",
+        "assistant": "ヘンリ3世の重税などに反発した貴族の反乱です。",
+        "group": "recent_history_retention",
+        "actual": "ヘンリ3世の重税などに反発した貴族の反乱です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "シモン＝ド＝モンフォールの乱を教えて",
+        "assistant": "ヘンリ3世の重税などに反発した貴族の反乱です。",
+        "group": "unseen_wording",
+        "actual": "ヘンリ3世の重税などに反発した貴族の反乱です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "上院とは",
+        "assistant": "イギリス議会で高位聖職者や貴族からなる議院です。",
+        "group": "recent_history_retention",
+        "actual": "イギリス議会で高位聖職者や貴族からなる議院です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "上院を教えて",
+        "assistant": "イギリス議会で高位聖職者や貴族からなる議院です。",
+        "group": "unseen_wording",
+        "actual": "イギリス議会で高位聖職者や貴族からなる議院です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "下院とは",
+        "assistant": "イギリス議会で騎士や市民からなる議院です。",
+        "group": "recent_history_retention",
+        "actual": "イギリス議会で騎士や市民からなる議院です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "下院を教えて",
+        "assistant": "イギリス議会で騎士や市民からなる議院です。",
+        "group": "unseen_wording",
+        "actual": "イギリス議会で騎士や市民からなる議院です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "長弓兵とは",
+        "assistant": "百年戦争でエドワード黒太子が用いた兵です。",
+        "group": "recent_history_retention",
+        "actual": "百年戦争でエドワード黒太子が用いた兵です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "長弓兵を教えて",
+        "assistant": "百年戦争でエドワード黒太子が用いた兵です。",
+        "group": "unseen_wording",
+        "actual": "百年戦争でエドワード黒太子が用いた兵です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "テューダーローズとは",
+        "assistant": "赤バラの上に白バラを重ねた両王家統合の紋章です。",
+        "group": "recent_history_retention",
+        "actual": "赤バラの上に白バラを重ねた両王家統合の紋章です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "テューダーローズを教えて",
+        "assistant": "赤バラの上に白バラを重ねた両王家統合の紋章です。",
+        "group": "unseen_wording",
+        "actual": "赤バラの上に白バラを重ねた両王家統合の紋章です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "エルベ川とは",
+        "assistant": "ドイツ騎士団が東方植民を行った地域の西側にある川です。",
+        "group": "recent_history_retention",
+        "actual": "ドイツ騎士団が東方植民を行った地域の西側にある川です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "エルベ川を教えて",
+        "assistant": "ドイツ騎士団が東方植民を行った地域の西側にある川です。",
+        "group": "unseen_wording",
+        "actual": "ドイツ騎士団が東方植民を行った地域の西側にある川です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ドイツ騎士団領とは",
+        "assistant": "ドイツ騎士団が東方植民によって形成した領地です。",
+        "group": "recent_history_retention",
+        "actual": "ドイツ騎士団が東方植民によって形成した領地です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ドイツ騎士団領を教えて",
+        "assistant": "ドイツ騎士団が東方植民によって形成した領地です。",
+        "group": "unseen_wording",
+        "actual": "ドイツ騎士団が東方植民によって形成した領地です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "カリカットとは",
+        "assistant": "ヴァスコ＝ダ＝ガマが到達したインド西岸の都市です。",
+        "group": "recent_history_retention",
+        "actual": "ヴァスコ＝ダ＝ガマが到達したインド西岸の都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "カリカットを教えて",
+        "assistant": "ヴァスコ＝ダ＝ガマが到達したインド西岸の都市です。",
+        "group": "unseen_wording",
+        "actual": "ヴァスコ＝ダ＝ガマが到達したインド西岸の都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "トレドとは",
+        "assistant": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "group": "recent_history_retention",
+        "actual": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "トレドを教えて",
+        "assistant": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "group": "unseen_wording",
+        "actual": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "コルドバとは",
+        "assistant": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "group": "recent_history_retention",
+        "actual": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "コルドバを教えて",
+        "assistant": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "group": "unseen_wording",
+        "actual": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "概念論とは",
+        "assistant": "アベラールが唱えた実在論と唯名論の中間の立場です。",
+        "group": "recent_history_retention",
+        "actual": "アベラールが唱えた実在論と唯名論の中間の立場です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "概念論を教えて",
+        "assistant": "アベラールが唱えた実在論と唯名論の中間の立場です。",
+        "group": "unseen_wording",
+        "actual": "アベラールが唱えた実在論と唯名論の中間の立場です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ステンドグラスとは",
+        "assistant": "ゴシック様式の建築を特徴づける装飾です。",
+        "group": "recent_history_retention",
+        "actual": "ゴシック様式の建築を特徴づける装飾です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ステンドグラスを教えて",
+        "assistant": "ゴシック様式の建築を特徴づける装飾です。",
+        "group": "unseen_wording",
+        "actual": "ゴシック様式の建築を特徴づける装飾です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ベアトリーチェとは",
+        "assistant": "神曲でダンテを導く初恋の幼馴染です。",
+        "group": "recent_history_retention",
+        "actual": "神曲でダンテを導く初恋の幼馴染です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ベアトリーチェを教えて",
+        "assistant": "神曲でダンテを導く初恋の幼馴染です。",
+        "group": "unseen_wording",
+        "actual": "神曲でダンテを導く初恋の幼馴染です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "マキャベリズムとは",
+        "assistant": "政治目的のためなら権謀術数も許されるとする思想です。",
+        "group": "recent_history_retention",
+        "actual": "政治目的のためなら権謀術数も許されるとする思想です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "マキャベリズムを教えて",
+        "assistant": "政治目的のためなら権謀術数も許されるとする思想です。",
+        "group": "unseen_wording",
+        "actual": "政治目的のためなら権謀術数も許されるとする思想です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ピサ大聖堂とは",
+        "assistant": "ロマネスク様式の代表的な建築です。",
+        "group": "recent_history_retention",
+        "actual": "ロマネスク様式の代表的な建築です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ピサ大聖堂を教えて",
+        "assistant": "ロマネスク様式の代表的な建築です。",
+        "group": "unseen_wording",
+        "actual": "ロマネスク様式の代表的な建築です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "アルグン川とは",
+        "assistant": "ネルチンスク条約で清とロシアの国境とされた川です。",
+        "group": "new_training_probe",
+        "actual": "ネルチンスク条約で清とロシアの国境とされた川です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "キルギスとは",
+        "assistant": "9世紀半ばにウイグル帝国を倒した遊牧民族です。",
+        "group": "new_training_probe",
+        "actual": "9世紀半ばにウイグル帝国を倒した遊牧民族です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "グルとは",
+        "assistant": "シク教で導師を意味する呼び名です。",
+        "group": "new_training_probe",
+        "actual": "シク教で導師を意味する呼び名です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "サファヴィー教団とは",
+        "assistant": "サファヴィー朝の建国母体となった神秘主義教団です。",
+        "group": "new_training_probe",
+        "actual": "サファヴィー朝の建国母体となった神秘主義教団です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "スタノヴォイ山脈とは",
+        "assistant": "ネルチンスク条約で清とロシアの国境とされた山脈です。",
+        "group": "new_training_probe",
+        "actual": "ネルチンスク条約で清とロシアの国境とされた山脈です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "ムムターズ＝マハルとは",
+        "assistant": "タージ＝マハルが捧げられたシャー＝ジャハーンの王妃です。",
+        "group": "new_training_probe",
+        "actual": "タージ＝マハルが捧げられたシャー＝ジャハーンの王妃です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "メキシコ銀とは",
+        "assistant": "明代にスペイン商人などを通じ中国へ流入した銀です。",
+        "group": "new_training_probe",
+        "actual": "明代にスペイン商人などを通じ中国へ流入した銀です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "六部とは",
+        "assistant": "明で洪武帝が皇帝直属とした六つの行政部局です。",
+        "group": "new_training_probe",
+        "actual": "明で洪武帝が皇帝直属とした六つの行政部局です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "前期倭寇とは",
+        "assistant": "日本人を中心に活動した倭寇です。",
+        "group": "new_training_probe",
+        "actual": "日本人を中心に活動した倭寇です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "唐宋八大家とは",
+        "assistant": "韓愈や欧陽脩など唐宋期の八人の文章家です。",
+        "group": "new_training_probe",
+        "actual": "韓愈や欧陽脩など唐宋期の八人の文章家です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "官戸形勢戸とは",
+        "assistant": "新興地主の形勢戸から役人となった家です。",
+        "group": "new_training_probe",
+        "actual": "新興地主の形勢戸から役人となった家です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "後期倭寇とは",
+        "assistant": "中国人を中心に活動した倭寇です。",
+        "group": "new_training_probe",
+        "actual": "中国人を中心に活動した倭寇です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "桃鳩図とは",
+        "assistant": "宋の徽宗の代表作として知られる絵画です。",
+        "group": "new_training_probe",
+        "actual": "宋の徽宗の代表作として知られる絵画です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "湖広熟すれば天下足るとは",
+        "assistant": "長江中流域が重要な穀倉地帯だったことを示す言葉です。",
+        "group": "new_training_probe",
+        "actual": "長江中流域が重要な穀倉地帯だったことを示す言葉です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "王直とは",
+        "assistant": "五島列島などを拠点とした後期倭寇の指導者です。",
+        "group": "new_training_probe",
+        "actual": "五島列島などを拠点とした後期倭寇の指導者です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "禁書とは",
+        "assistant": "支配者が刊行などを禁止した書物です。",
+        "group": "new_training_probe",
+        "actual": "支配者が刊行などを禁止した書物です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "赤絵とは",
+        "assistant": "明代の陶磁器の一種です。",
+        "group": "new_training_probe",
+        "actual": "明代の陶磁器の一種です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "里老人とは",
+        "assistant": "明で里長戸の代表から任命され六諭を徹底させた人です。",
+        "group": "new_training_probe",
+        "actual": "明で里長戸の代表から任命され六諭を徹底させた人です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "里長戸とは",
+        "assistant": "明の里甲制で里の運営を担った家です。",
+        "group": "new_training_probe",
+        "actual": "明の里甲制で里の運営を担った家です。",
+        "exact": true,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 1.0
+      },
+      {
+        "user": "隠れイマームとは",
+        "assistant": "十二イマーム派で再臨が信じられる最後のイマームです。",
+        "group": "new_training_probe",
+        "actual": "十二イマーム派で再臨が信じられる最後のイマームです。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
@@ -1536,5 +2713,5 @@
       }
     ]
   },
-  "candidate_sha256": "f56280a903eaefebf3b67257138ca0cfd8875ea1e2b694ff502b1a7edd9e435c"
+  "candidate_sha256": "d3a452b74ceb9227eab8cbdd188409fb70f26c6a2f0722ff81d7880dbb7a654d"
 }
