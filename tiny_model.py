@@ -228,6 +228,25 @@ class TinyTransformer:
         p["bout"] = np.concatenate([p["bout"], np.zeros(n)])
         return new
 
+    # ---------- ブラウザ用に書き出す（GitHub Pages のトーク画面が読む） ----------
+    def export_web(self, outdir):
+        import os
+        import time
+        os.makedirs(outdir, exist_ok=True)
+        tensors, offset, blobs = [], 0, []
+        for name, arr in self.p.items():
+            a = np.ascontiguousarray(arr, dtype="<f4")
+            tensors.append({"name": name, "shape": list(a.shape), "offset": offset})
+            offset += a.size
+            blobs.append(a.tobytes())
+        version = time.strftime("%Y%m%d%H%M%S")
+        with open(os.path.join(outdir, "model.bin"), "wb") as f:
+            f.write(b"".join(blobs))
+        meta = {"version": version, "chars": self.chars, "D": self.D, "L": self.L,
+                "ctx": self.ctx, "tensors": tensors}
+        with open(os.path.join(outdir, "model.json"), "w", encoding="utf-8") as f:
+            json.dump(meta, f, ensure_ascii=False)
+
     # ---------- 保存・読み込み ----------
     def save(self, path):
         meta = json.dumps({"chars": self.chars, "D": self.D, "L": self.L, "ctx": self.ctx})

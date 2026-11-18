@@ -99,6 +99,12 @@ def merge(old, new):
     return list(d.items())
 
 
+def save_all(model, args):
+    """model.npz と、GitHub Pages 用のブラウザ版モデル（docs フォルダ）を保存する"""
+    model.save(args.model)
+    model.export_web(os.path.join(os.path.dirname(os.path.abspath(args.model)), "docs"))
+
+
 def add_training(args):
     import time
     target = args.add
@@ -138,7 +144,7 @@ def add_training(args):
             print(f"初めて出てくる文字が{len(added)}個あったので、文字の一覧に追加します: {''.join(added)}")
         print(f"これまでの会話に新しい{len(new_pairs)}組を多めに混ぜて追加学習します（{steps}回）")
         model.train(all_pairs + new_pairs * 3, steps=steps, lr=2e-3)
-    model.save(args.model)
+    save_all(model, args)
 
     # 使い終わったファイルは added フォルダへ（同じ会話を二重に足さないため）
     base = os.path.dirname(os.path.abspath(args.data))
@@ -173,6 +179,8 @@ def main():
     elif os.path.exists(args.model) and not args.retrain:
         print(f"モデルを読み込み中: {args.model}")
         MODEL = TinyTransformer.load(args.model)
+        if not os.path.exists(os.path.join(HERE, "docs", "model.json")):
+            MODEL.export_web(os.path.join(HERE, "docs"))
     else:
         pairs, errors = read_pairs(args.data)
         if errors:
@@ -181,7 +189,7 @@ def main():
         print(f"{len(pairs)}組の会話で最初から学習します（{steps}回）")
         MODEL = build_from_pairs(pairs, d_model=args.dim, n_layers=args.layers)
         MODEL.train(pairs, steps=steps)
-        MODEL.save(args.model)
+        save_all(MODEL, args)
         print(f"保存しました: {args.model}")
 
     if args.train_only:

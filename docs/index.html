@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ちいさな世界史AI</title>
+<style>
+  :root {
+    --bg: #f4f1ea; --panel: #fffdf8; --ink: #2b2620; --muted: #8a8174;
+    --me: #2f5d50; --me-ink: #fff; --ai: #ece6da; --line: #ddd5c6;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", sans-serif;
+    background: var(--bg); color: var(--ink);
+    display: flex; justify-content: center;
+  }
+  .app { width: 100%; max-width: 720px; height: 100%; display: flex; flex-direction: column;
+         background: var(--panel); border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+  header { padding: 14px 18px; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 12px; }
+  header h1 { font-size: 16px; margin: 0; font-weight: 700; letter-spacing: .02em; }
+  header .sub { font-size: 12px; color: var(--muted); }
+  header .spacer { flex: 1; }
+  header label { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  header input[type=range] { width: 90px; }
+  button.ghost { border: 1px solid var(--line); background: transparent; border-radius: 8px;
+                 padding: 6px 10px; font-size: 12px; color: var(--muted); cursor: pointer; }
+  #log { flex: 1; overflow-y: auto; padding: 20px 16px; display: flex; flex-direction: column; gap: 12px; }
+  .row { display: flex; gap: 8px; align-items: flex-end; }
+  .row.me { justify-content: flex-end; }
+  .avatar { width: 32px; height: 32px; border-radius: 50%; background: #c9b98f; color: #fff;
+            display: grid; place-items: center; font-size: 13px; font-weight: 700; flex: none; }
+  .bubble { max-width: 75%; padding: 10px 14px; border-radius: 16px; line-height: 1.6;
+            font-size: 15px; white-space: pre-wrap; word-break: break-word; }
+  .me .bubble { background: var(--me); color: var(--me-ink); border-bottom-right-radius: 4px; }
+  .ai .bubble { background: var(--ai); border-bottom-left-radius: 4px; }
+  .typing .bubble { color: var(--muted); }
+  .dots span { display: inline-block; animation: blink 1.2s infinite; }
+  .dots span:nth-child(2) { animation-delay: .2s; } .dots span:nth-child(3) { animation-delay: .4s; }
+  @keyframes blink { 0%,80%,100% { opacity: .2 } 40% { opacity: 1 } }
+  form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--line); }
+  textarea { flex: 1; resize: none; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px;
+             font: inherit; font-size: 16px; height: 46px; background: #fff; }
+  textarea:focus { outline: 2px solid #9fb8ad; border-color: transparent; }
+  form button { border: 0; border-radius: 12px; padding: 0 18px; background: var(--me); color: #fff;
+                font-size: 15px; font-weight: 700; cursor: pointer; }
+  form button:disabled { opacity: .5; cursor: default; }
+  header label, button.ghost { white-space: nowrap; }
+  @media (max-width: 480px) { header .sub { display: none; } header input[type=range] { width: 70px; } }
+  .hint { font-size: 12px; color: var(--muted); text-align: center; margin: 4px 0 10px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div>
+      <h1>ちいさな世界史AI</h1>
+      <div class="sub">自作Transformer（ブラウザで動作）</div>
+    </div>
+    <div class="spacer"></div>
+    <label title="低いほど学習した文に忠実、高いほど冒険する">温度
+      <input id="temp" type="range" min="0.1" max="1.5" step="0.1" value="0.6">
+      <span id="tempv">0.6</span>
+    </label>
+    <button class="ghost" id="clear" type="button">クリア</button>
+  </header>
+  <div id="log"></div>
+  <div class="hint">Enterで送信 / Shift+Enterで改行（モデルは1往復ずつ答えます）</div>
+  <form id="f">
+    <textarea id="msg" placeholder="例：四帝分治とは"></textarea>
+    <button id="send">送信</button>
+  </form>
+</div>
+<script src="tiny_model.js"></script>
+<script>
+const log = document.getElementById("log");
+const msg = document.getElementById("msg");
+const send = document.getElementById("send");
+const temp = document.getElementById("temp");
+const tempv = document.getElementById("tempv");
+let model = null;
+
+temp.oninput = () => tempv.textContent = temp.value;
+
+function add(who, text) {
+  const row = document.createElement("div");
+  row.className = "row " + who;
+  if (who !== "me") {
+    const av = document.createElement("div");
+    av.className = "avatar"; av.textContent = "AI";
+    row.appendChild(av);
+  }
+  const b = document.createElement("div");
+  b.className = "bubble";
+  if (who === "ai typing") b.innerHTML = '<span class="dots"><span>●</span><span>●</span><span>●</span></span>';
+  else b.textContent = text;
+  row.appendChild(b);
+  log.appendChild(row);
+  log.scrollTop = log.scrollHeight;
+  return row;
+}
+
+const nextFrame = () => new Promise(r => setTimeout(r, 0));
+
+// 1文字予測するたびに画面に足していく
+async function generate(row, userText, temperature) {
+  const b = row.querySelector(".bubble");
+  const m = model, END = m.stoi.get("\n");
+  const prompt = m.encode(`U:${userText.trim()}\nA:`);
+  const out = [];
+  let started = false;
+  for (let n = 0; n < 80; n++) {
+    await nextFrame();
+    const logits = m.lastLogits(prompt.concat(out).slice(-m.ctx));
+    const t = Math.max(temperature, 1e-3);
+    let mx = -Infinity;
+    for (const x of logits) if (x / t > mx) mx = x / t;
+    const pr = new Float64Array(m.V); let sum = 0;
+    for (let i = 0; i < m.V; i++) { pr[i] = Math.exp(logits[i] / t - mx); sum += pr[i]; }
+    let r = Math.random() * sum, next = m.V - 1;
+    for (let i = 0; i < m.V; i++) { r -= pr[i]; if (r <= 0) { next = i; break; } }
+    if (next === END) break;
+    out.push(next);
+    if (!started) { row.className = "row ai"; b.textContent = ""; started = true; }
+    b.textContent += m.chars[next];
+    log.scrollTop = log.scrollHeight;
+  }
+  if (!started) { row.className = "row ai"; b.textContent = "……（うまく言葉が出てこない）"; }
+}
+
+async function submit(e) {
+  e && e.preventDefault();
+  const text = msg.value.trim();
+  if (!text || !model) return;
+  add("me", text);
+  msg.value = ""; send.disabled = true;
+  const t = add("ai typing", "");
+  await generate(t, text, parseFloat(temp.value));
+  send.disabled = false; msg.focus();
+}
+
+document.getElementById("f").onsubmit = submit;
+msg.addEventListener("keydown", e => {
+  if (e.key === "Enter" && !e.shiftKey && !e.isComposing) submit(e);
+});
+document.getElementById("clear").onclick = () => { log.innerHTML = ""; greet(); };
+function greet() { add("ai", "こんにちは。世界史の用語を聞いてみてください。"); }
+
+(async () => {
+  send.disabled = true;
+  const loading = add("ai", "モデルを読み込んでいます…");
+  try {
+    model = await TinyModelJS.load(".");
+    loading.remove();
+    greet();
+    send.disabled = false;
+  } catch (err) {
+    loading.querySelector(".bubble").textContent = "モデルを読み込めませんでした（model.json / model.bin があるか確認してください）";
+  }
+})();
+</script>
+</body>
+</html>
