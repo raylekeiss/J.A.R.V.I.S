@@ -16,6 +16,29 @@ from tiny_model import TinyTransformer, build_from_pairs
 from scripts.quality import digest, evaluate, decide, merge, normalized, read_rows, validate, write_json, write_rows
 
 
+def wording_rehearsal(base, cases, incoming=()):
+    """Rephrase existing training facts without importing any evaluation answer."""
+    heldout = {normalized(c['user']) for c in cases}
+    corrected = {normalized(r['user']) for r in incoming}
+    used = heldout | corrected | {normalized(r['user']) for r in base}
+    rows = []
+    for row in base:
+        if normalized(row['user']) in corrected:
+            continue
+        if not row['user'].endswith('とは'):
+            continue
+        topic = row['user'][:-2]
+        if not topic:
+            continue
+        for suffix in ('を短く教えて', 'の説明をして', 'を教えてほしい'):
+            question = topic + suffix
+            key = normalized(question)
+            if len(question) <= 25 and key not in used:
+                rows.append({'user': question, 'assistant': row['assistant']})
+                used.add(key)
+    return validate(rows, heldout=heldout, strict=False)
+
+
 def promote(root, temp, files):
     names = ['model.npz', 'dialogues.jsonl', 'docs/model.json', 'docs/model.bin']
     if (temp / 'data/applied_corrections.json').exists():
@@ -94,6 +117,9 @@ def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
         (report_dir / 'latest.md').write_text('新しい学習データはありません。モデルは更新していません。\n')
         return False
     combined = merge(base, new)
+    rehearsal = wording_rehearsal(base, cases, new)
+    training_rows = merge(combined, rehearsal)
+    validate(training_rows, heldout=heldout, strict=False)
     validate(combined, heldout=heldout, strict=False)
     model_path = root / 'model.npz'
     if not model_path.exists():
@@ -113,13 +139,13 @@ def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
     started = time.monotonic()
     before = evaluate(baseline, eval_cases)
     # Baseline is never passed to the optimizer.
-    candidate = TinyTransformer.load(model_path) if mode == 'incremental' else build_from_pairs([(r['user'], r['assistant']) for r in combined], d_model=baseline.D, n_layers=baseline.L, ctx=baseline.ctx)
-    candidate.extend_vocab(f'U:{r["user"]}\nA:{r["assistant"]}\n' for r in combined)
+    candidate = TinyTransformer.load(model_path) if mode == 'incremental' else build_from_pairs([(r['user'], r['assistant']) for r in training_rows], d_model=baseline.D, n_layers=baseline.L, ctx=baseline.ctx)
+    candidate.extend_vocab(f'U:{r["user"]}\nA:{r["assistant"]}\n' for r in training_rows)
     teacher = copy.deepcopy(candidate) if mode == 'incremental' else None
     pairs = [(r['user'], r['assistant']) for r in combined]
-    replay = pairs + [(r['user'], r['assistant']) for r in new] * 3
+    replay = pairs + [(r['user'], r['assistant']) for r in new] * 3 + [(r['user'], r['assistant']) for r in rehearsal]
     candidate.train(replay, steps=steps, batch=batch, lr=lr, teacher=teacher,
-                    new_users={r['user'] for r in new})
+                    new_users={r['user'] for r in new + rehearsal})
     if not all(np.isfinite(p).all() for p in candidate.p.values()):
         raise ValueError('Non-finite candidate weights; published model remains untouched')
     after = evaluate(candidate, eval_cases)
@@ -128,7 +154,8 @@ def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
               'learning_rate': lr, 'elapsed_seconds': round(time.monotonic() - started, 2),
               'retention_distillation': teacher is not None,
               'retention_weight': 3.0 if teacher is not None else 0.0,
-              'new_pairs': len(new), 'merged_pairs': len(combined),
+              'rehearsal_pairs': len(rehearsal),
+              'new_pairs': len(new), 'merged_pairs': len(training_rows),
               'baseline_sha256': digest(model_path),
               'evaluation_sha256': digest(root / 'evaluation/cases.jsonl'),
               'inputs': {str(p.relative_to(root)): digest(p) for p in corrections + files},
@@ -138,15 +165,16 @@ def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
         temp = Path(directory)
         candidate.save(temp / 'model.npz')
         candidate.export_web(temp / 'docs')
-        write_rows(temp / 'dialogues.jsonl', combined)
+        # Persist every derived question, so future held-out checks remain honest.
+        write_rows(temp / 'dialogues.jsonl', training_rows)
         applied.update({str(p.relative_to(root)): digest(p) for p in corrections})
         write_json(temp / 'data/applied_corrections.json', applied)
         report['candidate_sha256'] = digest(temp / 'model.npz')
         if decision['accepted']:
             promote(root, temp, files)
     write_json(report_dir / 'latest.json', report)
-    write_json(report_dir / 'input_topics.json', sorted({r['user'] for r in combined}))
-    summary = ['# 学習・評価レポート', '', f'採用: {decision["accepted"]}', f'追加: {len(new)}組 / 学習: {steps}ステップ', '', '| 評価区分 | 学習前の完全一致 | 学習後の完全一致 |', '|---|---:|---:|']
+    write_json(report_dir / 'input_topics.json', sorted({r['user'] for r in training_rows}))
+    summary = ['# 学習・評価レポート', '', f'採用: {decision["accepted"]}', f'追加: {len(new)}組 / 学習: {steps}ステップ', f'既習事項の言い換え復習: {len(rehearsal)}組', '', '| 評価区分 | 学習前の完全一致 | 学習後の完全一致 |', '|---|---:|---:|']
     for g, scores in after['groups'].items():
         summary.append(f'| {g} | {before["groups"][g]["exact"]:.1%} | {scores["exact"]:.1%} |')
     summary += ['', '新規問題は学習内容の確認であり、未知問題の正答率ではありません。', 'unseen_wording は質問文未学習、同じ用語の知識は学習済みの場合があります。']
