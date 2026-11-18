@@ -1,7 +1,7 @@
 import {mkdir,copyFile,writeFile,readFile} from 'node:fs/promises';
 const out='docs/qwen';await mkdir(out,{recursive:true});
 await copyFile('client/qwen/app.mjs',`${out}/app.js`);
-await copyFile('client/qwen/config.mjs',`${out}/config.mjs`);
+for(const file of ['config.mjs','cache.mjs','runtime.mjs'])await copyFile(`client/qwen/${file}`,`${out}/${file}`);
 const worker=(await readFile('client/qwen/worker.mjs','utf8')).replace("from '@huggingface/transformers'", "from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2/+esm'");
 await writeFile(`${out}/worker.js`,worker);
 const licenses=[['Transformers.js','node_modules/@huggingface/transformers/LICENSE'],['Hugging Face Jinja','node_modules/@huggingface/jinja/LICENSE'],['Hugging Face Tokenizers','node_modules/@huggingface/tokenizers/LICENSE'],['ONNX Runtime','client/qwen/licenses/ONNXRuntime-MIT.txt']];

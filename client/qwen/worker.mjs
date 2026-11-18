@@ -1,7 +1,10 @@
 import {AutoTokenizer, AutoModelForCausalLM, TextStreamer, InterruptableStoppingCriteria, env} from '@huggingface/transformers';
-import {MODEL, SESSION_OPTIONS, MAX_INPUT_TOKENS, MAX_NEW_TOKENS, MAX_USER_CHARACTERS, visibleAnswer, messagesFor, errorMessage} from './config.mjs?v=se2-startup-1';
+import {MODEL, SESSION_OPTIONS, MAX_INPUT_TOKENS, MAX_NEW_TOKENS, MAX_USER_CHARACTERS, visibleAnswer, messagesFor, errorMessage} from './config.mjs?v=compact-cache-1';
+import {modelCache} from './cache.mjs?v=compact-cache-1';
+import {yieldBetweenTokens} from './runtime.mjs?v=compact-cache-1';
 env.allowLocalModels = false;
-env.useBrowserCache = true;
+env.useCustomCache = true;
+env.useBrowserCache = false;
 env.backends.onnx.wasm.numThreads = 1;
 env.backends.onnx.wasm.proxy = false;
 // The full CPU WASM build includes GatherBlockQuantized; the default JSEP build does not.
@@ -13,24 +16,30 @@ env.backends.onnx.wasm.wasmPaths = {
 let tokenizer, model, busy = false;
 const stopping = new InterruptableStoppingCriteria();
 function post(type, id, extra={}) { self.postMessage({type, id, ...extra}); }
-async function load(id) {
+async function load(id,cachedOnly=false) {
   if (busy) return;
   busy = true;
   try {
+    env.customCache=modelCache(self.caches,{
+      onRead:()=>post('phase',id,{phase:'restore'}),
+      onWrite:()=>post('phase',id,{phase:'save'}),
+      onFailure:error=>post('cache-warning',id,{detail:String(error?.message || error)}),
+    });
     const progress_callback = (event) => {
       if (event.status === 'progress') post('progress', id, {file:event.file, loaded:event.loaded || 0, total:event.total || 0});
       if (event.status === 'done' && /\.onnx$/.test(event.file || '')) post('phase', id, {phase:'initialize'});
     };
     post('phase', id, {phase:'tokenizer'});
-    tokenizer = await AutoTokenizer.from_pretrained(MODEL.id, {revision:MODEL.revision, progress_callback});
+    tokenizer = await AutoTokenizer.from_pretrained(MODEL.id, {revision:MODEL.revision, local_files_only:cachedOnly, progress_callback});
     post('phase', id, {phase:'model'});
     model = await AutoModelForCausalLM.from_pretrained(MODEL.id, {
       revision:MODEL.revision, subfolder:MODEL.subfolder, dtype:MODEL.dtype,
-      use_external_data_format:false, device:'wasm', progress_callback, session_options:{...SESSION_OPTIONS},
+      use_external_data_format:false, device:'wasm', local_files_only:cachedOnly, progress_callback, session_options:{...SESSION_OPTIONS},
     });
+    yieldBetweenTokens(model);
     post('ready', id);
   } catch (error) {
-    post('error', id, {stage:'load', message:errorMessage(error), detail:String(error?.message || error)});
+    post('error', id, {stage:'load', message:cachedOnly?'保存データから起動できませんでした。':errorMessage(error), detail:String(error?.message || error)});
   } finally { busy = false; }
 }
 async function generate({id, question, history}) {
@@ -62,6 +71,6 @@ async function generate({id, question, history}) {
 }
 self.addEventListener('message', ({data}) => {
   if (data.type === 'stop') { stopping.interrupt(); return; }
-  if (data.type === 'load') void load(data.id);
+  if (data.type === 'load') void load(data.id,Boolean(data.cachedOnly));
   if (data.type === 'generate') void generate(data);
 });
