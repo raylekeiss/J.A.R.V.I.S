@@ -2,7 +2,7 @@
 start_chat.py ― ダブルクリックで起動する用
 
   1. そのまま起動（学習済みモデルを読み込む。初回だけ学習する）
-  2. add.jsonl を追加学習してから起動
+  2. inbox フォルダ（または add.jsonl）の会話を追加学習してから起動
   3. dialogues.jsonl で最初から学習し直してから起動
 """
 import os
@@ -29,19 +29,26 @@ def main():
 
     print("==== ちいさな世界史AI ====")
     print("  1: そのまま起動")
-    print("  2: add.jsonl を追加学習してから起動")
+    print("  2: inbox フォルダ（または add.jsonl）の会話を追加学習してから起動")
     print("  3: dialogues.jsonl で最初から学習し直してから起動")
     choice = input("番号を入力してEnter（何も入れずにEnterなら1）: ").strip() or "1"
 
     cmd = [sys.executable, os.path.join(HERE, "chat_server.py")]
     if choice == "2":
-        if not os.path.exists(os.path.join(HERE, "add.jsonl")):
-            print("add.jsonl が見つかりません。同じフォルダに置いてください。")
+        inbox = os.path.join(HERE, "inbox")
+        has_inbox = os.path.isdir(inbox) and any(f.endswith(".jsonl") for f in os.listdir(inbox))
+        has_add = os.path.exists(os.path.join(HERE, "add.jsonl"))
+        if not (has_inbox or has_add):
+            print("inbox フォルダに .jsonl ファイルがありません（add.jsonl もありません）。")
             return pause()
-        if not os.path.exists(os.path.join(HERE, "model.npz")):
-            print("まだ学習済みモデルがありません。先に 1 か 3 で学習してください。")
-            return pause()
-        cmd += ["--add", "add.jsonl"]
+        if has_add:
+            code = subprocess.call(cmd + ["--add", "add.jsonl", "--train-only"])
+            if code != 0:
+                return pause()
+        if has_inbox:
+            code = subprocess.call(cmd + ["--add", "inbox", "--train-only"])
+            if code != 0:
+                return pause()
     elif choice == "3":
         cmd += ["--retrain"]
     elif choice != "1":

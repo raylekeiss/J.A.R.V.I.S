@@ -3,7 +3,7 @@
 ## 起動のしかた
 `start_chat.py` をダブルクリック → 番号を選ぶ → ブラウザが自動で開く
   1: そのまま起動（初回だけ学習が走る）
-  2: add.jsonl を追加学習してから起動
+  2: inbox フォルダ（または add.jsonl）の会話を追加学習してから起動
   3: dialogues.jsonl で最初から学習し直してから起動
 黒い画面はトーク中ずっと開いたままにする（閉じるとAIが止まる）。
 
@@ -21,9 +21,9 @@
 {"user":"科挙とは","assistant":"隋の文帝が始めた筆記試験による役人の選抜制度です。"}
 
 ## GitHubで自動学習する場合
-1. 非公開（Private）リポジトリを作り、このフォルダの中身をアップロードする
-   （dialogues.jsonl と model.npz は自分の最新のものを入れる）
-2. `.github/workflows/train.yml` は「Add file → Create new file」で、
-   名前欄に `.github/workflows/train.yml` と打ち、中身を貼り付けて作る
-3. 以後は add.jsonl をアップロードするだけで、Actions が追加学習して model.npz を更新する
-4. 手元では GitHub から model.npz と dialogues.jsonl をダウンロードして差し替え、start_chat.py で起動
+- 会話データ（.jsonl）は、inbox フォルダにまとめてアップロードする（何個でも、ファイル名は自由）
+- アップロードすると Actions が自動で学習し、model.npz を更新する
+  - 300組以上をまとめて入れたときは、全部の会話で最初から学習し直す（3000組で20分前後）
+  - それより少ないときは、追加学習（数分）
+- 使い終わったファイルは added フォルダに移る。dialogues.jsonl に全部の会話がたまる
+- 同じ質問があれば、新しい答えで上書きされる

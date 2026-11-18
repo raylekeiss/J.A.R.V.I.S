@@ -190,6 +190,8 @@ class TinyTransformer:
                 w[b, :n] = 0.2                       # 質問部分も少しだけ学ぶ
                 w[b, max(st - 1, 0):n] = 1.0         # 回答部分はしっかり学ぶ
             loss, g = self.loss_and_grads(x, y, w)
+            # 学習率を後半に向けて少しずつ下げる（最後の仕上げを細かくするため）
+            opt.lr = lr * (0.1 + 0.9 * 0.5 * (1 + np.cos(np.pi * step / steps)))
             opt.step(self.p, g)
             if step % 200 == 0 or step == 1:
                 log(f"step {step:5d}  loss {loss:.3f}")
