@@ -14,7 +14,7 @@ function controls() {
 }
 function initWorker() {
   if (worker) worker.terminate();
-  worker=new Worker(new URL('./worker.js', import.meta.url),{type:'module'});
+  worker=new Worker(new URL('./worker.js?v=cpu-full-1', import.meta.url),{type:'module'});
   const activeWorker=worker;
   worker.addEventListener('message', ({data}) => {
     if (worker!==activeWorker || data.id !== sequence) return;
