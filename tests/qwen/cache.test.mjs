@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {CACHE_KEY,MODEL_URLS,MODEL_WEIGHT_URL,savedModelExists,modelCache,requestPersistence} from '../../client/qwen/cache.mjs';
+import {CACHE_KEY,MODEL_URLS,MODEL_WEIGHT_URL,COMPRESSED_WEIGHT_URL,savedModelExists,modelCache,requestPersistence} from '../../client/qwen/cache.mjs';
 import {yieldBetweenTokens} from '../../client/qwen/runtime.mjs';
 function storage(entries=[]){
   const data=new Map(entries),names=[];
@@ -26,6 +26,20 @@ test('cache failure is reported once and missing storage is not treated as saved
   let warnings=0;const broken={open:async()=>{throw new Error('quota exceeded');}};
   const c=modelCache(broken,{onFailure:()=>warnings++});assert.equal(await c.match(MODEL_WEIGHT_URL),undefined);
   await assert.rejects(c.put(MODEL_WEIGHT_URL,new Response('bytes')),/quota/);assert.equal(warnings,1);assert.equal(await savedModelExists(broken),false);
+});
+test('compressed storage round-trips bytes and restores the original content length',async()=>{
+  const bytes='model-weights-'.repeat(1000);const s=storage(MODEL_URLS.filter(url=>url!==MODEL_WEIGHT_URL).map(url=>[url,new Response('{}')]));
+  await modelCache(s).put(MODEL_WEIGHT_URL,new Response(bytes,{headers:{'content-length':String(bytes.length)}}));
+  assert.equal(s.data.has(MODEL_WEIGHT_URL),false);assert.equal(s.data.has(COMPRESSED_WEIGHT_URL),true);
+  assert.ok((await s.data.get(COMPRESSED_WEIGHT_URL).clone().arrayBuffer()).byteLength<bytes.length);
+  assert.equal(await savedModelExists(s),true);
+  const restored=await modelCache(s).match(MODEL_WEIGHT_URL);
+  assert.equal(restored.headers.get('content-length'),String(bytes.length));assert.equal(await restored.text(),bytes);
+});
+test('previously saved uncompressed weights remain readable',async()=>{
+  let reads=0;const s=storage([[MODEL_WEIGHT_URL,new Response('old-cache')]]);
+  const restored=await modelCache(s,{onRead:()=>reads++}).match(MODEL_WEIGHT_URL);
+  assert.equal(await restored.text(),'old-cache');assert.equal(reads,1);
 });
 test('persistence denial or unsupported storage does not prevent starting the model',async()=>{
   let requests=0;assert.equal(await requestPersistence({persisted:async()=>true,persist:async()=>{requests++;}}),true);

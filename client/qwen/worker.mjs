@@ -1,7 +1,7 @@
 import {AutoTokenizer, AutoModelForCausalLM, TextStreamer, InterruptableStoppingCriteria, env} from '@huggingface/transformers';
-import {MODEL, SESSION_OPTIONS, MAX_INPUT_TOKENS, MAX_NEW_TOKENS, MAX_USER_CHARACTERS, visibleAnswer, messagesFor, errorMessage} from './config.mjs?v=compact-cache-1';
-import {modelCache} from './cache.mjs?v=compact-cache-1';
-import {yieldBetweenTokens} from './runtime.mjs?v=compact-cache-1';
+import {MODEL, SESSION_OPTIONS, MAX_INPUT_TOKENS, MAX_NEW_TOKENS, MAX_USER_CHARACTERS, visibleAnswer, messagesFor, errorMessage} from './config.mjs?v=compact-cache-2';
+import {modelCache} from './cache.mjs?v=compact-cache-2';
+import {yieldBetweenTokens} from './runtime.mjs?v=compact-cache-2';
 env.allowLocalModels = false;
 env.useCustomCache = true;
 env.useBrowserCache = false;

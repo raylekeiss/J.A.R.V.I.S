@@ -67,4 +67,6 @@ test('storage failures remain visible without adding explanation panels',async()
   const x=await setup();assert.equal(x.dom.window.document.querySelectorAll('details,aside,.setup,.footnote').length,0);
   x.$('load').click();const w=x.FakeWorker.all[0];w.emit({type:'cache-warning',id:1,detail:'quota exceeded'});w.emit({type:'ready',id:1});
   assert.match(x.$('status').textContent,/保存できません/);assert.equal(x.$('send').disabled,false);
+  x.submit('こんにちは');w.emit({type:'done',id:2,text:'こんにちは。'});
+  assert.match(x.$('status').textContent,/保存できません/);
 });

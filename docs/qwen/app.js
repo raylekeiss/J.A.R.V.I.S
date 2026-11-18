@@ -1,10 +1,11 @@
-import {MODEL,MAX_USER_CHARACTERS,LOAD_STALL_TIMEOUT_MS,INITIALIZE_TIMEOUT_MS,STOP_TIMEOUT_MS} from './config.mjs?v=compact-cache-1';
-import {savedModelExists,requestPersistence} from './cache.mjs?v=compact-cache-1';
+import {MODEL,MAX_USER_CHARACTERS,LOAD_STALL_TIMEOUT_MS,INITIALIZE_TIMEOUT_MS,STOP_TIMEOUT_MS} from './config.mjs?v=compact-cache-2';
+import {savedModelExists,requestPersistence} from './cache.mjs?v=compact-cache-2';
 const $=id=>document.getElementById(id);
 const load=$('load'),send=$('send'),stop=$('stop'),clear=$('clear'),input=$('msg'),status=$('status'),progress=$('progress'),log=$('log');
 const clock=document.defaultView;
 let worker,ready=false,busy=false,sequence=0,pending=null,history=[];
 let loadTimer,stopTimer,restoring=false,cacheWarning=false;
+function readyStatus(){return cacheWarning?'準備完了（保存できませんでした）':'準備完了';}
 function clearLoadTimer(){clock.clearTimeout(loadTimer);loadTimer=undefined;}
 function clearStopTimer(){clock.clearTimeout(stopTimer);stopTimer=undefined;}
 function controls(){
@@ -31,7 +32,7 @@ function add(role,text){
   const bubble=document.createElement('div');bubble.className='bubble';bubble.textContent=text;row.append(bubble);log.append(row);log.scrollTop=log.scrollHeight;return bubble;
 }
 function initWorker(){
-  worker?.terminate();worker=new Worker(new URL('./worker.js?v=compact-cache-1',import.meta.url),{type:'module'});
+  worker?.terminate();worker=new Worker(new URL('./worker.js?v=compact-cache-2',import.meta.url),{type:'module'});
   const active=worker;
   worker.addEventListener('message',({data})=>{
     if(worker!==active||data.id!==sequence)return;
@@ -52,14 +53,14 @@ function initWorker(){
       status.textContent=percent?`${label}… ${percent}%`:`${label}…`;armLoadTimer();
     }else if(data.type==='ready'){
       clearLoadTimer();ready=true;busy=false;progress.hidden=true;
-      status.textContent=cacheWarning?'準備完了（保存できませんでした）':'準備完了';controls();input.focus();
+      status.textContent=readyStatus();controls();input.focus();
     }else if(data.type==='token'&&pending){
       pending.bubble.textContent=data.text||'考え中…';log.scrollTop=log.scrollHeight;
     }else if(data.type==='done'&&pending){
       clearStopTimer();
       pending.bubble.textContent=data.text||(data.cancelled?'停止しました。':'回答を生成できませんでした。');
       if(data.text&&!data.cancelled)history.push({role:'user',content:pending.question},{role:'assistant',content:data.text});
-      history=history.slice(-6);pending=null;busy=false;status.textContent=data.cancelled?'停止しました':'準備完了';controls();input.focus();
+      history=history.slice(-6);pending=null;busy=false;status.textContent=data.cancelled?'停止しました':readyStatus();controls();input.focus();
     }else if(data.type==='error'){
       clearLoadTimer();clearStopTimer();console.error('Qwen runtime:',data.detail);
       if(data.stage==='load'){loadFailed(data.message);return;}
@@ -102,7 +103,7 @@ stop.addEventListener('click',()=>{
     release();status.textContent='停止しました。再試行してください。';
   },STOP_TIMEOUT_MS);
 });
-clear.addEventListener('click',()=>{history=[];log.replaceChildren();greet();status.textContent=ready?'準備完了':'';});
+clear.addEventListener('click',()=>{history=[];log.replaceChildren();greet();status.textContent=ready?readyStatus():'';});
 input.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.shiftKey&&!event.isComposing){event.preventDefault();$('form').requestSubmit();}});
 function greet(){add('ai','こんにちは、ジャーヴィスです。');}
 load.textContent=`はじめる（約${Math.ceil(MODEL.downloadBytes/1e6)}MB）`;
