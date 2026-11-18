@@ -56,7 +56,7 @@ python -m scripts.prepare_batch --facts facts.jsonl --source 原資料.txt --pre
 
 GitHubでこのリポジトリに書き込む権限が必要です。教材のinboxとdata/provenanceへの追加コミットで学習が始まります。Actions自身のGITHUB_TOKENでコミットした場合は別のpush実行が起動しないため、必要ならworkflow_dispatchを明示的に起動します。外部から提供されたプログラムや任意のシェル文字列は教材として実行しません。
 
-GitHub PagesのSourceはGitHub Actionsに設定します。合格時のtrainジョブからPages artifactを渡し、deployジョブが公開します。`git push`からのPages自動ビルドには依存しません。Pagesの設定、書き込み権限、実際のActions実行結果はリモートで確認が必要です。
+GitHub Pagesの現設定を読み取り、main:/docsのブランチ方式ならREST APIでビルドを明示的に要求し、合格モデルのコミットが公開されたことを確認します。Actions方式ならtrainジョブからPages artifactを渡してdeploy-pagesで公開します。設定変更や`git push`による自動ビルドには依存しません。Pagesが未有効、または別のブランチやフォルダを公開している場合は、勝手に変更せず失敗を報告します。
 
 reports/previous_model.npzは直前モデルの復旧用です。Git管理には含めず、Actionsの成果物に14日間保存します。以前の公開版はGitの履歴にも残ります。
 

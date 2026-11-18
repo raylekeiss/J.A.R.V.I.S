@@ -41,6 +41,7 @@ jobs:
       contents: write
     outputs:
       accepted: ${{ steps.result.outputs.accepted }}
+      commit: ${{ steps.publish.outputs.commit }}
     steps:
       # Queue runs always start from the latest main, not an obsolete inbox snapshot.
       - uses: actions/checkout@v4
@@ -81,6 +82,7 @@ jobs:
           path: reports/
           retention-days: 14
       - name: 合格したデータとモデルをまとめて保存
+        id: publish
         if: steps.result.outputs.accepted == 'true'
         run: |
           git config user.name 'github-actions[bot]'
@@ -94,6 +96,7 @@ jobs:
           git commit -m '学習・評価合格: データとモデルを更新'
           # Concurrent remote edits cause a failure, not an overwrite or deployment.
           git push origin HEAD:main
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - name: Pages用ファイルを保存
         if: steps.result.outputs.accepted == 'true'
         uses: actions/upload-pages-artifact@v4
@@ -105,12 +108,28 @@ jobs:
     if: needs.train.outputs.accepted == 'true'
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pages: write
       id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.pages_mode.outputs.url }}
     steps:
-      - name: 合格モデルを公開
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.train.outputs.commit }}
+      - name: 現在のPages方式を確認
+        id: pages_mode
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -m scripts.publish_pages --inspect-only
+      - name: ブランチ方式のPagesビルドを明示的に起動して確認
+        if: steps.pages_mode.outputs.build_type == 'legacy'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ACCEPTED_COMMIT: ${{ needs.train.outputs.commit }}
+        run: python -m scripts.publish_pages --commit "$ACCEPTED_COMMIT"
+      - name: Actions方式で合格モデルを公開
+        if: steps.pages_mode.outputs.build_type == 'workflow'
         id: deployment
         uses: actions/deploy-pages@v4

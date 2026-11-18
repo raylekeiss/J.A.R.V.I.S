@@ -149,3 +149,24 @@ class BatchPreparationTests(unittest.TestCase):
             self.assertEqual((root / 'reports/previous_model.npz').read_bytes(), b'old')
             self.assertFalse(input_path.exists())
             self.assertEqual(next((root / 'added').iterdir()).read_text(), 'input')
+
+class PagesTests(unittest.TestCase):
+    def test_existing_unrelated_publishing_source_is_not_changed(self):
+        from scripts.publish_pages import inspect
+        with patch('scripts.publish_pages.api', return_value={'build_type': 'legacy', 'source': {'branch': 'other', 'path': '/'}, 'html_url': 'https://example.test/'}):
+            with self.assertRaises(ValueError):
+                inspect('owner/repo')
+
+    def test_legacy_publish_requests_build_and_verifies_exact_commit(self):
+        from scripts.publish_pages import publish_legacy
+        site = {'build_type': 'legacy', 'source': {'branch': 'main', 'path': '/docs'}, 'html_url': 'https://example.test/'}
+        with patch('scripts.publish_pages.api', side_effect=[site, {'status': 'queued'}, {'status': 'built', 'commit': 'new-sha'}]) as mocked:
+            self.assertEqual(publish_legacy('owner/repo', 'new-sha', pause=lambda _: None), site['html_url'])
+            self.assertEqual(mocked.call_args_list[1].args, ('repos/owner/repo/pages/builds', 'POST'))
+
+    def test_unrelated_build_is_not_reported_as_our_success(self):
+        from scripts.publish_pages import publish_legacy
+        site = {'build_type': 'legacy', 'source': {'branch': 'main', 'path': '/docs'}, 'html_url': 'https://example.test/'}
+        with patch('scripts.publish_pages.api', side_effect=[site, {}, {'status': 'built', 'commit': 'other-sha'}]):
+            with self.assertRaises(TimeoutError):
+                publish_legacy('owner/repo', 'new-sha', tries=1, pause=lambda _: None)
