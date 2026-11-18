@@ -15,6 +15,25 @@ from tiny_model import TinyTransformer, build_from_pairs
 from scripts.quality import digest, evaluate, decide, merge, normalized, read_rows, validate, write_json, write_rows
 
 
+def select_retained_candidate(candidate, anchor, before, cases, blend=True):
+    """Try fixed weight fractions; every candidate must pass the original gate."""
+    trained = {name: value.copy() for name, value in candidate.p.items()}
+    attempts = []
+    fractions = (1.0, .75, .5, .25, .125) if blend else (1.0,)
+    for fraction in fractions:
+        for name, value in trained.items():
+            candidate.p[name] = (anchor[name] + fraction * (value - anchor[name])) if fraction != 1 else value.copy()
+        after = evaluate(candidate, cases)
+        decision = decide(before, after)
+        attempts.append({'weight_fraction': fraction, **decision, 'after': after})
+        if decision['accepted']:
+            return after, decision, fraction, attempts
+    # Preserve the fully trained failure for diagnostics if no fraction passes.
+    candidate.p = trained
+    first = attempts[0]
+    return first['after'], {'accepted': False, 'reasons': first['reasons']}, 1.0, attempts
+
+
 def promote(root, temp, files):
     names = ['model.npz', 'dialogues.jsonl', 'docs/model.json', 'docs/model.bin']
     if (temp / 'data/applied_corrections.json').exists():
@@ -46,7 +65,7 @@ def promote(root, temp, files):
 
 def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
     root = Path(root)
-    lr = lr if lr is not None else (3e-5 if mode == 'incremental' else 3e-3)
+    lr = lr if lr is not None else (3e-4 if mode == 'incremental' else 3e-3)
     if not 1 <= steps <= 16000 or not 1 <= batch <= 24 or not 1e-6 <= lr <= 3e-3:
         raise ValueError('invalid training steps, batch or learning rate')
     report_dir = root / 'reports'
@@ -114,15 +133,17 @@ def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
     # Baseline is never passed to the optimizer.
     candidate = TinyTransformer.load(model_path) if mode == 'incremental' else build_from_pairs([(r['user'], r['assistant']) for r in combined], d_model=baseline.D, n_layers=baseline.L, ctx=baseline.ctx)
     candidate.extend_vocab(f'U:{r["user"]}\nA:{r["assistant"]}\n' for r in combined)
+    anchor = {name: value.copy() for name, value in candidate.p.items()}
     pairs = [(r['user'], r['assistant']) for r in combined]
     replay = pairs + [(r['user'], r['assistant']) for r in new] * 3
     candidate.train(replay, steps=steps, batch=batch, lr=lr)
     if not all(np.isfinite(p).all() for p in candidate.p.values()):
         raise ValueError('Non-finite candidate weights; published model remains untouched')
-    after = evaluate(candidate, eval_cases)
-    decision = decide(before, after)
+    after, decision, fraction, attempts = select_retained_candidate(
+        candidate, anchor, before, eval_cases, blend=mode == 'incremental')
     report = {**decision, 'status': 'evaluated', 'mode': mode, 'steps': steps,
               'learning_rate': lr, 'elapsed_seconds': round(time.monotonic() - started, 2),
+              'weight_fraction': fraction, 'attempts': attempts,
               'new_pairs': len(new), 'merged_pairs': len(combined),
               'baseline_sha256': digest(model_path),
               'evaluation_sha256': digest(root / 'evaluation/cases.jsonl'),
