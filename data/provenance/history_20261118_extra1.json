@@ -1,0 +1,212 @@
+{
+  "source_name": "質問返答生成用テキストデータ.txt",
+  "source_sha256": "502f0699124f40e7c5e73275dd017968d4299fae7469bc410d28f660edef8fd3",
+  "facts": [
+    {
+      "topic": "シュパイエル大聖堂",
+      "answer": "ロマネスク様式の代表的な建築です。",
+      "source_excerpt": "〇「ロマネスク様式」（11C～13C）\n木造から石造となり、①半円形アーチを用いた天井や②厚い壁、③小さい窓が特徴です。\n▽代表的建築\n「ピサ大聖堂」・「クリュニー修道院」・「ウォルムス大聖堂」・「シュパイエル大聖堂」\n「マインツ大聖堂」・「ヴェズレー大聖堂」",
+      "source_line": 3749,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ボスフォラス海峡",
+      "answer": "ビザンティウムが沿岸に位置する海峡です。",
+      "source_excerpt": "もともとは古代ギリシア人の植民地であった都市「ビザンティウム」。「黒海」に隣接する「ボスフォラス海峡」の沿岸に位置する。",
+      "source_line": 3047,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ドーム",
+      "answer": "ビザンツ様式の建築に見られる特徴です。",
+      "source_excerpt": "▽ビザンツ様式\n「ドーム」「モザイク」「イコン」が特徴。",
+      "source_line": 3053,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "養蚕",
+      "answer": "ビザンツ帝国が中国から得た絹織物生産の技術です。",
+      "source_excerpt": "③「　絹　織物産業」の導入\n→中国より「養蚕」技術を得て導入",
+      "source_line": 3059,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "五本山",
+      "answer": "キリスト教会の主要な五つの教会です。",
+      "source_excerpt": "イスラーム勢力が７世紀になるとビザンツへ侵入。キリスト教会の主要な「五本山」のうち、アンティオキア教会、アレクサンドリア教会、イェルサレム教会を失いました。",
+      "source_line": 3066,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "重量有輪犂",
+      "answer": "中世ヨーロッパの農業発展を支えた農具です。",
+      "source_excerpt": "① 「三圃制」や「重量有輪犂」の登場などにより、農業が発展した。",
+      "source_line": 3134,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ヒエラルキー",
+      "answer": "中世の教会で教皇を頂点に形成された階層秩序です。",
+      "source_excerpt": "中世のヨーロッパでは、王権はまだ弱く、代わりにヨーロッパ全体をまとめるリーダーとなったのは、「ローマ＝カトリック教会」とそのリーダーである「ローマ教皇」でした。教皇を筆頭に「ヒエラルキー」を形成していきます。",
+      "source_line": 3167,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "特許状",
+      "answer": "中世に皇帝や王が都市の自治権を認めて発行した文書です。",
+      "source_excerpt": "皇帝や王は「特許状」を発行し、都市に「自治権」を与えた。",
+      "source_line": 3205,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ユスティニアヌスのペスト",
+      "answer": "6世紀のビザンツ帝国で起きたペストの大流行です。",
+      "source_excerpt": "最初の大流行：6世紀のビザンツ帝国、「ユスティニアヌスのペスト」\n記録に残る最初の大流行は、ビザンツ帝国の「ユスティニアヌス期」でした。",
+      "source_line": 3271,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "死の舞踏",
+      "answer": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+      "source_excerpt": "「死の舞踏」「死の勝利」といった、死をテーマにした新しい芸術が生まれ、\n「死を忘れるな」という考え方がヨーロッパ文化に深く根付きました。",
+      "source_line": 3304,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "死の勝利",
+      "answer": "中世ヨーロッパで生まれた死をテーマにした芸術です。",
+      "source_excerpt": "「死の舞踏」「死の勝利」といった、死をテーマにした新しい芸術が生まれ、\n「死を忘れるな」という考え方がヨーロッパ文化に深く根付きました。",
+      "source_line": 3304,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "アナーニ",
+      "answer": "フィリップ4世がボニファティウス8世を捕らえた都市です。",
+      "source_excerpt": "フィリップ４世は「三部会」を開催し、\nローマ南方の都市「アナーニ」でボニファティウス８世を捕らえた。\nこの事件を「アナーニ事件（１３０３）」という。教皇は憤死した。",
+      "source_line": 3341,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ジギスムント",
+      "answer": "コンスタンツ公会議を開催した神聖ローマ皇帝です。",
+      "source_excerpt": "イスラーム勢力が混乱するヨーロッパに侵入。\n「ニコポリスの戦い（１３９６）」でヨーロッパは負けてしまいます。キリスト教で一致団結し、イスラーム勢力に対抗しようと、神聖ローマ皇帝「ジギスムント」は公会議を提唱しました。\n\n\n「ジギスムント」は「コンスタンツ公会議（１４１４）」を開催した。",
+      "source_line": 3370,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "フス戦争",
+      "answer": "フスの処刑をきっかけにベーメンで起きた戦争です。",
+      "source_excerpt": "②フスやウィクリフを異端として認定、フスを火刑、ウィクリフの遺体も火刑に処した。※フスの処刑により、ベーメン（ドイツの領邦）で「フス戦争」が発生した。",
+      "source_line": 3377,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "シモン＝ド＝モンフォールの乱",
+      "answer": "ヘンリ3世の重税などに反発した貴族の反乱です。",
+      "source_excerpt": "ヘンリ３世はジョンが認めたはずの「大憲章」を無視した政治を行い、軍事費調達のために貴族に重税をかけました。そのため、貴族の反乱がおこります。\n\n\n「シモン＝ド＝モンフォールの乱」が発生した。\n▽結果：国王は敗北し捕虜に。「諮問議会（モンフォール議会とも）」の開設を認めさせるが\n：直後にモンフォールが皇太子エドワードとの戦いに敗れ、戦死したため、定着はせず。",
+      "source_line": 3425,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "上院",
+      "answer": "イギリス議会で高位聖職者や貴族からなる議院です。",
+      "source_excerpt": "後に高位聖職者・貴族からなる「上院」と、騎士・市民からなる「下院」の二院制となる。",
+      "source_line": 3444,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "下院",
+      "answer": "イギリス議会で騎士や市民からなる議院です。",
+      "source_excerpt": "後に高位聖職者・貴族からなる「上院」と、騎士・市民からなる「下院」の二院制となる。",
+      "source_line": 3444,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "長弓兵",
+      "answer": "百年戦争でエドワード黒太子が用いた兵です。",
+      "source_excerpt": "③「ポワティエの戦い」\nイギリスの「エドワード黒太子」が「長弓兵」を使用してフランスを破り、南仏で国王「ジャン2世」を破り、捕虜にしました。これは明らかに武器と戦術の差でした。",
+      "source_line": 3484,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "テューダーローズ",
+      "answer": "赤バラの上に白バラを重ねた両王家統合の紋章です。",
+      "source_excerpt": "ランカスター家の一員「ヘンリ・テューダー（のちのヘンリ７世）」は長年の対立に終止符を打つため、ヨーク家の王女「エリザベス」と結婚し、両家を統合させました。紋章も赤バラの上に白バラを重ねた「テューダーローズ」に刷新し、ばら戦争を終結させました。",
+      "source_line": 3534,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "エルベ川",
+      "answer": "ドイツ騎士団が東方植民を行った地域の西側にある川です。",
+      "source_excerpt": "　十字軍から帰還したドイツ騎士団は「エルベ川」より東にあるスラブ人居住地域へと植民（東方植民）を行い、「ドイツ騎士団領」を形成、有力な諸侯の一つに成長しました。",
+      "source_line": 3627,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ドイツ騎士団領",
+      "answer": "ドイツ騎士団が東方植民によって形成した領地です。",
+      "source_excerpt": "　十字軍から帰還したドイツ騎士団は「エルベ川」より東にあるスラブ人居住地域へと植民（東方植民）を行い、「ドイツ騎士団領」を形成、有力な諸侯の一つに成長しました。",
+      "source_line": 3627,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "カリカット",
+      "answer": "ヴァスコ＝ダ＝ガマが到達したインド西岸の都市です。",
+      "source_excerpt": "③「マヌエル１世（在位１４９５～1521）」\t「ヴァスコ＝ダ＝ガマ」がインド西岸の「カリカット」に到着",
+      "source_line": 3650,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "トレド",
+      "answer": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+      "source_excerpt": "「バイト＝アル＝ヒクマ（知恵の館）」でアリストテレス哲学などが「ギリシア語」から「アラビア語」に翻訳され、研究が進んだ。\n\n更にイベリア半島の「トレド」や「コルドバ」でラテン語へと翻訳され、ヨーロッパの学問（スコラ哲学）に影響を与えました。",
+      "source_line": 3686,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "コルドバ",
+      "answer": "ギリシア哲学のラテン語訳が進んだイベリア半島の都市です。",
+      "source_excerpt": "「バイト＝アル＝ヒクマ（知恵の館）」でアリストテレス哲学などが「ギリシア語」から「アラビア語」に翻訳され、研究が進んだ。\n\n更にイベリア半島の「トレド」や「コルドバ」でラテン語へと翻訳され、ヨーロッパの学問（スコラ哲学）に影響を与えました。",
+      "source_line": 3686,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "概念論",
+      "answer": "アベラールが唱えた実在論と唯名論の中間の立場です。",
+      "source_excerpt": "・「アベラール」１２世紀フランス\n実在論と唯名論の中間の立場であり、「概念論」を唱えた。",
+      "source_line": 3724,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ステンドグラス",
+      "answer": "ゴシック様式の建築を特徴づける装飾です。",
+      "source_excerpt": "〇「ゴシック様式」（12C）\n北フランスに起こった①「尖塔アーチ」②「ステンドグラス」③「広い窓」を特徴とする様式です。",
+      "source_line": 3758,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ベアトリーチェ",
+      "answer": "神曲でダンテを導く初恋の幼馴染です。",
+      "source_excerpt": "ルネサンス文学の先駆者。神曲はトスカーナ語（イタリア語のもとになった）で書かれている。\n　ダンテ本人が、自分の好んだ古代ローマの詩人ヴェルギリウスや、２４で死んだ人妻であり初恋の幼馴染でもある「ベアトリーチェ」に導かれ、地獄、煉獄、天国を巡るという叙事詩。",
+      "source_line": 3787,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "マキャベリズム",
+      "answer": "政治目的のためなら権謀術数も許されるとする思想です。",
+      "source_excerpt": "　イタリア地域の利権を求め争うドイツやフランスに対抗するためには、イタリアが国として統一し、強力な権力者（君主）のもとに団結すべきと説いた。\n　彼が本書で唱えた「いかなる権謀術数であっても、政治目的のためなら許される」という思想は、現在は「マキャベリズム」と呼ばれている。",
+      "source_line": 3796,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ピサ大聖堂",
+      "answer": "ロマネスク様式の代表的な建築です。",
+      "source_excerpt": "〇「ロマネスク様式」（11C～13C）\n木造から石造となり、①半円形アーチを用いた天井や②厚い壁、③小さい窓が特徴です。\n▽代表的建築\n「ピサ大聖堂」・「クリュニー修道院」・「ウォルムス大聖堂」・「シュパイエル大聖堂」\n「マインツ大聖堂」・「ヴェズレー大聖堂」",
+      "source_line": 3749,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    }
+  ],
+  "files": [
+    "inbox/history_20261118_extra1_01_290.jsonl"
+  ]
+}
