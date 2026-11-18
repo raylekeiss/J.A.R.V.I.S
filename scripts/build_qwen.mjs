@@ -1,0 +1,11 @@
+import {mkdir,copyFile,writeFile,readFile} from 'node:fs/promises';
+const out='docs/qwen';await mkdir(out,{recursive:true});
+await copyFile('client/qwen/app.mjs',`${out}/app.js`);
+await copyFile('client/qwen/config.mjs',`${out}/config.mjs`);
+const worker=(await readFile('client/qwen/worker.mjs','utf8')).replace("from '@huggingface/transformers'", "from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2/+esm'");
+await writeFile(`${out}/worker.js`,worker);
+const licenses=[['Transformers.js','node_modules/@huggingface/transformers/LICENSE'],['Hugging Face Jinja','node_modules/@huggingface/jinja/LICENSE'],['Hugging Face Tokenizers','node_modules/@huggingface/tokenizers/LICENSE'],['ONNX Runtime','client/qwen/licenses/ONNXRuntime-MIT.txt']];
+let text='Runtime dependencies are loaded from jsDelivr. Model files are loaded from Hugging Face.\n\n';
+for(const [name,path] of licenses)text+=`\n=== ${name} ===\n`+await readFile(path,'utf8');
+await writeFile(`${out}/THIRD_PARTY_LICENSES.txt`,text);
+console.log('Built Qwen trial. No inference service or API key is used.');

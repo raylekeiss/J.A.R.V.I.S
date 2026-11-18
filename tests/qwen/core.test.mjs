@@ -1,0 +1,6 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {MODEL,messagesFor,visibleAnswer,errorMessage} from '../../client/qwen/config.mjs';
+test('model is pinned to immutable source and stays below one GB',()=>{assert.match(MODEL.revision,/^[a-f0-9]{40}$/);assert.ok(MODEL.downloadBytes<1e9);assert.equal(MODEL.use_external_data_format,false);});
+test('conversation preserves latest three turns without mutating history',()=>{const h=Array.from({length:10},(_,i)=>({role:i%2?'assistant':'user',content:String(i)}));const m=messagesFor(h,'次は？');assert.equal(m[0].role,'system');assert.deepEqual(m.slice(1,-1),h.slice(-6));assert.equal(m.at(-1).content,'次は？');assert.equal(h.length,10);});
+test('thoughts and incomplete control tokens are never shown',()=>{assert.equal(visibleAnswer('<think>hidden'),'');assert.equal(visibleAnswer('<think>hidden</think>\n説明です。<|im_end|>'),'説明です。');assert.equal(visibleAnswer('説明<thi'),'説明');});
+test('load failures are actionable rather than fake answers',()=>{assert.match(errorMessage(new Error('out of memory')),/メモリ/);assert.match(errorMessage(new Error('Failed to fetch')),/通信/);assert.match(errorMessage(new Error('unsupported kernel')),/旧版/);});

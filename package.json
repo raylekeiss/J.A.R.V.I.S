@@ -1,0 +1,27 @@
+{
+  "name": "j.a.r.v.i.s",
+  "version": "1.0.0",
+  "description": "J.A.R.V.I.S browser Qwen trial and legacy NumPy model",
+  "scripts": {
+    "build:qwen": "node scripts/build_qwen.mjs",
+    "test:qwen": "node --test tests/qwen/*.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raylekeiss/J.A.R.V.I.S.git"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/raylekeiss/J.A.R.V.I.S/issues"
+  },
+  "homepage": "https://github.com/raylekeiss/J.A.R.V.I.S#readme",
+  "devDependencies": {
+    "jsdom": "26.1.0"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "4.3.2"
+  },
+  "private": true
+}
