@@ -40,6 +40,15 @@ def wording_rehearsal(base, cases, incoming=()):
     return validate(rows, heldout=heldout, strict=False)
 
 
+def conversation_rehearsal(root, base):
+    """Use archived training membership, but always replay the latest answers."""
+    questions = set()
+    for path in sorted((Path(root) / 'added').glob('*.jsonl')):
+        if 'daily_conversation' in path.name or '日常会話' in path.name:
+            questions.update(normalized(r['user']) for r in read_rows(path))
+    return [r for r in base if normalized(r['user']) in questions]
+
+
 def promote(root, temp, files):
     names = ['model.npz', 'dialogues.jsonl', 'docs/model.json', 'docs/model.bin']
     if (temp / 'data/applied_corrections.json').exists():
@@ -119,6 +128,7 @@ def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
         return False
     combined = merge(base, new)
     rehearsal = wording_rehearsal(base, cases, new)
+    conversations = conversation_rehearsal(root, combined)
     training_rows = merge(combined, rehearsal)
     validate(training_rows, heldout=heldout, strict=False)
     validate(combined, heldout=heldout, strict=False)
@@ -144,9 +154,9 @@ def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
     candidate.extend_vocab(f'U:{r["user"]}\nA:{r["assistant"]}\n' for r in training_rows)
     teacher = copy.deepcopy(candidate) if mode == 'incremental' else None
     pairs = [(r['user'], r['assistant']) for r in combined]
-    replay = pairs + [(r['user'], r['assistant']) for r in new] * 3 + [(r['user'], r['assistant']) for r in rehearsal]
+    replay = pairs + [(r['user'], r['assistant']) for r in new] * 3 + [(r['user'], r['assistant']) for r in rehearsal] + [(r['user'], r['assistant']) for r in conversations] * 2
     candidate.train(replay, steps=steps, batch=batch, lr=lr, teacher=teacher,
-                    new_users={r['user'] for r in new + rehearsal})
+                    new_users={r['user'] for r in new + rehearsal + conversations})
     if not all(np.isfinite(p).all() for p in candidate.p.values()):
         raise ValueError('Non-finite candidate weights; published model remains untouched')
     after = evaluate(candidate, eval_cases)
@@ -156,6 +166,7 @@ def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
               'retention_distillation': teacher is not None,
               'retention_weight': 3.0 if teacher is not None else 0.0,
               'rehearsal_pairs': len(rehearsal),
+              'conversation_replay_pairs': len(conversations),
               'new_pairs': len(new), 'merged_pairs': len(training_rows),
               'baseline_sha256': digest(model_path),
               'evaluation_sha256': digest(root / 'evaluation/cases.jsonl'),
