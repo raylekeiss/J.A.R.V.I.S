@@ -17,6 +17,8 @@ from scripts.quality import digest, evaluate, decide, merge, normalized, read_ro
 
 def promote(root, temp, files):
     names = ['model.npz', 'dialogues.jsonl', 'docs/model.json', 'docs/model.bin']
+    if (temp / 'data/applied_corrections.json').exists():
+        names.append('data/applied_corrections.json')
     stamp = time.strftime('%Y%m%d_%H%M%S')
     destinations = [(p, root / 'added' / f'{stamp}_{p.name}') for p in files]
     if len({dst for _, dst in destinations}) != len(destinations) or any(dst.exists() for _, dst in destinations):
@@ -64,7 +66,16 @@ def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
             target.relative_to(root.resolve())  # Keep committed inputs inside this repository.
             files.extend(sorted(target.glob('*.jsonl')) if target.is_dir() else [target])
         files = sorted(set(files))
-    corrections = sorted((root / 'data/corrections').glob('*.jsonl'))
+    all_corrections = sorted((root / 'data/corrections').glob('*.jsonl'))
+    ledger_path = root / 'data/applied_corrections.json'
+    applied = json.loads(ledger_path.read_text()) if ledger_path.exists() else {}
+    # Compatibility with the first accepted run, before this ledger existed.
+    previous_report = report_dir / 'latest.json'
+    if not applied and previous_report.exists():
+        previous = json.loads(previous_report.read_text())
+        if previous.get('accepted'):
+            applied.update({p: sha for p, sha in previous.get('inputs', {}).items() if p.startswith('data/corrections/')})
+    corrections = [p for p in all_corrections if applied.get(str(p.relative_to(root))) != digest(p)]
     new = []
     existing = {normalized(r['user']): r for r in base}
     for p in corrections + files:
@@ -123,6 +134,8 @@ def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
         candidate.save(temp / 'model.npz')
         candidate.export_web(temp / 'docs')
         write_rows(temp / 'dialogues.jsonl', combined)
+        applied.update({str(p.relative_to(root)): digest(p) for p in corrections})
+        write_json(temp / 'data/applied_corrections.json', applied)
         report['candidate_sha256'] = digest(temp / 'model.npz')
         if decision['accepted']:
             promote(root, temp, files)

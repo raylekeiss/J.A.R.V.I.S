@@ -170,3 +170,19 @@ class PagesTests(unittest.TestCase):
         with patch('scripts.publish_pages.api', side_effect=[site, {}, {'status': 'built', 'commit': 'other-sha'}]):
             with self.assertRaises(TimeoutError):
                 publish_legacy('owner/repo', 'new-sha', tries=1, pause=lambda _: None)
+
+class CorrectionLedgerTests(unittest.TestCase):
+    def test_applied_correction_does_not_overwrite_later_answer(self):
+        from scripts.quality import digest
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            for p in ['evaluation', 'inbox', 'data/corrections']:
+                (root / p).mkdir(parents=True)
+            (root / 'evaluation/cases.jsonl').write_text('')
+            current = [{'user': '質問', 'assistant': '後から訂正した最新の回答です。'}]
+            write_rows(root / 'dialogues.jsonl', current)
+            correction = root / 'data/corrections/old.jsonl'
+            write_rows(correction, [{'user': '質問', 'assistant': '古い訂正の回答です。'}])
+            write_json(root / 'data/applied_corrections.json', {'data/corrections/old.jsonl': digest(correction)})
+            self.assertFalse(run(root, steps=1, batch=1))
+            self.assertEqual(read_rows(root / 'dialogues.jsonl'), current)
