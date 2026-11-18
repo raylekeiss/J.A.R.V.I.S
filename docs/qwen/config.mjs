@@ -11,6 +11,10 @@ export const SYSTEM_PROMPT = 'You are JARVIS, a helpful world-history tutor. Alw
 export const MAX_INPUT_TOKENS = 640;
 export const MAX_NEW_TOKENS = 160;
 export const MAX_USER_CHARACTERS = 400;
+export const LOAD_STALL_TIMEOUT_MS = 120_000;
+export const INITIALIZE_TIMEOUT_MS = 90_000;
+// This graph is already optimized. Re-optimizing it raises peak startup memory.
+export const SESSION_OPTIONS = Object.freeze({graphOptimizationLevel:'disabled', enableCpuMemArena:false, enableMemPattern:false});
 export function visibleAnswer(raw) {
   return raw.replace(/<think>[\s\S]*?<\/think>/g, '')
     .replace(/<think>[\s\S]*$/g, '').replace(/<\|[^>]*\|>/g, '')
@@ -22,7 +26,7 @@ export function messagesFor(history, question) {
 }
 export function errorMessage(error) {
   const detail = String(error?.message || error);
-  if (/memory|allocation|out of bounds/i.test(detail)) return '端末のメモリが足りず処理を続けられませんでした。他のタブを閉じて、もう一度お試しください。';
+  if (/memory|allocation|out of bounds/i.test(detail)) return '端末のメモリが足りず処理を続けられませんでした。約3.2MBの軽量版をご利用ください。';
   if (/fetch|network|download|HTTP|file.*not found/i.test(detail)) return 'モデルを取得できませんでした。通信状態を確認して、もう一度お試しください。';
-  return 'この端末ではモデルを実行できませんでした。「旧版を開く」から従来の版を利用できます。';
+  return 'この端末ではモデルを実行できませんでした。「軽量版を開く」から自作モデルを利用できます。';
 }

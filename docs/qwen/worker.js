@@ -1,5 +1,5 @@
 import {AutoTokenizer, AutoModelForCausalLM, TextStreamer, InterruptableStoppingCriteria, env} from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2/+esm';
-import {MODEL, MAX_INPUT_TOKENS, MAX_NEW_TOKENS, MAX_USER_CHARACTERS, visibleAnswer, messagesFor, errorMessage} from './config.mjs';
+import {MODEL, SESSION_OPTIONS, MAX_INPUT_TOKENS, MAX_NEW_TOKENS, MAX_USER_CHARACTERS, visibleAnswer, messagesFor, errorMessage} from './config.mjs?v=se2-startup-1';
 env.allowLocalModels = false;
 env.useBrowserCache = true;
 env.backends.onnx.wasm.numThreads = 1;
@@ -19,11 +19,14 @@ async function load(id) {
   try {
     const progress_callback = (event) => {
       if (event.status === 'progress') post('progress', id, {file:event.file, loaded:event.loaded || 0, total:event.total || 0});
+      if (event.status === 'done' && /\.onnx$/.test(event.file || '')) post('phase', id, {phase:'initialize'});
     };
+    post('phase', id, {phase:'tokenizer'});
     tokenizer = await AutoTokenizer.from_pretrained(MODEL.id, {revision:MODEL.revision, progress_callback});
+    post('phase', id, {phase:'model'});
     model = await AutoModelForCausalLM.from_pretrained(MODEL.id, {
       revision:MODEL.revision, subfolder:MODEL.subfolder, dtype:MODEL.dtype,
-      use_external_data_format:false, device:'wasm', progress_callback,
+      use_external_data_format:false, device:'wasm', progress_callback, session_options:{...SESSION_OPTIONS},
     });
     post('ready', id);
   } catch (error) {

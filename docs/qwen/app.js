@@ -1,8 +1,30 @@
-import {MODEL, MAX_USER_CHARACTERS} from './config.mjs';
+import {MODEL, MAX_USER_CHARACTERS, LOAD_STALL_TIMEOUT_MS, INITIALIZE_TIMEOUT_MS} from './config.mjs?v=se2-startup-1';
 const $ = id => document.getElementById(id);
 const load = $('load'), send = $('send'), stop = $('stop'), clear = $('clear'), input = $('msg'), status = $('status'), progress = $('progress'), log = $('log');
 let worker, ready=false, busy=false, sequence=0, pending=null;
 let history=[];
+let loadTimer;
+const clock=document.defaultView;
+function clearLoadTimer() { clock.clearTimeout(loadTimer);loadTimer=undefined; }
+function loadFailed(message) {
+  clearLoadTimer();worker?.terminate();worker=null;sequence++;ready=false;busy=false;
+  progress.hidden=true;load.textContent='もう一度読み込む';status.textContent=message;controls();
+}
+function armLoadTimer(initializing=false) {
+  clearLoadTimer();
+  const activeWorker=worker, id=sequence;
+  loadTimer=clock.setTimeout(()=>{
+    if(worker!==activeWorker || sequence!==id || ready || !busy) return;
+    loadFailed(initializing
+      ? 'モデルの起動完了を90秒間確認できなかったため、読み込みを中止しました。この端末での実行を確認できていません。軽量版をご利用ください。'
+      : '取得の進行を2分間確認できなかったため、読み込みを中止しました。通信状態を確認するか、軽量版をご利用ください。');
+  },initializing?INITIALIZE_TIMEOUT_MS:LOAD_STALL_TIMEOUT_MS);
+}
+function initializing() {
+  progress.hidden=true;
+  status.textContent='モデルの取得は完了しました。起動しています。起動完了まで質問は送れません。';
+  armLoadTimer(true);
+}
 function add(role, text) {
   const row=document.createElement('div'); row.className='row '+role;
   if (role==='ai') { const avatar=document.createElement('span');avatar.className='avatar';avatar.textContent='J';row.append(avatar); }
@@ -14,15 +36,27 @@ function controls() {
 }
 function initWorker() {
   if (worker) worker.terminate();
-  worker=new Worker(new URL('./worker.js?v=cpu-full-2', import.meta.url),{type:'module'});
+  worker=new Worker(new URL('./worker.js?v=se2-startup-1', import.meta.url),{type:'module'});
   const activeWorker=worker;
   worker.addEventListener('message', ({data}) => {
     if (worker!==activeWorker || data.id !== sequence) return;
-    if (data.type==='progress') {
-      const percent=data.total ? Math.min(100,Math.round(data.loaded/data.total*100)) : 0;
+    if (data.type==='phase') {
+      if(data.phase==='initialize') initializing();
+      else {
+        progress.hidden=false;progress.removeAttribute('value');
+        status.textContent=data.phase==='tokenizer'?'会話に必要なデータを準備しています。':'モデルを取得しています。取得後に起動処理があります。';
+        armLoadTimer();
+      }
+    } else if (data.type==='progress') {
+      const percent=data.total ? Math.min(100,Math.floor(data.loaded/data.total*100)) : 0;
+      const modelFile=/\.onnx$/.test(data.file || '');
+      if(modelFile && percent===100) {initializing();return;}
       progress.hidden=false;progress.value=percent;
-      status.textContent=percent ? `モデルを準備しています… ${percent}%` : 'モデルを準備しています…';
+      const label=modelFile?'モデルを取得しています':'準備用データを取得しています';
+      status.textContent=percent ? `${label}… ${percent}%（起動は未完了）` : `${label}…`;
+      armLoadTimer();
     } else if (data.type==='ready') {
+      clearLoadTimer();
       ready=true;busy=false;progress.hidden=true;status.textContent='準備できました。端末内で回答を生成します。';load.textContent='読み込み済み';controls();input.focus();
     } else if (data.type==='token' && pending) {
       pending.bubble.textContent=data.text || '考えています…';log.scrollTop=log.scrollHeight;
@@ -31,22 +65,26 @@ function initWorker() {
       if (data.text && !data.cancelled) history.push({role:'user',content:pending.question},{role:'assistant',content:data.text});
       history=history.slice(-6); pending=null;busy=false;status.textContent=data.cancelled ? '生成を停止しました。' : '端末内で生成しました。';controls();input.focus();
     } else if (data.type==='error') {
+      clearLoadTimer();
+      if(data.stage==='load') {console.error('Qwen runtime:',data.detail);loadFailed(data.message);return;}
       if (pending) {pending.bubble.textContent=data.message;input.value=pending.question;}
       pending=null;busy=false;progress.hidden=true;status.textContent=data.message;
-      if (data.stage==='load') { ready=false;load.textContent='もう一度読み込む'; }
       console.error('Qwen runtime:',data.detail);controls();
     }
   });
   worker.addEventListener('error', () => {
     if(worker!==activeWorker)return;
+    clearLoadTimer();worker.terminate();worker=null;sequence++;
     if(pending){pending.bubble.textContent='処理が停止しました。モデルを読み込み直してください。';input.value=pending.question;}
-    ready=false;busy=false;pending=null;progress.hidden=true;load.textContent='もう一度読み込む';status.textContent='モデルの処理が停止しました。端末の空きメモリや通信を確認して再度お試しください。';controls();
+    ready=false;busy=false;pending=null;progress.hidden=true;load.textContent='もう一度読み込む';status.textContent='モデルの処理が停止しました。この端末での実行を確認できていません。軽量版をご利用ください。';controls();
   });
 }
 load.addEventListener('click', () => {
   if (busy || ready) return;
-  if (typeof Worker==='undefined' || typeof WebAssembly==='undefined') { status.textContent='このブラウザでは実行できません。「旧版を開く」をお試しください。';return; }
-  sequence++;busy=true;controls();status.textContent='モデルを読み込んでいます。初回は時間がかかります。';progress.hidden=false;progress.removeAttribute('value');initWorker();worker.postMessage({type:'load',id:sequence});
+  if (typeof Worker==='undefined' || typeof WebAssembly==='undefined') { status.textContent='このブラウザでは実行できません。「軽量版を開く」をお試しください。';return; }
+  sequence++;busy=true;controls();status.textContent='モデルを読み込んでいます。取得後に起動処理があります。';progress.hidden=false;progress.removeAttribute('value');
+  try {initWorker();armLoadTimer();worker.postMessage({type:'load',id:sequence});}
+  catch {loadFailed('モデルの処理を開始できませんでした。軽量版をご利用ください。');}
 });
 $('form').addEventListener('submit', event => {
   event.preventDefault();const question=input.value.trim();if (!ready || busy || !question) return;
@@ -54,6 +92,7 @@ $('form').addEventListener('submit', event => {
   sequence++;add('me',question);input.value='';pending={question,bubble:add('ai','考えています…')};busy=true;controls();status.textContent='回答を生成しています…';worker.postMessage({type:'generate',id:sequence,question,history});
 });
 stop.addEventListener('click',()=>{
+  clearLoadTimer();
   // Synchronous WASM may starve worker messages, so terminate instead of waiting for a stop message.
   const wasReady=ready;
   worker.terminate();worker=null;sequence++;ready=false;busy=false;
