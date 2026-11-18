@@ -1,0 +1,57 @@
+# add.jsonl がアップロードされたら、自動で追加学習して model.npz を更新する
+name: 追加学習
+
+on:
+  push:
+    paths:
+      - "add.jsonl"
+  workflow_dispatch:        # Actions画面の「Run workflow」ボタンからも手動で動かせる
+    inputs:
+      retrain:
+        description: "dialogues.jsonl で最初から学習し直す"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write           # 学習結果をリポジトリに保存するため
+
+concurrency:
+  group: training           # 同時に2つ学習しない
+  cancel-in-progress: false
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: NumPyを入れる
+        run: pip install numpy
+
+      - name: 学習する
+        run: |
+          if [ "${{ inputs.retrain }}" = "true" ] || [ ! -f model.npz ]; then
+            echo "最初から学習します"
+            python chat_server.py --retrain --train-only
+          fi
+          if [ -f add.jsonl ]; then
+            echo "add.jsonl を追加学習します"
+            python chat_server.py --add add.jsonl --train-only
+          fi
+
+      - name: 学習結果を保存する
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898281+github-actions[bot]@users.noreply.github.com"
+          git add -A model.npz dialogues.jsonl added add.jsonl 2>/dev/null || git add -A
+          if git diff --cached --quiet; then
+            echo "変更なし"
+          else
+            git commit -m "自動学習: model.npz を更新"
+            git push
+          fi
