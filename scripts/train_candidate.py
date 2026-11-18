@@ -42,8 +42,11 @@ def promote(root, temp, files):
         raise
 
 
-def run(root, steps=1500, mode='incremental', batch=24, targets=None):
+def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
     root = Path(root)
+    lr = lr if lr is not None else (3e-4 if mode == 'incremental' else 3e-3)
+    if not 1 <= steps <= 16000 or not 1 <= batch <= 24 or not 1e-6 <= lr <= 3e-3:
+        raise ValueError('invalid training steps, batch or learning rate')
     report_dir = root / 'reports'
     report_dir.mkdir(exist_ok=True)
     # Separate immutable evaluation references from data being merged.
@@ -102,13 +105,13 @@ def run(root, steps=1500, mode='incremental', batch=24, targets=None):
     candidate.extend_vocab(f'U:{r["user"]}\nA:{r["assistant"]}\n' for r in combined)
     pairs = [(r['user'], r['assistant']) for r in combined]
     replay = pairs + [(r['user'], r['assistant']) for r in new] * 3
-    candidate.train(replay, steps=steps, batch=batch, lr=1e-3 if mode == 'incremental' else 3e-3)
+    candidate.train(replay, steps=steps, batch=batch, lr=lr)
     if not all(np.isfinite(p).all() for p in candidate.p.values()):
         raise ValueError('Non-finite candidate weights; published model remains untouched')
     after = evaluate(candidate, eval_cases)
     decision = decide(before, after)
     report = {**decision, 'status': 'evaluated', 'mode': mode, 'steps': steps,
-              'elapsed_seconds': round(time.monotonic() - started, 2),
+              'learning_rate': lr, 'elapsed_seconds': round(time.monotonic() - started, 2),
               'new_pairs': len(new), 'merged_pairs': len(combined),
               'baseline_sha256': digest(model_path),
               'evaluation_sha256': digest(root / 'evaluation/cases.jsonl'),
@@ -141,7 +144,8 @@ if __name__ == '__main__':
     p.add_argument('--steps', type=int, default=1500)
     p.add_argument('--mode', choices=['incremental', 'retrain'], default='incremental')
     p.add_argument('--batch', type=int, default=24)
+    p.add_argument('--lr', type=float)
     a = p.parse_args()
     if not 1 <= a.steps <= 16000 or not 1 <= a.batch <= 24:
         p.error('steps must be 1..16000, batch 1..24')
-    run(a.root, a.steps, a.mode, a.batch)
+    run(a.root, a.steps, a.mode, a.batch, lr=a.lr)

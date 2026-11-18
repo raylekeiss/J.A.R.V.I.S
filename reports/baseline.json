@@ -4,14 +4,14 @@
       "count": 12,
       "exact": 0.8333333333333334,
       "digits_correct": 1.0,
-      "format_ok": 0.08333333333333333,
+      "format_ok": 1.0,
       "similarity": 0.9758904569892474
     },
     "dates_retention": {
       "count": 8,
       "exact": 1.0,
       "digits_correct": 1.0,
-      "format_ok": 0.125,
+      "format_ok": 1.0,
       "similarity": 1.0
     },
     "history_retention": {
@@ -25,7 +25,7 @@
       "count": 12,
       "exact": 0.8333333333333334,
       "digits_correct": 1.0,
-      "format_ok": 0.9166666666666666,
+      "format_ok": 1.0,
       "similarity": 0.8684561965811967
     }
   },
@@ -247,7 +247,7 @@
       "actual": "780年です。夏と秋の徴税を基本としました。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -257,7 +257,7 @@
       "actual": "843年です。フランク王国の領土が分割されました。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -267,7 +267,7 @@
       "actual": "1004年です。北宋と遼が和約を結びました。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -277,7 +277,7 @@
       "actual": "1517年です。95か条の論題の発表が目印です。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -287,7 +287,7 @@
       "actual": "1701年です。スペイン王位の継承をめぐる戦争ですね。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -297,7 +297,7 @@
       "actual": "1830年です。ブルボン朝の復古王政が倒れました。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -307,7 +307,7 @@
       "actual": "1905年です。スウェーデンとの同君連合から独立しました。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -317,7 +317,7 @@
       "actual": "おはようございます。今日も無理のないペースでいきましょう。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -327,7 +327,7 @@
       "actual": "長い一日でしたね。ここからは穏やかに過ごせますように。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -337,7 +337,7 @@
       "actual": "これでひと安心ですね。あとはゆっくり過ごしてください。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -347,7 +347,7 @@
       "actual": "慌てなくて大丈夫。熱ければ触れず、まず周りを片づけましょう。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -357,7 +357,7 @@
       "actual": "これで準備はできましたね。慌てず買い物に行けそうです。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -377,7 +377,7 @@
       "actual": "おつかれさまです。覚えたことを確かめる時間も、大事な勉強ですよ。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -387,7 +387,7 @@
       "actual": "手伝えることを一つ申し出てみるかも始めになるかにしれましょう。",
       "exact": false,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 0.7419354838709677
     },
     {
@@ -397,7 +397,7 @@
       "actual": "楽しい時間ですね。区切りを決めながら、ゆっくり楽しんでください。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -407,7 +407,7 @@
       "actual": "新しいものに触れる時間ですね。印象に残る展示との出会いはうれしいです。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -417,7 +417,7 @@
       "actual": "今からできる小さな作業を一つ決めましょう。立て直すのはそこからです。",
       "exact": true,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 1.0
     },
     {
@@ -427,7 +427,7 @@
       "actual": "それはよかったです。今日はそのまま、ご自分に優しくしください。",
       "exact": false,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 0.96875
     },
     {
@@ -467,7 +467,7 @@
       "actual": "大丈夫。正しい内容を送ってね。",
       "exact": false,
       "digits_correct": true,
-      "format_ok": false,
+      "format_ok": true,
       "similarity": 0.0625
     },
     {
