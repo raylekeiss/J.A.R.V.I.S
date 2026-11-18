@@ -1,62 +1,116 @@
-# inbox フォルダ（または add.jsonl）に会話データがアップロードされたら、自動で学習して model.npz を更新する
-name: 追加学習
+name: 評価付き追加学習
 
 on:
   push:
+    branches: [main]
     paths:
-      - "add.jsonl"
-      - "inbox/**"
-  workflow_dispatch:        # Actions画面の「Run workflow」ボタンからも手動で動かせる
+      - 'add.jsonl'
+      - 'inbox/**'
+      - 'data/corrections/**'
+  workflow_dispatch:
     inputs:
-      retrain:
-        description: "dialogues.jsonl で最初から学習し直す"
-        type: boolean
-        default: false
+      mode:
+        description: '通常はincremental、全件再学習だけretrain'
+        type: choice
+        options: [incremental, retrain]
+        default: incremental
+      steps:
+        description: '学習ステップ数（1〜16000）'
+        default: '1500'
+        type: string
+  schedule:
+    # 月曜朝（日本時間）。ChatGPTによる教材生成とは別の、待機データの処理です。
+    - cron: '0 1 * * 1'
 
 permissions:
-  contents: write           # 学習結果をリポジトリに保存するため
+  contents: read
 
 concurrency:
-  group: training           # 同時に2つ学習しない
+  group: training-and-pages
   cancel-in-progress: false
+
+env:
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
 
 jobs:
   train:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 90
+    permissions:
+      contents: write
+    outputs:
+      accepted: ${{ steps.result.outputs.accepted }}
     steps:
+      # Queue runs always start from the latest main, not an obsolete inbox snapshot.
       - uses: actions/checkout@v4
-
+        with:
+          ref: main
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-
-      - name: NumPyを入れる
-        run: pip install numpy
-
-      - name: 学習する
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: テスト
+        run: python -m unittest discover -s tests -v
+      - name: 候補モデルの学習と比較
+        env:
+          TRAIN_MODE: ${{ inputs.mode || 'incremental' }}
+          TRAIN_STEPS: ${{ inputs.steps || '1500' }}
+        run: python -m scripts.train_candidate --mode "$TRAIN_MODE" --steps "$TRAIN_STEPS"
+      - name: 判定結果
+        id: result
         run: |
-          if [ "${{ inputs.retrain }}" = "true" ] || [ ! -f model.npz ]; then
-            echo "最初から学習します"
-            python chat_server.py --retrain --train-only
-          fi
-          if [ -f add.jsonl ]; then
-            echo "add.jsonl を学習します"
-            python chat_server.py --add add.jsonl --train-only
-          fi
-          if ls inbox/*.jsonl >/dev/null 2>&1; then
-            echo "inbox の会話データを学習します"
-            python chat_server.py --add inbox --train-only
-          fi
-
-      - name: 学習結果を保存する
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          report = json.loads(Path('reports/latest.json').read_text())
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write('accepted=' + str(report['accepted']).lower() + '\n')
+          summary = Path('reports/latest.md')
+          if summary.exists():
+              with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as f:
+                  f.write(summary.read_text())
+          PY
+      - name: 評価結果と前モデルを保存
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: training-report-${{ github.run_id }}
+          path: reports/
+          retention-days: 14
+      - name: 合格したデータとモデルをまとめて保存
+        if: steps.result.outputs.accepted == 'true'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898281+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "変更なし"
-          else
-            git commit -m "自動学習: model.npz を更新"
-            git push
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898281+github-actions[bot]@users.noreply.github.com'
+          git add dialogues.jsonl model.npz docs/model.json docs/model.bin inbox added
+          git add reports/latest.json reports/latest.md reports/input_topics.json
+          if [ -e add.jsonl ] || git ls-files --error-unmatch add.jsonl >/dev/null 2>&1; then
+            git add -A -- add.jsonl
           fi
+          git diff --cached --quiet && exit 0
+          git commit -m '学習・評価合格: データとモデルを更新'
+          # Concurrent remote edits cause a failure, not an overwrite or deployment.
+          git push origin HEAD:main
+      - name: Pages用ファイルを保存
+        if: steps.result.outputs.accepted == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+
+  deploy:
+    needs: train
+    if: needs.train.outputs.accepted == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 合格モデルを公開
+        id: deployment
+        uses: actions/deploy-pages@v4

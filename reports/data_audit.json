@@ -1,0 +1,9 @@
+{
+  "rows": 9769,
+  "normalized_questions": 9769,
+  "followup_rows": 268,
+  "replacement_answers": 28,
+  "evaluation_cases": 52,
+  "source_catalog": 870,
+  "notes": "Catalog line matches are locators, not evidence that facts have been independently checked."
+}
