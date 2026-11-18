@@ -4,7 +4,12 @@ env.allowLocalModels = false;
 env.useBrowserCache = true;
 env.backends.onnx.wasm.numThreads = 1;
 env.backends.onnx.wasm.proxy = false;
-env.backends.onnx.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.31.0-dev.20260914-8d85527a0/dist/';
+// The full CPU WASM build includes GatherBlockQuantized; the default JSEP build does not.
+const wasmBase = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.31.0-dev.20260914-8d85527a0/dist/';
+env.backends.onnx.wasm.wasmPaths = {
+  mjs: wasmBase + 'ort-wasm-simd-threaded.mjs',
+  wasm: wasmBase + 'ort-wasm-simd-threaded.wasm',
+};
 let tokenizer, model, busy = false;
 const stopping = new InterruptableStoppingCriteria();
 function post(type, id, extra={}) { self.postMessage({type, id, ...extra}); }
