@@ -203,6 +203,8 @@ class TinyTransformer:
             teacher_rows = np.array([not is_new for _, _, is_new in chosen])
             teacher_probs = None
             if teacher is not None and teacher_rows.any():
+                # Give preservation more weight while keeping new rows supervised.
+                w[teacher_rows] *= 3.0
                 teacher_logits, _ = teacher.forward(x[teacher_rows])
                 teacher_probs = softmax(teacher_logits)
             loss, g = self.loss_and_grads(x, y, w, teacher_probs, teacher_rows)

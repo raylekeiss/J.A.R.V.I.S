@@ -127,6 +127,7 @@ def run(root, steps=1500, mode='incremental', batch=24, targets=None, lr=None):
     report = {**decision, 'status': 'evaluated', 'mode': mode, 'steps': steps,
               'learning_rate': lr, 'elapsed_seconds': round(time.monotonic() - started, 2),
               'retention_distillation': teacher is not None,
+              'retention_weight': 3.0 if teacher is not None else 0.0,
               'new_pairs': len(new), 'merged_pairs': len(combined),
               'baseline_sha256': digest(model_path),
               'evaluation_sha256': digest(root / 'evaluation/cases.jsonl'),
