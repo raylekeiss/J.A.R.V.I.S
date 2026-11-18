@@ -138,9 +138,8 @@ class TinyTransformer:
                 raise ValueError('teacher probability shape mismatch')
             # On existing training rows, retain the teacher's full distribution.
             # New/corrected rows always keep the original supervised objective.
-            token_loss[rows] = .1 * token_loss[rows] - .9 * (teacher_probs * np.log(probs[rows] + 1e-12)).sum(-1)
-            dlog[rows] = probs[rows] - .9 * teacher_probs
-            dlog[rows[:, None], np.arange(T)[None, :], y[rows]] -= .1
+            token_loss[rows] = -(teacher_probs * np.log(probs[rows] + 1e-12)).sum(-1)
+            dlog[rows] = probs[rows] - teacher_probs
         loss = (token_loss * weight).sum() / n
         dlog *= (weight / n)[..., None]
         g["Wout"] = hL.reshape(-1, self.D).T @ dlog.reshape(-1, V)

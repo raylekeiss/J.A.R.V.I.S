@@ -6,7 +6,7 @@ from tiny_model import build_from_pairs, softmax
 
 
 class DistillationTests(unittest.TestCase):
-    def test_identical_teacher_scales_supervised_gradient_on_old_rows(self):
+    def test_identical_teacher_has_zero_gradient_on_old_rows(self):
         model = build_from_pairs([('質問', '回答です。')], d_model=4, n_layers=1)
         x = np.array([[0, 1, 2]])
         y = np.array([[1, 2, 3]])
@@ -15,7 +15,7 @@ class DistillationTests(unittest.TestCase):
         probabilities = softmax(model.forward(x)[0])
         _, retained = model.loss_and_grads(x, y, weights, probabilities, [True])
         for name in plain:
-            np.testing.assert_allclose(retained[name], .1 * plain[name], atol=1e-12)
+            np.testing.assert_allclose(retained[name], 0, atol=1e-12)
 
     def test_mixed_objective_gradient_matches_finite_difference(self):
         model = build_from_pairs([('質問', '回答です。')], d_model=4, n_layers=1)

@@ -31,4 +31,4 @@ python -m unittest discover -s tests -v
 python -m scripts.evaluate
 ```
 
-固定52問と新規例の確認問題で比較します。未知の知識への一般化や、歴史的正確性を全面的に保証するテストではありません。
+evaluation/cases.jsonlの固定評価と新規例の確認問題で比較します。未知の知識への一般化や、歴史的正確性を全面的に保証するテストではありません。
