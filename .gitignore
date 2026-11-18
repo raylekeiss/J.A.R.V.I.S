@@ -1,2 +1,4 @@
 __pycache__/
 *.log
+.candidate-*/
+reports/previous_model.npz

@@ -54,7 +54,6 @@ class Handler(BaseHTTPRequestHandler):
 
 
 DEFAULT_DIM = 128
-BIG_BATCH = 300        # 一度にこれ以上の会話が追加されたら、最初から学習し直す
 
 
 def auto_steps(n_pairs):
@@ -106,55 +105,15 @@ def save_all(model, args):
 
 
 def add_training(args):
-    import time
-    target = args.add
-    files = ([os.path.join(target, f) for f in sorted(os.listdir(target)) if f.endswith(".jsonl")]
-             if os.path.isdir(target) else [target])
-    if not files:
-        print(f"{target} に .jsonl ファイルがありません。")
-        sys.exit(1)
-
-    new_pairs, errors = [], []
-    for f in files:
-        p, e = read_pairs(f)
-        print(f"  {os.path.basename(f)}: {len(p)}組")
-        new_pairs += p
-        errors += e
-    if errors:
-        print(f"※ 読めなかった行が{len(errors)}か所ありました（飛ばして続けます）: " + "、".join(errors[:10]))
-    if not new_pairs:
-        print("追加できる会話がありませんでした。")
-        sys.exit(1)
-
-    old_pairs, _ = read_pairs(args.data) if os.path.exists(args.data) else ([], [])
-    all_pairs = merge(old_pairs, new_pairs)
-    write_pairs(args.data, all_pairs)
-    print(f"{os.path.basename(args.data)} は {len(all_pairs)}組になりました（新しく{len(new_pairs)}組）")
-
-    if not os.path.exists(args.model) or len(new_pairs) >= BIG_BATCH or args.retrain:
-        steps = args.steps or auto_steps(len(all_pairs))
-        print(f"量が多いので、全部の会話で最初から学習し直します（{steps}回）")
-        model = build_from_pairs(all_pairs, d_model=args.dim, n_layers=args.layers)
-        model.train(all_pairs, steps=steps)
-    else:
-        steps = args.steps or 1500
-        model = TinyTransformer.load(args.model)
-        added = model.extend_vocab(f"U:{u}\nA:{a}\n" for u, a in new_pairs)
-        if added:
-            print(f"初めて出てくる文字が{len(added)}個あったので、文字の一覧に追加します: {''.join(added)}")
-        print(f"これまでの会話に新しい{len(new_pairs)}組を多めに混ぜて追加学習します（{steps}回）")
-        model.train(all_pairs + new_pairs * 3, steps=steps, lr=2e-3)
-    save_all(model, args)
-
-    # 使い終わったファイルは added フォルダへ（同じ会話を二重に足さないため）
-    base = os.path.dirname(os.path.abspath(args.data))
-    done_dir = os.path.join(base, "added")
-    os.makedirs(done_dir, exist_ok=True)
-    stamp = time.strftime("%Y%m%d_%H%M%S")
-    for f in files:
-        os.replace(f, os.path.join(done_dir, f"{stamp}_{os.path.basename(f)}"))
-    print(f"保存しました: {args.model}（使ったファイルは added フォルダに移しました）")
-    return model
+    from pathlib import Path
+    from scripts.train_candidate import run
+    root = Path(HERE)
+    if Path(args.data).resolve() != root / 'dialogues.jsonl' or Path(args.model).resolve() != root / 'model.npz':
+        raise ValueError('評価付き追加学習では標準の dialogues.jsonl / model.npz を使用してください')
+    accepted = run(root, steps=args.steps or 1500,
+                   mode='retrain' if args.retrain else 'incremental', targets=[args.add])
+    print('評価に合格しモデルを更新しました。' if accepted else 'モデルは更新していません。reports/latest.json を確認してください。')
+    return TinyTransformer.load(args.model)
 
 
 def main():
@@ -176,7 +135,12 @@ def main():
 
     if args.add:
         MODEL = add_training(args)
-    elif os.path.exists(args.model) and not args.retrain:
+    elif os.path.exists(args.model) and args.retrain:
+        from pathlib import Path
+        from scripts.train_candidate import run
+        run(Path(HERE), steps=args.steps or auto_steps(len(read_pairs(args.data)[0])), mode='retrain', targets=[])
+        MODEL = TinyTransformer.load(args.model)
+    elif os.path.exists(args.model):
         print(f"モデルを読み込み中: {args.model}")
         MODEL = TinyTransformer.load(args.model)
         if not os.path.exists(os.path.join(HERE, "docs", "model.json")):

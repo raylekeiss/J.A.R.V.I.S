@@ -1,0 +1,21 @@
+name: 学習処理のテスト
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths: ['scripts/**', 'tests/**', 'tiny_model.py', 'chat_server.py', 'evaluation/**', 'requirements.txt', '.github/workflows/**']
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v

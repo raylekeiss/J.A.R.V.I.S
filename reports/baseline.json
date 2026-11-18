@@ -1,0 +1,554 @@
+{
+  "groups": {
+    "daily_retention": {
+      "count": 12,
+      "exact": 0.8333333333333334,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 0.9758904569892474
+    },
+    "dates_retention": {
+      "count": 8,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    },
+    "history_retention": {
+      "count": 20,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    },
+    "unseen_wording": {
+      "count": 12,
+      "exact": 0.8333333333333334,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 0.8684561965811967
+    }
+  },
+  "details": [
+    {
+      "user": "灌漑農業とは",
+      "assistant": "水路などを設けて耕地に水を引く農業です。",
+      "group": "history_retention",
+      "actual": "水路などを設けて耕地に水を引く農業です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "イスファハーンとは",
+      "assistant": "アッバース1世がサファヴィー朝の都とした都市です。",
+      "group": "history_retention",
+      "actual": "アッバース1世がサファヴィー朝の都とした都市です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "軍人皇帝時代とは",
+      "assistant": "各属州の軍がリーダーを擁立し皇帝が乱立した時代です。",
+      "group": "history_retention",
+      "actual": "各属州の軍がリーダーを擁立し皇帝が乱立した時代です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "ダンテとは",
+      "assistant": "神曲を著したイタリアの文学者です。",
+      "group": "history_retention",
+      "actual": "神曲を著したイタリアの文学者です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "マンジケルトの戦いとは",
+      "assistant": "セルジューク朝がビザンツ帝国を破った戦いです。",
+      "group": "history_retention",
+      "actual": "セルジューク朝がビザンツ帝国を破った戦いです。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "殷墟とは",
+      "assistant": "甲骨文字を刻んだ骨などが発見された殷の都の遺跡です。",
+      "group": "history_retention",
+      "actual": "甲骨文字を刻んだ骨などが発見された殷の都の遺跡です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "1815年の神聖同盟とは",
+      "assistant": "ロシアのアレクサンドル1世の提唱で成立した同盟です。",
+      "group": "history_retention",
+      "actual": "ロシアのアレクサンドル1世の提唱で成立した同盟です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "球戯場の誓いとは",
+      "assistant": "フランスの国民議会の議員が憲法制定まで解散しないと誓った出来事です。",
+      "group": "history_retention",
+      "actual": "フランスの国民議会の議員が憲法制定まで解散しないと誓った出来事です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "ラムセス2世とは",
+      "assistant": "ヒッタイトと戦いアブシンベル神殿を建てたエジプトの王です。",
+      "group": "history_retention",
+      "actual": "ヒッタイトと戦いアブシンベル神殿を建てたエジプトの王です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "訓詁学とは",
+      "assistant": "古典の文字や語句の意味を解釈する学問です。",
+      "group": "history_retention",
+      "actual": "古典の文字や語句の意味を解釈する学問です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "クローヴィスとは",
+      "assistant": "フランク王国のメロヴィング朝を開いた王です。",
+      "group": "history_retention",
+      "actual": "フランク王国のメロヴィング朝を開いた王です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "猛安謀克とは",
+      "assistant": "金が軍事と社会を組織するために用いた制度です。",
+      "group": "history_retention",
+      "actual": "金が軍事と社会を組織するために用いた制度です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "ミレーとは",
+      "assistant": "落穂ひろいで知られるフランスの画家です。",
+      "group": "history_retention",
+      "actual": "落穂ひろいで知られるフランスの画家です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "不殺生主義とは",
+      "assistant": "生き物を殺さないことを重視する考え方です。",
+      "group": "history_retention",
+      "actual": "生き物を殺さないことを重視する考え方です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "西域都護とは",
+      "assistant": "中国王朝の西域経営を担当した官職です。",
+      "group": "history_retention",
+      "actual": "中国王朝の西域経営を担当した官職です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "アンティゴノス朝とは",
+      "assistant": "大王の死後にマケドニアを支配した王朝です。",
+      "group": "history_retention",
+      "actual": "大王の死後にマケドニアを支配した王朝です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "東廠とは",
+      "assistant": "明で宦官が率いた特務機関です。",
+      "group": "history_retention",
+      "actual": "明で宦官が率いた特務機関です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "第一身分とは",
+      "assistant": "革命前のフランスの聖職者の身分です。",
+      "group": "history_retention",
+      "actual": "革命前のフランスの聖職者の身分です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "ウルバヌス2世とは",
+      "assistant": "クレルモン公会議で十字軍を呼びかけた教皇です。",
+      "group": "history_retention",
+      "actual": "クレルモン公会議で十字軍を呼びかけた教皇です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "ファンアイク兄弟とは",
+      "assistant": "フランドルで活躍した画家たちです。",
+      "group": "history_retention",
+      "actual": "フランドルで活躍した画家たちです。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "ヴァスコダガマは何年にどこに着いたの",
+      "assistant": "1498年にインド西岸のカリカットに到達した航海者です。",
+      "group": "dates_retention",
+      "actual": "1498年にインド西岸のカリカットに到達した航海者です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "唐の両税法の開始は何年のこと",
+      "assistant": "780年です。夏と秋の徴税を基本としました。",
+      "group": "dates_retention",
+      "actual": "780年です。夏と秋の徴税を基本としました。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "ヴェルダン条約の締結は何年のこと",
+      "assistant": "843年です。フランク王国の領土が分割されました。",
+      "group": "dates_retention",
+      "actual": "843年です。フランク王国の領土が分割されました。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "澶淵の盟の締結は何年のこと",
+      "assistant": "1004年です。北宋と遼が和約を結びました。",
+      "group": "dates_retention",
+      "actual": "1004年です。北宋と遼が和約を結びました。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "ルターの宗教改革の開始は何年のこと",
+      "assistant": "1517年です。95か条の論題の発表が目印です。",
+      "group": "dates_retention",
+      "actual": "1517年です。95か条の論題の発表が目印です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "スペイン継承戦争の開始は何年のこと",
+      "assistant": "1701年です。スペイン王位の継承をめぐる戦争ですね。",
+      "group": "dates_retention",
+      "actual": "1701年です。スペイン王位の継承をめぐる戦争ですね。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "フランス七月革命は何年のこと",
+      "assistant": "1830年です。ブルボン朝の復古王政が倒れました。",
+      "group": "dates_retention",
+      "actual": "1830年です。ブルボン朝の復古王政が倒れました。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "ノルウェーの独立は何年のこと",
+      "assistant": "1905年です。スウェーデンとの同君連合から独立しました。",
+      "group": "dates_retention",
+      "actual": "1905年です。スウェーデンとの同君連合から独立しました。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "おはようございます",
+      "assistant": "おはようございます。今日も無理のないペースでいきましょう。",
+      "group": "daily_retention",
+      "actual": "おはようございます。今日も無理のないペースでいきましょう。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "一日が長かった",
+      "assistant": "長い一日でしたね。ここからは穏やかに過ごせますように。",
+      "group": "daily_retention",
+      "actual": "長い一日でしたね。ここからは穏やかに過ごせますように。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "明日の準備が終わった",
+      "assistant": "これでひと安心ですね。あとはゆっくり過ごしてください。",
+      "group": "daily_retention",
+      "actual": "これでひと安心ですね。あとはゆっくり過ごしてください。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "お茶をこぼしちゃった",
+      "assistant": "慌てなくて大丈夫。熱ければ触れず、まず周りを片づけましょう。",
+      "group": "daily_retention",
+      "actual": "慌てなくて大丈夫。熱ければ触れず、まず周りを片づけましょう。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "買い物リストを作った",
+      "assistant": "これで準備はできましたね。慌てず買い物に行けそうです。",
+      "group": "daily_retention",
+      "actual": "これで準備はできましたね。慌てず買い物に行けそうです。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "少し外に出たい",
+      "assistant": "近所をひと回りするだけでも、気分を切り替えられそうです。",
+      "group": "daily_retention",
+      "actual": "近所をひと回りするだけでも、気分を切り替えられそうです。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "今日は復習をした",
+      "assistant": "おつかれさまです。覚えたことを確かめる時間も、大事な勉強ですよ。",
+      "group": "daily_retention",
+      "actual": "おつかれさまです。覚えたことを確かめる時間も、大事な勉強ですよ。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "家族が忙しそうだった",
+      "assistant": "手伝えることを一つ申し出てみると、支えになるかもしれませんね。",
+      "group": "daily_retention",
+      "actual": "手伝えることを一つ申し出てみるかも始めになるかにしれましょう。",
+      "exact": false,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 0.7419354838709677
+    },
+    {
+      "user": "ゲームをしている",
+      "assistant": "楽しい時間ですね。区切りを決めながら、ゆっくり楽しんでください。",
+      "group": "daily_retention",
+      "actual": "楽しい時間ですね。区切りを決めながら、ゆっくり楽しんでください。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "博物館に行った",
+      "assistant": "新しいものに触れる時間ですね。印象に残る展示との出会いはうれしいです。",
+      "group": "daily_retention",
+      "actual": "新しいものに触れる時間ですね。印象に残る展示との出会いはうれしいです。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "後回しにしてしまった",
+      "assistant": "今からできる小さな作業を一つ決めましょう。立て直すのはそこからです。",
+      "group": "daily_retention",
+      "actual": "今からできる小さな作業を一つ決めましょう。立て直すのはそこからです。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "少し気持ちが軽くなった",
+      "assistant": "それはよかったです。今日はそのまま、ご自分に優しくしてくださいね。",
+      "group": "daily_retention",
+      "actual": "それはよかったです。今日はそのまま、ご自分に優しくしください。",
+      "exact": false,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 0.96875
+    },
+    {
+      "user": "灌漑農業を短く教えてください",
+      "assistant": "水路などを設けて耕地に水を引く農業です。",
+      "group": "unseen_wording",
+      "actual": "水路などを設けて耕地に水を引く農業です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "イスファハーンを短く教えてください",
+      "assistant": "アッバース1世がサファヴィー朝の都とした都市です。",
+      "group": "unseen_wording",
+      "actual": "アッバース1世がサファヴィー朝の都とした都市です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "軍人皇帝時代を短く教えてください",
+      "assistant": "各属州の軍がリーダーを擁立し皇帝が乱立した時代です。",
+      "group": "unseen_wording",
+      "actual": "各属州の軍がリーダーを擁立し皇帝が乱立した時代です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "ダンテを短く教えてください",
+      "assistant": "神曲を著したイタリアの文学者です。",
+      "group": "unseen_wording",
+      "actual": "大丈夫。正しい内容を送ってね。",
+      "exact": false,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 0.0625
+    },
+    {
+      "user": "マンジケルトの戦いを短く教えてください",
+      "assistant": "セルジューク朝がビザンツ帝国を破った戦いです。",
+      "group": "unseen_wording",
+      "actual": "セルジューク朝がビザンツ帝国を破った戦いです。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "殷墟を短く教えてください",
+      "assistant": "甲骨文字を刻んだ骨などが発見された殷の都の遺跡です。",
+      "group": "unseen_wording",
+      "actual": "甲骨文字を刻んだ骨などが発見された殷の都の遺跡です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "1815年の神聖同盟を短く教えてください",
+      "assistant": "ロシアのアレクサンドル1世の提唱で成立した同盟です。",
+      "group": "unseen_wording",
+      "actual": "ロシアのアレクサンドル1世の提唱で成立した同盟です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "球戯場の誓いを短く教えてください",
+      "assistant": "フランスの国民議会の議員が憲法制定まで解散しないと誓った出来事です。",
+      "group": "unseen_wording",
+      "actual": "フランスの国民議会の議員が憲法制定まで解散しないと誓った出来事です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "ラムセス2世を短く教えてください",
+      "assistant": "ヒッタイトと戦いアブシンベル神殿を建てたエジプトの王です。",
+      "group": "unseen_wording",
+      "actual": "ヒッタイトと戦いアブシンベル神殿を建てたエジプトの王です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "訓詁学を短く教えてください",
+      "assistant": "古典の文字や語句の意味を解釈する学問です。",
+      "group": "unseen_wording",
+      "actual": "古典の文字や語句の意味を解釈する学問です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    },
+    {
+      "user": "クローヴィスを短く教えてください",
+      "assistant": "フランク王国のメロヴィング朝を開いた王です。",
+      "group": "unseen_wording",
+      "actual": "フランドゥー教の穏健な共和派です。",
+      "exact": false,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 0.358974358974359
+    },
+    {
+      "user": "猛安謀克を短く教えてください",
+      "assistant": "金が軍事と社会を組織するために用いた制度です。",
+      "group": "unseen_wording",
+      "actual": "金が軍事と社会を組織するために用いた制度です。",
+      "exact": true,
+      "digits_correct": true,
+      "format_ok": true,
+      "similarity": 1.0
+    }
+  ]
+}
