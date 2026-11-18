@@ -1,10 +1,11 @@
-# add.jsonl がアップロードされたら、自動で追加学習して model.npz を更新する
+# inbox フォルダ（または add.jsonl）に会話データがアップロードされたら、自動で学習して model.npz を更新する
 name: 追加学習
 
 on:
   push:
     paths:
       - "add.jsonl"
+      - "inbox/**"
   workflow_dispatch:        # Actions画面の「Run workflow」ボタンからも手動で動かせる
     inputs:
       retrain:
@@ -22,7 +23,7 @@ concurrency:
 jobs:
   train:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
 
@@ -40,15 +41,19 @@ jobs:
             python chat_server.py --retrain --train-only
           fi
           if [ -f add.jsonl ]; then
-            echo "add.jsonl を追加学習します"
+            echo "add.jsonl を学習します"
             python chat_server.py --add add.jsonl --train-only
+          fi
+          if ls inbox/*.jsonl >/dev/null 2>&1; then
+            echo "inbox の会話データを学習します"
+            python chat_server.py --add inbox --train-only
           fi
 
       - name: 学習結果を保存する
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898281+github-actions[bot]@users.noreply.github.com"
-          git add -A model.npz dialogues.jsonl added add.jsonl 2>/dev/null || git add -A
+          git add -A
           if git diff --cached --quiet; then
             echo "変更なし"
           else
