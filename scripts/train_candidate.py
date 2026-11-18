@@ -30,7 +30,8 @@ def wording_rehearsal(base, cases, incoming=()):
         topic = row['user'][:-2]
         if not topic:
             continue
-        for suffix in ('を短く教えて', 'の説明をして', 'を教えてほしい'):
+        for suffix in ('を短く教えて', 'の説明をして', 'を教えてほしい',
+                       'を教えてください', 'について説明してください', 'の意味を教えてください'):
             question = topic + suffix
             key = normalized(question)
             if len(question) <= 25 and key not in used:
