@@ -14,7 +14,7 @@ function controls() {
 }
 function initWorker() {
   if (worker) worker.terminate();
-  worker=new Worker(new URL('./worker.js?v=cpu-full-1', import.meta.url),{type:'module'});
+  worker=new Worker(new URL('./worker.js?v=cpu-full-2', import.meta.url),{type:'module'});
   const activeWorker=worker;
   worker.addEventListener('message', ({data}) => {
     if (worker!==activeWorker || data.id !== sequence) return;
@@ -53,7 +53,19 @@ $('form').addEventListener('submit', event => {
   if (question.length>MAX_USER_CHARACTERS) {status.textContent='質問は400文字以内で入力してください。';return;}
   sequence++;add('me',question);input.value='';pending={question,bubble:add('ai','考えています…')};busy=true;controls();status.textContent='回答を生成しています…';worker.postMessage({type:'generate',id:sequence,question,history});
 });
-stop.addEventListener('click',()=>{if (!ready) { worker.terminate();sequence++;busy=false;progress.hidden=true;load.textContent='もう一度読み込む';status.textContent='読み込みを中止しました。';controls();return; } stop.disabled=true;worker.postMessage({type:'stop'});status.textContent='生成を停止しています…';});
+stop.addEventListener('click',()=>{
+  // Synchronous WASM may starve worker messages, so terminate instead of waiting for a stop message.
+  const wasReady=ready;
+  worker.terminate();worker=null;sequence++;ready=false;busy=false;
+  if(pending){
+    if(pending.bubble.textContent==='考えています…') pending.bubble.textContent='生成を停止しました。';
+    else pending.bubble.textContent+='\n（生成を停止しました）';
+    input.value=pending.question;pending=null;
+  }
+  progress.hidden=true;load.textContent='もう一度読み込む';
+  status.textContent=wasReady?'生成を停止しました。再開するにはモデルを読み込み直してください。':'読み込みを中止しました。';
+  controls();
+});
 clear.addEventListener('click',()=>{history=[];log.replaceChildren();greet();status.textContent=ready?'新しい会話を始められます。':'最初にモデルを読み込んでください。';});
 input.addEventListener('keydown', event => {if (event.key==='Enter' && !event.shiftKey && !event.isComposing) {event.preventDefault();$('form').requestSubmit();}});
 function greet() {add('ai','こんにちは、ジャーヴィスです。世界史の質問や、説明の言い換えを試してみてください。');}
