@@ -120,18 +120,28 @@ class TinyTransformer:
         return logits, (x, caches, h)
 
     # ---------- 逆伝播（重みをどちらに動かせば当たるようになるか） ----------
-    def loss_and_grads(self, x, y, weight):
+    def loss_and_grads(self, x, y, weight, teacher_probs=None, teacher_rows=None):
         p = self.p
         logits, (x, caches, hL) = self.forward(x)
         B, T, V = logits.shape
         probs = softmax(logits)
         n = weight.sum()
         idx = np.arange(B)[:, None], np.arange(T)[None, :], y
-        loss = -(np.log(probs[idx] + 1e-12) * weight).sum() / n
+        token_loss = -np.log(probs[idx] + 1e-12)
 
         g = {k: np.zeros_like(v) for k, v in p.items()}
         dlog = probs.copy()
         dlog[idx] -= 1
+        if teacher_probs is not None:
+            rows = np.flatnonzero(teacher_rows)
+            if teacher_probs.shape != probs[rows].shape:
+                raise ValueError('teacher probability shape mismatch')
+            # On existing training rows, retain the teacher's full distribution.
+            # New/corrected rows always keep the original supervised objective.
+            token_loss[rows] = .1 * token_loss[rows] - .9 * (teacher_probs * np.log(probs[rows] + 1e-12)).sum(-1)
+            dlog[rows] = probs[rows] - .9 * teacher_probs
+            dlog[rows[:, None], np.arange(T)[None, :], y[rows]] -= .1
+        loss = (token_loss * weight).sum() / n
         dlog *= (weight / n)[..., None]
         g["Wout"] = hL.reshape(-1, self.D).T @ dlog.reshape(-1, V)
         g["bout"] = dlog.sum((0, 1))
@@ -168,7 +178,9 @@ class TinyTransformer:
         return loss, g
 
     # ---------- 学習 ----------
-    def train(self, pairs, steps=3000, batch=24, lr=3e-3, log=print, seed=0):
+    def train(self, pairs, steps=3000, batch=24, lr=3e-3, log=print, seed=0, teacher=None, new_users=None):
+        if teacher is not None and teacher.chars != self.chars:
+            raise ValueError('teacher/student vocabulary mismatch')
         rng = np.random.default_rng(seed)
         seqs = []
         for u, a in pairs:
@@ -176,20 +188,25 @@ class TinyTransformer:
             ids = self.encode(text)[: self.ctx + 1]
             # 回答部分（A: の後ろ）だけを「当てるべき文字」として重視する
             ans_start = len(self.encode(f"{BOS_USER}{u}{END}{BOS_AI}"))
-            seqs.append((ids, ans_start))
+            seqs.append((ids, ans_start, teacher is None or u in (new_users or set())))
         opt = Adam(self.p, lr=lr)
         for step in range(1, steps + 1):
             chosen = [seqs[i] for i in rng.integers(0, len(seqs), batch)]
-            T = max(len(s) for s, _ in chosen) - 1
+            T = max(len(s) for s, _, _ in chosen) - 1
             x = np.zeros((batch, T), dtype=np.int64)
             y = np.zeros((batch, T), dtype=np.int64)
             w = np.zeros((batch, T))
-            for b, (ids, st) in enumerate(chosen):
+            for b, (ids, st, _) in enumerate(chosen):
                 n = len(ids) - 1
                 x[b, :n], y[b, :n] = ids[:-1], ids[1:]
                 w[b, :n] = 0.2                       # 質問部分も少しだけ学ぶ
                 w[b, max(st - 1, 0):n] = 1.0         # 回答部分はしっかり学ぶ
-            loss, g = self.loss_and_grads(x, y, w)
+            teacher_rows = np.array([not is_new for _, _, is_new in chosen])
+            teacher_probs = None
+            if teacher is not None and teacher_rows.any():
+                teacher_logits, _ = teacher.forward(x[teacher_rows])
+                teacher_probs = softmax(teacher_logits)
+            loss, g = self.loss_and_grads(x, y, w, teacher_probs, teacher_rows)
             # 学習率を後半に向けて少しずつ下げる（最後の仕上げを細かくするため）
             opt.lr = lr * (0.1 + 0.9 * 0.5 * (1 + np.cos(np.pi * step / steps)))
             opt.step(self.p, g)
