@@ -5,17 +5,17 @@
   "mode": "incremental",
   "steps": 1500,
   "learning_rate": 0.0003,
-  "elapsed_seconds": 307.13,
+  "elapsed_seconds": 149.29,
   "retention_distillation": true,
   "retention_weight": 3.0,
-  "rehearsal_pairs": 5171,
+  "rehearsal_pairs": 174,
   "conversation_replay_pairs": 864,
   "new_pairs": 290,
-  "merged_pairs": 15810,
-  "baseline_sha256": "f56280a903eaefebf3b67257138ca0cfd8875ea1e2b694ff502b1a7edd9e435c",
+  "merged_pairs": 16274,
+  "baseline_sha256": "d3a452b74ceb9227eab8cbdd188409fb70f26c6a2f0722ff81d7880dbb7a654d",
   "evaluation_sha256": "78e2a8f5335506b6a0c29c10bd4d0ecae22fe3c9f81413897b9cfa0faf7e7499",
   "inputs": {
-    "inbox/history_20261118_extra2_01_290.jsonl": "f1a707fe9d70c14fd15a50727849780e8f5510392204512be0b093cbb0be3dc5"
+    "inbox/history_20261123_01_290.jsonl": "802d4a6033bb3f29dfd0f1893ee42d3b614ae00f349a2e97f3b58993beea62ab"
   },
   "before": {
     "groups": {
@@ -43,9 +43,9 @@
       "new_training_probe": {
         "count": 20,
         "exact": 0.0,
-        "digits_correct": 0.8,
-        "format_ok": 0.75,
-        "similarity": 0.18895342402359852
+        "digits_correct": 0.7,
+        "format_ok": 0.65,
+        "similarity": 0.14527160761257266
       },
       "recent_history_retention": {
         "count": 29,
@@ -56,10 +56,10 @@
       },
       "unseen_wording": {
         "count": 41,
-        "exact": 0.9512195121951219,
+        "exact": 1.0,
         "digits_correct": 1.0,
         "format_ok": 1.0,
-        "similarity": 0.96794425087108
+        "similarity": 1.0
       }
     },
     "details": [
@@ -497,11 +497,11 @@
         "user": "ダンテを短く教えてください",
         "assistant": "神曲を著したイタリアの文学者です。",
         "group": "unseen_wording",
-        "actual": "神の国を重視するとしいうれ違いです。",
-        "exact": false,
+        "actual": "神曲を著したイタリアの文学者です。",
+        "exact": true,
         "digits_correct": true,
         "format_ok": true,
-        "similarity": 0.2857142857142857
+        "similarity": 1.0
       },
       {
         "user": "マンジケルトの戦いを短く教えてください",
@@ -567,11 +567,11 @@
         "user": "クローヴィスを短く教えてください",
         "assistant": "フランク王国のメロヴィング朝を開いた王です。",
         "group": "unseen_wording",
-        "actual": "フランドゥー教の影響を受けたち国際政政策です。",
-        "exact": false,
+        "actual": "フランク王国のメロヴィング朝を開いた王です。",
+        "exact": true,
         "digits_correct": true,
         "format_ok": true,
-        "similarity": 0.4
+        "similarity": 1.0
       },
       {
         "user": "猛安謀克を短く教えてください",
@@ -1164,198 +1164,198 @@
         "similarity": 1.0
       },
       {
-        "user": "アルグン川とは",
-        "assistant": "ネルチンスク条約で清とロシアの国境とされた川です。",
+        "user": "アナクサゴラスとは",
+        "assistant": "ものの形成に知性が必要だと考えた自然哲学者です。",
         "group": "new_training_probe",
-        "actual": "バグダードを建設したアッバース朝のカリフです。",
+        "actual": "ムハンマドが受けた啓示を受けインドの聖拠点の都市です。",
         "exact": false,
         "digits_correct": true,
         "format_ok": true,
-        "similarity": 0.16666666666666666
+        "similarity": 0.19607843137254902
       },
       {
-        "user": "キルギスとは",
-        "assistant": "9世紀半ばにウイグル帝国を倒した遊牧民族です。",
+        "user": "アナクシマンドロスとは",
+        "assistant": "万物の根源を無限者と考えた自然哲学者です。",
         "group": "new_training_probe",
-        "actual": "厳しい軍事的な教育で知られるギリシアのポリスです。",
-        "exact": false,
-        "digits_correct": false,
-        "format_ok": true,
-        "similarity": 0.16666666666666666
-      },
-      {
-        "user": "グルとは",
-        "assistant": "シク教で導師を意味する呼び名です。",
-        "group": "new_training_probe",
-        "actual": "忙し三に基準とする時代のだけです。返事を住しなりましたね。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": false,
-        "similarity": 0.21739130434782608
-      },
-      {
-        "user": "サファヴィー教団とは",
-        "assistant": "サファヴィー朝の建国母体となった神秘主義教団です。",
-        "group": "new_training_probe",
-        "actual": "181年にイスの市士制政招集した人物です。",
-        "exact": false,
-        "digits_correct": false,
-        "format_ok": true,
-        "similarity": 0.21739130434782608
-      },
-      {
-        "user": "スタノヴォイ山脈とは",
-        "assistant": "ネルチンスク条約で清とロシアの国境とされた山脈です。",
-        "group": "new_training_probe",
-        "actual": "984年に成したフランスの聖を目指すインです。",
-        "exact": false,
-        "digits_correct": false,
-        "format_ok": true,
-        "similarity": 0.24489795918367346
-      },
-      {
-        "user": "ムムターズ＝マハルとは",
-        "assistant": "タージ＝マハルが捧げられたシャー＝ジャハーンの王妃です。",
-        "group": "new_training_probe",
-        "actual": "ルターを界に選成する制度の埋葬したメズです。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.24
-      },
-      {
-        "user": "メキシコ銀とは",
-        "assistant": "明代にスペイン商人などを通じ中国へ流入した銀です。",
-        "group": "new_training_probe",
-        "actual": "アジャコバンティン独裁の部を導してステン王権を導したフランスの領院です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.22950819672131148
-      },
-      {
-        "user": "六部とは",
-        "assistant": "明で洪武帝が皇帝直属とした六つの行政部局です。",
-        "group": "new_training_probe",
-        "actual": "五他国への都市を統治めるの皇帝です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.24390243902439024
-      },
-      {
-        "user": "前期倭寇とは",
-        "assistant": "日本人を中心に活動した倭寇です。",
-        "group": "new_training_probe",
-        "actual": "宋が片石がよったなり方の時期のも考えますね。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": false,
-        "similarity": 0.15789473684210525
-      },
-      {
-        "user": "唐宋八大家とは",
-        "assistant": "韓愈や欧陽脩など唐宋期の八人の文章家です。",
-        "group": "new_training_probe",
-        "actual": "胤が発行した日はうホのする人です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.2631578947368421
-      },
-      {
-        "user": "官戸形勢戸とは",
-        "assistant": "新興地主の形勢戸から役人となった家です。",
-        "group": "new_training_probe",
-        "actual": "8国で唐の六部のうち詔勅の康熙帝起草を担当した機関です。",
-        "exact": false,
-        "digits_correct": false,
-        "format_ok": true,
-        "similarity": 0.20833333333333334
-      },
-      {
-        "user": "後期倭寇とは",
-        "assistant": "中国人を中心に活動した倭寇です。",
-        "group": "new_training_probe",
-        "actual": "マッツて続いた神聖職です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.27586206896551724
-      },
-      {
-        "user": "桃鳩図とは",
-        "assistant": "宋の徽宗の代表作として知られる絵画です。",
-        "group": "new_training_probe",
-        "actual": "",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": false,
-        "similarity": 0.0
-      },
-      {
-        "user": "湖広熟すれば天下足るとは",
-        "assistant": "長江中流域が重要な穀倉地帯だったことを示す言葉です。",
-        "group": "new_training_probe",
-        "actual": "",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": false,
-        "similarity": 0.0
-      },
-      {
-        "user": "王直とは",
-        "assistant": "五島列島などを拠点とした後期倭寇の指導者です。",
-        "group": "new_training_probe",
-        "actual": "自然をめていたする代のは、静かを出しみる言葉です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.25
-      },
-      {
-        "user": "禁書とは",
-        "assistant": "支配者が刊行などを禁止した書物です。",
-        "group": "new_training_probe",
-        "actual": "宋で皇帝の三大陸周取り着とした国時代の一日です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.23809523809523808
-      },
-      {
-        "user": "赤絵とは",
-        "assistant": "明代の陶磁器の一種です。",
-        "group": "new_training_probe",
-        "actual": "戦争を挙げでき南指導した中国の方が起ころかけです。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.21621621621621623
-      },
-      {
-        "user": "里老人とは",
-        "assistant": "明で里長戸の代表から任命され六諭を徹底させた人です。",
-        "group": "new_training_probe",
-        "actual": "唐五啓倒して作ールらえた内容です。",
-        "exact": false,
-        "digits_correct": true,
-        "format_ok": true,
-        "similarity": 0.23255813953488372
-      },
-      {
-        "user": "里長戸とは",
-        "assistant": "明の里甲制で里の運営を担った家です。",
-        "group": "new_training_probe",
-        "actual": "皇帝国時代に抵れたイルタリアの政府です。",
+        "actual": "ユダヤ教の詩人の呼ばれる帝国です。",
         "exact": false,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 0.21052631578947367
       },
       {
-        "user": "隠れイマームとは",
-        "assistant": "十二イマーム派で再臨が信じられる最後のイマームです。",
+        "user": "アナクシメネスとは",
+        "assistant": "万物の根源を空気と考えた自然哲学者です。",
+        "group": "new_training_probe",
+        "actual": "ユダ教古代われる元老荘思想家となっために集大丈夫です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.2127659574468085
+      },
+      {
+        "user": "アルビジョワ十字軍とは",
+        "assistant": "南フランスのアルビジョワ派に対して派遣された軍です。",
+        "group": "new_training_probe",
+        "actual": "160年に教皇を最高議としたトリットの宗教改革を争った人物です。",
+        "exact": false,
+        "digits_correct": false,
+        "format_ok": true,
+        "similarity": 0.20689655172413793
+      },
+      {
+        "user": "ウォルムス大聖堂とは",
+        "assistant": "ロマネスク様式を代表する建築の1つです。",
+        "group": "new_training_probe",
+        "actual": "ガリア見虜どを著したイギリスの人文学者です。",
+        "exact": false,
+        "digits_correct": false,
+        "format_ok": true,
+        "similarity": 0.23809523809523808
+      },
+      {
+        "user": "カーナボン卿とは",
+        "assistant": "カーターとともにツタンカーメンの墓の発見に関わった人物です。",
+        "group": "new_training_probe",
+        "actual": "",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": false,
+        "similarity": 0.0
+      },
+      {
+        "user": "クレーロスとは",
+        "assistant": "ポリスの住民がくじで割り当てられた私有地です。",
+        "group": "new_training_probe",
+        "actual": "フィノンク大軍を導したプルタインに辱の処刑の得人物です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.1568627450980392
+      },
+      {
+        "user": "クロティルダとは",
+        "assistant": "クローヴィスの妻で、彼のキリスト教改宗に影響した人物です。",
+        "group": "new_training_probe",
+        "actual": "戦争でフランス王の戦争です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.23255813953488372
+      },
+      {
+        "user": "ダキアとは",
+        "assistant": "トラヤヌスが属州にした現在のルーマニアにあたる地域です。",
+        "group": "new_training_probe",
+        "actual": "道家の時代になり返手元と伝記飲業を集めた文書です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.22641509433962265
+      },
+      {
+        "user": "トゥイルリー宮殿とは",
+        "assistant": "ヴェルサイユ行進後にルイ16世らが移住した宮殿です。",
+        "group": "new_training_probe",
+        "actual": "イギリスで地方社会を支えた地主層です。",
+        "exact": false,
+        "digits_correct": false,
+        "format_ok": true,
+        "similarity": 0.2222222222222222
+      },
+      {
+        "user": "交趾郡とは",
+        "assistant": "漢の武帝が南越を滅ぼした後に設置した郡の1つです。",
+        "group": "new_training_probe",
+        "actual": "",
+        "exact": false,
+        "digits_correct": false,
+        "format_ok": false,
+        "similarity": 0.0
+      },
+      {
+        "user": "健児とは",
+        "assistant": "唐の募兵制で兵士になった人のことです。",
+        "group": "new_training_probe",
+        "actual": "",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": false,
+        "similarity": 0.0
+      },
+      {
+        "user": "単于都護府とは",
+        "assistant": "唐が東突厥平定後の内モンゴルに置いた統治機関です。",
+        "group": "new_training_probe",
+        "actual": "",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": false,
+        "similarity": 0.0
+      },
+      {
+        "user": "大秦景教流行中国碑とは",
+        "assistant": "長安にある景教に関する碑です。",
+        "group": "new_training_probe",
+        "actual": "マと川流れた川です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.24
+      },
+      {
+        "user": "安南都護府とは",
+        "assistant": "唐がベトナムを統治するために置いた機関です。",
+        "group": "new_training_probe",
+        "actual": "唐が外モンゴルによう院からなどを担う仕組織物です。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": true,
+        "similarity": 0.2553191489361702
+      },
+      {
+        "user": "日知録とは",
+        "assistant": "経世実用を重視した顧炎武の著作です。",
+        "group": "new_training_probe",
+        "actual": "こんにちは気持ちの体のです。今は少し肩の力を抜いていていてください。",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": false,
+        "similarity": 0.15384615384615385
+      },
+      {
+        "user": "正命とは",
+        "assistant": "八正道の1つで、正しい生活のことです。",
+        "group": "new_training_probe",
+        "actual": "ウィーン会議で革命前の状態9周を東遷に東方は数かけた人物です。",
+        "exact": false,
+        "digits_correct": false,
+        "format_ok": true,
+        "similarity": 0.2
+      },
+      {
+        "user": "正語とは",
+        "assistant": "八正道の1つで、正しいことばのことです。",
+        "group": "new_training_probe",
+        "actual": "ビラティワテス川ともに来てせイタリア半島に改革を進めた人物です。",
+        "exact": false,
+        "digits_correct": false,
+        "format_ok": true,
+        "similarity": 0.15384615384615385
+      },
+      {
+        "user": "烏孫とは",
+        "assistant": "イリ地方にいた大月氏を追った民族です。",
+        "group": "new_training_probe",
+        "actual": "",
+        "exact": false,
+        "digits_correct": true,
+        "format_ok": false,
+        "similarity": 0.0
+      },
+      {
+        "user": "高仙芝とは",
+        "assistant": "タラス河畔の戦いで唐軍を率いた人物です。",
         "group": "new_training_probe",
         "actual": "",
         "exact": false,
@@ -2512,200 +2512,200 @@
         "similarity": 1.0
       },
       {
-        "user": "アルグン川とは",
-        "assistant": "ネルチンスク条約で清とロシアの国境とされた川です。",
+        "user": "アナクサゴラスとは",
+        "assistant": "ものの形成に知性が必要だと考えた自然哲学者です。",
         "group": "new_training_probe",
-        "actual": "ネルチンスク条約で清とロシアの国境とされた川です。",
+        "actual": "ものの形成に知性が必要だと考えた自然哲学者です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "キルギスとは",
-        "assistant": "9世紀半ばにウイグル帝国を倒した遊牧民族です。",
+        "user": "アナクシマンドロスとは",
+        "assistant": "万物の根源を無限者と考えた自然哲学者です。",
         "group": "new_training_probe",
-        "actual": "9世紀半ばにウイグル帝国を倒した遊牧民族です。",
+        "actual": "万物の根源を無限者と考えた自然哲学者です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "グルとは",
-        "assistant": "シク教で導師を意味する呼び名です。",
+        "user": "アナクシメネスとは",
+        "assistant": "万物の根源を空気と考えた自然哲学者です。",
         "group": "new_training_probe",
-        "actual": "シク教で導師を意味する呼び名です。",
+        "actual": "万物の根源を空気と考えた自然哲学者です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "サファヴィー教団とは",
-        "assistant": "サファヴィー朝の建国母体となった神秘主義教団です。",
+        "user": "アルビジョワ十字軍とは",
+        "assistant": "南フランスのアルビジョワ派に対して派遣された軍です。",
         "group": "new_training_probe",
-        "actual": "サファヴィー朝の建国母体となった神秘主義教団です。",
+        "actual": "南フランスのアルビジョワ派に対して派遣された軍です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "スタノヴォイ山脈とは",
-        "assistant": "ネルチンスク条約で清とロシアの国境とされた山脈です。",
+        "user": "ウォルムス大聖堂とは",
+        "assistant": "ロマネスク様式を代表する建築の1つです。",
         "group": "new_training_probe",
-        "actual": "ネルチンスク条約で清とロシアの国境とされた山脈です。",
+        "actual": "ロマネスク様式を代表する建築の1つです。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "ムムターズ＝マハルとは",
-        "assistant": "タージ＝マハルが捧げられたシャー＝ジャハーンの王妃です。",
+        "user": "カーナボン卿とは",
+        "assistant": "カーターとともにツタンカーメンの墓の発見に関わった人物です。",
         "group": "new_training_probe",
-        "actual": "タージ＝マハルが捧げられたシャー＝ジャハーンの王妃です。",
+        "actual": "カーターとともにツタンカーメンの墓の発見に関わった人物です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "メキシコ銀とは",
-        "assistant": "明代にスペイン商人などを通じ中国へ流入した銀です。",
+        "user": "クレーロスとは",
+        "assistant": "ポリスの住民がくじで割り当てられた私有地です。",
         "group": "new_training_probe",
-        "actual": "明代にスペイン商人などを通じ中国へ流入した銀です。",
+        "actual": "ポリスの住民がくじで割り当てられた私有地です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "六部とは",
-        "assistant": "明で洪武帝が皇帝直属とした六つの行政部局です。",
+        "user": "クロティルダとは",
+        "assistant": "クローヴィスの妻で、彼のキリスト教改宗に影響した人物です。",
         "group": "new_training_probe",
-        "actual": "明で洪武帝が皇帝直属とした六つの行政部局です。",
+        "actual": "クローヴィスの妻で、彼のキリスト教改宗に影響した人物です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "前期倭寇とは",
-        "assistant": "日本人を中心に活動した倭寇です。",
+        "user": "ダキアとは",
+        "assistant": "トラヤヌスが属州にした現在のルーマニアにあたる地域です。",
         "group": "new_training_probe",
-        "actual": "日本人を中心に活動した倭寇です。",
+        "actual": "トラヤヌスが属州にした現在のルーマニアにあたる地域です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "唐宋八大家とは",
-        "assistant": "韓愈や欧陽脩など唐宋期の八人の文章家です。",
+        "user": "トゥイルリー宮殿とは",
+        "assistant": "ヴェルサイユ行進後にルイ16世らが移住した宮殿です。",
         "group": "new_training_probe",
-        "actual": "韓愈や欧陽脩など唐宋期の八人の文章家です。",
+        "actual": "ヴェルサイユ行進後にルイ16世らが移住した宮殿です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "官戸形勢戸とは",
-        "assistant": "新興地主の形勢戸から役人となった家です。",
+        "user": "交趾郡とは",
+        "assistant": "漢の武帝が南越を滅ぼした後に設置した郡の1つです。",
         "group": "new_training_probe",
-        "actual": "新興地主の形勢戸から役人となった家です。",
+        "actual": "漢の武帝が南越を滅ぼした後に設置した郡の1つです。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "後期倭寇とは",
-        "assistant": "中国人を中心に活動した倭寇です。",
+        "user": "健児とは",
+        "assistant": "唐の募兵制で兵士になった人のことです。",
         "group": "new_training_probe",
-        "actual": "中国人を中心に活動した倭寇です。",
+        "actual": "唐の募兵制で兵士になった人のことです。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "桃鳩図とは",
-        "assistant": "宋の徽宗の代表作として知られる絵画です。",
+        "user": "単于都護府とは",
+        "assistant": "唐が東突厥平定後の内モンゴルに置いた統治機関です。",
         "group": "new_training_probe",
-        "actual": "宋の徽宗の代表作として知られる絵画です。",
+        "actual": "唐が東突厥平定後の内モンゴルに置いた統治機関です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "湖広熟すれば天下足るとは",
-        "assistant": "長江中流域が重要な穀倉地帯だったことを示す言葉です。",
+        "user": "大秦景教流行中国碑とは",
+        "assistant": "長安にある景教に関する碑です。",
         "group": "new_training_probe",
-        "actual": "長江中流域が重要な穀倉地帯だったことを示す言葉です。",
+        "actual": "長安にある景教に関する碑です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "王直とは",
-        "assistant": "五島列島などを拠点とした後期倭寇の指導者です。",
+        "user": "安南都護府とは",
+        "assistant": "唐がベトナムを統治するために置いた機関です。",
         "group": "new_training_probe",
-        "actual": "五島列島などを拠点とした後期倭寇の指導者です。",
+        "actual": "唐がベトナムを統治するために置いた機関です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "禁書とは",
-        "assistant": "支配者が刊行などを禁止した書物です。",
+        "user": "日知録とは",
+        "assistant": "経世実用を重視した顧炎武の著作です。",
         "group": "new_training_probe",
-        "actual": "支配者が刊行などを禁止した書物です。",
+        "actual": "経世実用を重視した顧炎武の著作です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "赤絵とは",
-        "assistant": "明代の陶磁器の一種です。",
+        "user": "正命とは",
+        "assistant": "八正道の1つで、正しい生活のことです。",
         "group": "new_training_probe",
-        "actual": "明代の陶磁器の一種です。",
+        "actual": "八正道の1つで、正しい生活のことです。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "里老人とは",
-        "assistant": "明で里長戸の代表から任命され六諭を徹底させた人です。",
+        "user": "正語とは",
+        "assistant": "八正道の1つで、正しいことばのことです。",
         "group": "new_training_probe",
-        "actual": "明で里長戸の代表から任命され六諭を徹底させた人です。",
+        "actual": "八正道の1つで、正しいことばのことです。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "里長戸とは",
-        "assistant": "明の里甲制で里の運営を担った家です。",
+        "user": "烏孫とは",
+        "assistant": "イリ地方にいた大月氏を追った民族です。",
         "group": "new_training_probe",
-        "actual": "明の里甲制で里の運営を担った家です。",
+        "actual": "イリ地方にいた大月氏を追った民族です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
         "similarity": 1.0
       },
       {
-        "user": "隠れイマームとは",
-        "assistant": "十二イマーム派で再臨が信じられる最後のイマームです。",
+        "user": "高仙芝とは",
+        "assistant": "タラス河畔の戦いで唐軍を率いた人物です。",
         "group": "new_training_probe",
-        "actual": "十二イマーム派で再臨が信じられる最後のイマームです。",
+        "actual": "タラス河畔の戦いで唐軍を率いた人物です。",
         "exact": true,
         "digits_correct": true,
         "format_ok": true,
@@ -2713,5 +2713,5 @@
       }
     ]
   },
-  "candidate_sha256": "d3a452b74ceb9227eab8cbdd188409fb70f26c6a2f0722ff81d7880dbb7a654d"
+  "candidate_sha256": "35e7bfa605f2f6d7953fea6fb4aad55be84b855c0d01b163f4c5efae771edbde"
 }
