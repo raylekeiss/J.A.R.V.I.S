@@ -1,0 +1,219 @@
+{
+  "source_name": "質問返答生成用テキストデータ.txt",
+  "source_sha256": "502f0699124f40e7c5e73275dd017968d4299fae7469bc410d28f660edef8fd3",
+  "facts": [
+    {
+      "topic": "カーナボン卿",
+      "answer": "カーターとともにツタンカーメンの墓の発見に関わった人物です。",
+      "source_excerpt": "▽「ツタンカーメン（トゥト・アンク・アメン→アメンの生き写し）」\n「カーター博士」と「カーナボン卿」が「王家の谷」で墓を発見。【黄金のマスク】で有名。",
+      "source_line": 300,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "烏孫",
+      "answer": "イリ地方にいた大月氏を追った民族です。",
+      "source_excerpt": "　もともとモンゴル高原に居住していた民族。匈奴に負われる形でイリ地方に移り住み、そこで「烏孫」という民族に追われたために「ソグディアナ地方」に移住した。大月氏の一派がのちにインドでクシャーナ朝を建国する。",
+      "source_line": 1049,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "交趾郡",
+      "answer": "漢の武帝が南越を滅ぼした後に設置した郡の1つです。",
+      "source_excerpt": "　武帝は「南越」を滅ぼして「交趾郡」「日南郡」をはじめとする九郡を設置しました。",
+      "source_line": 1055,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "正見",
+      "answer": "八正道の1つで、正しい見解や人生観のことです。",
+      "source_excerpt": "▽「八正道」\n(1)【正見】　正しい見解、人生観。\t(2)【正思】　正しい考え、意欲。",
+      "source_line": 632,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "正語",
+      "answer": "八正道の1つで、正しいことばのことです。",
+      "source_excerpt": "▽「八正道」\n(1)【正見】　正しい見解、人生観。\t(2)【正思】　正しい考え、意欲。\n(3)【正語】　正しいことば。\t\t(4)【正業】　正しい行い、責任、主体性。",
+      "source_line": 632,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "正命",
+      "answer": "八正道の1つで、正しい生活のことです。",
+      "source_excerpt": "▽「八正道」\n(1)【正見】　正しい見解、人生観。\t(2)【正思】　正しい考え、意欲。\n(3)【正語】　正しいことば。\t\t(4)【正業】　正しい行い、責任、主体性。\n(5)【正命】　正しい生活。\t\t(6)【正精進】正しい努力、修養。",
+      "source_line": 632,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "安西都護府",
+      "answer": "唐が西域を統治するために置いたクチャを拠点とする機関です。",
+      "source_excerpt": "④「都護府」⋯周辺異民族の統治\n  周辺異民族の統治を担当。直接ではなく、異民族の部族長に統治をさせる間接統治。\n\n\nこの間接統治法を「　羈縻(きび)政策　」という。\n▽都護府\n「安東都護府」(高句麗滅亡後の朝鮮半島。拠点は「平壌」)\n「安西都護府」(西域。拠点は「クチャ」。吐蕃に滅ぼされる)",
+      "source_line": 1322,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "安南都護府",
+      "answer": "唐がベトナムを統治するために置いた機関です。",
+      "source_excerpt": "④「都護府」⋯周辺異民族の統治\n  周辺異民族の統治を担当。直接ではなく、異民族の部族長に統治をさせる間接統治。\n\n\nこの間接統治法を「　羈縻(きび)政策　」という。\n▽都護府\n「安東都護府」(高句麗滅亡後の朝鮮半島。拠点は「平壌」)\n「安西都護府」(西域。拠点は「クチャ」。吐蕃に滅ぼされる)\n「安南都護府」(ベトナム。拠点は「ハノイ」。南詔に滅ぼされる)：阿倍仲麻呂",
+      "source_line": 1322,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "単于都護府",
+      "answer": "唐が東突厥平定後の内モンゴルに置いた統治機関です。",
+      "source_excerpt": "④「都護府」⋯周辺異民族の統治\n  周辺異民族の統治を担当。直接ではなく、異民族の部族長に統治をさせる間接統治。\n\n\nこの間接統治法を「　羈縻(きび)政策　」という。\n▽都護府\n「安東都護府」(高句麗滅亡後の朝鮮半島。拠点は「平壌」)\n「安西都護府」(西域。拠点は「クチャ」。吐蕃に滅ぼされる)\n「安南都護府」(ベトナム。拠点は「ハノイ」。南詔に滅ぼされる)：阿倍仲麻呂\n「安北都護府」(外モンゴル)\n「単于都護府」(東突厥平定後の内モンゴル)",
+      "source_line": 1322,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "北庭都護府",
+      "answer": "唐が現在の新疆ウイグル自治区北方に置いた統治機関です。",
+      "source_excerpt": "④「都護府」⋯周辺異民族の統治\n  周辺異民族の統治を担当。直接ではなく、異民族の部族長に統治をさせる間接統治。\n\n\nこの間接統治法を「　羈縻(きび)政策　」という。\n▽都護府\n「安東都護府」(高句麗滅亡後の朝鮮半島。拠点は「平壌」)\n「安西都護府」(西域。拠点は「クチャ」。吐蕃に滅ぼされる)\n「安南都護府」(ベトナム。拠点は「ハノイ」。南詔に滅ぼされる)：阿倍仲麻呂\n「安北都護府」(外モンゴル)\n「単于都護府」(東突厥平定後の内モンゴル)\n「北庭都護府」(現在の新疆ウイグル自治区北方)",
+      "source_line": 1322,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "骨品制",
+      "answer": "新羅が国内支配に用いた血縁制度です。",
+      "source_excerpt": "○朝鮮半島：新羅が支配\n→唐と協力して百済・高句麗を滅ぼし、朝鮮半島を支配。「骨品制」という血縁制度で国内を支配。",
+      "source_line": 1343,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "高仙芝",
+      "answer": "タラス河畔の戦いで唐軍を率いた人物です。",
+      "source_excerpt": "①「タラス河畔の戦い」\n「高仙芝」率いる唐軍がイスラームの「アッバース朝」に敗れた。",
+      "source_line": 1376,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "健児",
+      "answer": "唐の募兵制で兵士になった人のことです。",
+      "source_excerpt": "▽「募兵制」\n「傭兵」制度のこと。（義務ではなく給料を国から受け取って働く。）\n※この制度で兵士になったものを「健児」という。",
+      "source_line": 1408,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "大秦景教流行中国碑",
+      "answer": "長安にある景教に関する碑です。",
+      "source_excerpt": "◆外来宗教◆\n①「景教」:「ネストリウス派キリスト教」（未習）\n　「エフェソスの公会議(431)」によってローマで異端とされ、ササン朝ペルシアを経て太宗時代\n　の中国に伝わりました。長安には「大秦景教流行中国碑」があります。",
+      "source_line": 1453,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "クレーロス",
+      "answer": "ポリスの住民がくじで割り当てられた私有地です。",
+      "source_excerpt": "前８世紀頃に成立した都市国家を「ポリス」という。\n〇ポリスの成立\n▽高い丘「アクロポリス」…軍事上の理由(防衛しやすい)\n▽広　場「アゴラ」…政治や経済を行う場所\n▽集　住「シノイキスモス」…人が集まり国をつくること。\n　　　　※住民は「くじ」で割り当てられた「クレーロス」という私有地を持ち、\n　　　　経済的に自立していた。(これに対して国土は「ヘラス」という)",
+      "source_line": 1493,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "エピダウロス劇場",
+      "answer": "古代ギリシア人が悲劇を鑑賞した劇場です。",
+      "source_excerpt": "★悲劇【ギリシア三大悲劇作家】★\n古代ギリシア人は観劇の文化が盛んで、「エピダウロス劇場」などに集まって悲劇を鑑賞していました。ちなみに劇の神は酒の神と同じデュオニソスです。",
+      "source_line": 1714,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "アナクサゴラス",
+      "answer": "ものの形成に知性が必要だと考えた自然哲学者です。",
+      "source_excerpt": "◆「哲学」◆\n〇イオニア自然哲学\n人名\t根源\t特徴\n「タレス」\t水\t・陸は水に浮いている→すべては水に還る\n「ピタゴラス」\t数\t・ピタゴラスの定理、すべては計算で証明できる\n「ヘラクレイトス」\t火・変化\t・「万物は流転する」\n「アナクサゴラス」\t知性(ヌース)\n・ものが形を作るうえではそれを作る知性が必要",
+      "source_line": 1736,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "アナクシマンドロス",
+      "answer": "万物の根源を無限者と考えた自然哲学者です。",
+      "source_excerpt": "◆「哲学」◆\n〇イオニア自然哲学\n人名\t根源\t特徴\n「タレス」\t水\t・陸は水に浮いている→すべては水に還る\n「ピタゴラス」\t数\t・ピタゴラスの定理、すべては計算で証明できる\n「ヘラクレイトス」\t火・変化\t・「万物は流転する」\n「アナクサゴラス」\t知性(ヌース)\n・ものが形を作るうえではそれを作る知性が必要\n「デモクリトス」\t原子(アトム)\n・「エピクロス派」や「唯物論」に影響\n「アナクシマンドロス」\t無限者\t・万物は特定できないもの",
+      "source_line": 1736,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "アナクシメネス",
+      "answer": "万物の根源を空気と考えた自然哲学者です。",
+      "source_excerpt": "◆「哲学」◆\n〇イオニア自然哲学\n人名\t根源\t特徴\n「タレス」\t水\t・陸は水に浮いている→すべては水に還る\n「ピタゴラス」\t数\t・ピタゴラスの定理、すべては計算で証明できる\n「ヘラクレイトス」\t火・変化\t・「万物は流転する」\n「アナクサゴラス」\t知性(ヌース)\n・ものが形を作るうえではそれを作る知性が必要\n「デモクリトス」\t原子(アトム)\n・「エピクロス派」や「唯物論」に影響\n「アナクシマンドロス」\t無限者\t・万物は特定できないもの\n「アナクシメネス」\t空気\t・空気が薄いと火、濃いと石になる→物理学の萌芽",
+      "source_line": 1736,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ダキア",
+      "answer": "トラヤヌスが属州にした現在のルーマニアにあたる地域です。",
+      "source_excerpt": "②「トラヤヌス」【最大版図を達成！！】\n※トラヤヌスは初の属州出身の皇帝。\n現ルーマニア「ダキア」を属州にしたことで領土は最大に。",
+      "source_line": 2046,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ラヴェンナ総督府",
+      "answer": "東ゴート王国滅亡後のイタリアを支配したビザンツの機関です。",
+      "source_excerpt": "東ゴート王国\t黒海北岸\tイタリア\t553年、ビザンツ帝国により滅亡。\n（ユスティニアヌス時代）\n東ゴート族の王「テオドリック」は、ビザンツ皇帝「ゼノン」の支援を受けて傭兵隊長オドアケルを倒し、イタリアの「ラヴェンナ」に「東ゴート王国」を建国しますが、死後に国内が混乱、ビザンツに介入され、戦争の末に「ラヴェンナ総督府」として支配を受けました。",
+      "source_line": 2276,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "クロティルダ",
+      "answer": "クローヴィスの妻で、彼のキリスト教改宗に影響した人物です。",
+      "source_excerpt": "◎メロヴィング朝◎\n若き族長「クローヴィス」は敵対ゲルマンを次々と打ち破り、中央ヨーロッパに王国を築きます。フランク族はゲルマンの中で移動も遅く、キリスト教が浸透せず昔ながらのゲルマン多神教が信じられていましたが、妻「クロティルダ」がゴリゴリのキリスト教徒だったことで改宗します。\n\n\n国王「クローヴィス」は「アタナシウス派」を受容した。",
+      "source_line": 2291,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "タバリー",
+      "answer": "ハディースの収集や史料批判に優れた歴史学者です。",
+      "source_excerpt": "☆アッバース朝の文化☆\n数学者「フワーリズミー」…代数の父、アラビア数字を西方に伝える\n医学者「イブン＝シーナー」…「医学典範」を書く、精神医学の祖 \n歴史学者「タバリー」…歴史書の執筆、ハディースの収集、史料批判に優れる",
+      "source_line": 2763,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "アルビジョワ十字軍",
+      "answer": "南フランスのアルビジョワ派に対して派遣された軍です。",
+      "source_excerpt": "○アルビジョワ十字軍（１２０９～１２２９）\nアルビジョワ派は南フランスの貴族の支持を背景に勢力を拡大していましたが、最盛期の教皇\n「インノケンティウス３世」が異端撲滅を掲げ、フランス国王と結んで軍隊を派遣します。\n\n\n仏王「フィリップ２世」は南仏に「アルビジョワ十字軍」を派遣した。",
+      "source_line": 3319,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "ウォルムス大聖堂",
+      "answer": "ロマネスク様式を代表する建築の1つです。",
+      "source_excerpt": "〇「ロマネスク様式」（11C～13C）\n木造から石造となり、①半円形アーチを用いた天井や②厚い壁、③小さい窓が特徴です。\n▽代表的建築\n「ピサ大聖堂」・「クリュニー修道院」・「ウォルムス大聖堂」・「シュパイエル大聖堂」",
+      "source_line": 3749,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "マインツ大聖堂",
+      "answer": "ロマネスク様式を代表する建築の1つです。",
+      "source_excerpt": "〇「ロマネスク様式」（11C～13C）\n木造から石造となり、①半円形アーチを用いた天井や②厚い壁、③小さい窓が特徴です。\n▽代表的建築\n「ピサ大聖堂」・「クリュニー修道院」・「ウォルムス大聖堂」・「シュパイエル大聖堂」\n「マインツ大聖堂」・「ヴェズレー大聖堂」",
+      "source_line": 3749,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "アミアン大聖堂",
+      "answer": "ゴシック様式を代表する建築の1つです。",
+      "source_excerpt": "〇「ゴシック様式」（12C）\n北フランスに起こった①「尖塔アーチ」②「ステンドグラス」③「広い窓」を特徴とする様式です。\n▽代表的建築\n「ノートルダム大聖堂」・「アミアン大聖堂」・「ランス大聖堂」",
+      "source_line": 3758,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "日知録",
+      "answer": "経世実用を重視した顧炎武の著作です。",
+      "source_excerpt": "② 「顧炎武」\n　学問は社会問題を解決するために役に立てるものだと考え（経世実用）、\n「日知録」を記しました。",
+      "source_line": 4588,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    },
+    {
+      "topic": "トゥイルリー宮殿",
+      "answer": "ヴェルサイユ行進後にルイ16世らが移住した宮殿です。",
+      "source_excerpt": "　この事件を「ヴェルサイユ行進」という。ルイ１６世や王妃「マリ＝アントワネット」はヴェルサイユ宮殿から「トゥイルリー宮殿」へと移住した。",
+      "source_line": 5582,
+      "evidence_status": "quoted_source_requires_semantic_review"
+    }
+  ],
+  "files": [
+    "inbox/history_20261123_01_290.jsonl"
+  ],
+  "semantic_review": {
+    "review_date": "2026-11-23",
+    "method": "Each answer checked against the quoted passage and its immediate context; no external facts added.",
+    "topic_count": 29,
+    "question_variants_per_topic": 10,
+    "new_topic_policy": "Excluded spelling-only variants and source passages with suspected errors; checked existing dialogues, topic ledger, archives and provenance."
+  }
+}
