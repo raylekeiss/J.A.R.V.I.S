@@ -1,0 +1,146 @@
+{
+  "date": "2026-11-23",
+  "topics": [
+    "カーナボン卿",
+    "烏孫",
+    "交趾郡",
+    "正見",
+    "正語",
+    "正命",
+    "安西都護府",
+    "安南都護府",
+    "単于都護府",
+    "北庭都護府",
+    "骨品制",
+    "高仙芝",
+    "健児",
+    "大秦景教流行中国碑",
+    "クレーロス",
+    "エピダウロス劇場",
+    "アナクサゴラス",
+    "アナクシマンドロス",
+    "アナクシメネス",
+    "ダキア",
+    "ラヴェンナ総督府",
+    "クロティルダ",
+    "タバリー",
+    "アルビジョワ十字軍",
+    "ウォルムス大聖堂",
+    "マインツ大聖堂",
+    "アミアン大聖堂",
+    "日知録",
+    "トゥイルリー宮殿"
+  ],
+  "new_topic_count": 29,
+  "new_pairs": 290,
+  "derived_rehearsal_pairs": 174,
+  "total_training_rows": 16274,
+  "accepted": true,
+  "baseline_sha256": "d3a452b74ceb9227eab8cbdd188409fb70f26c6a2f0722ff81d7880dbb7a654d",
+  "candidate_sha256": "35e7bfa605f2f6d7953fea6fb4aad55be84b855c0d01b163f4c5efae771edbde",
+  "evaluation_sha256": "78e2a8f5335506b6a0c29c10bd4d0ecae22fe3c9f81413897b9cfa0faf7e7499",
+  "workflow_url": "https://github.com/raylekeiss/J.A.R.V.I.S/actions/runs/45085006341",
+  "published_commit": "48a05934c394b97338786462804bc236877b18c1",
+  "published_model_version": "20261122234847",
+  "public_model_binary_sha256": "077a6adc5e6a6e3c5307414f8194a85003639e0e615a99386e9d2b571f512cb4",
+  "public_binary_verified": true,
+  "local_reproduction": "Identical web weights and evaluation scores. Same 1500-step candidate recipe; no second candidate recipe was needed.",
+  "before": {
+    "daily_retention": {
+      "count": 12,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    },
+    "dates_retention": {
+      "count": 8,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    },
+    "history_retention": {
+      "count": 20,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    },
+    "new_training_probe": {
+      "count": 20,
+      "exact": 0.0,
+      "digits_correct": 0.7,
+      "format_ok": 0.65,
+      "similarity": 0.14527160761257266
+    },
+    "recent_history_retention": {
+      "count": 29,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    },
+    "unseen_wording": {
+      "count": 41,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    }
+  },
+  "after": {
+    "daily_retention": {
+      "count": 12,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    },
+    "dates_retention": {
+      "count": 8,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    },
+    "history_retention": {
+      "count": 20,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    },
+    "new_training_probe": {
+      "count": 20,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    },
+    "recent_history_retention": {
+      "count": 29,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    },
+    "unseen_wording": {
+      "count": 41,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    }
+  },
+  "all_new_training_examples": {
+    "all_290_training_examples": {
+      "count": 290,
+      "exact": 1.0,
+      "digits_correct": 1.0,
+      "format_ok": 1.0,
+      "similarity": 1.0
+    }
+  },
+  "limitations": "Training-example matches measure recall, not unknown-knowledge accuracy; Qwen trial weights are not trained by this workflow."
+}
